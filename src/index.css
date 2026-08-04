@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  body {
+    @apply bg-cyber-bg text-slate-100 antialiased overflow-x-hidden;
+    background-image: 
+      radial-gradient(circle at 15% 15%, rgba(0, 240, 255, 0.05) 0%, transparent 40%),
+      radial-gradient(circle at 85% 75%, rgba(0, 112, 243, 0.05) 0%, transparent 40%);
+    background-attachment: fixed;
+  }
+
+  /* Custom Cyber Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #070b19;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(0, 240, 255, 0.25);
+    border-radius: 4px;
+    border: 1px solid rgba(0, 240, 255, 0.1);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 240, 255, 0.6);
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.8);
+  }
+}
+
+@layer components {
+  /* Glassmorphism Panel */
+  .glass-panel {
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(56, 189, 248, 0.15);
+  }
+
+  .glass-panel-light {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(0, 112, 243, 0.15);
+  }
+
+  /* Cyber Glow Borders */
+  .cyber-border {
+    position: relative;
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    transition: all 0.3s ease;
+  }
+
+  .cyber-border:hover {
+    border-color: rgba(0, 240, 255, 0.6);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.25);
+  }
+
+  .glow-text-cyan {
+    text-shadow: 0 0 12px rgba(0, 240, 255, 0.5);
+  }
+
+  .glow-text-blue {
+    text-shadow: 0 0 15px rgba(0, 112, 243, 0.6);
+  }
+
+  /* Tech Grid Background Lines */
+  .tech-grid {
+    background-size: 40px 40px;
+    background-image: 
+      linear-gradient(to right, rgba(56, 189, 248, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(56, 189, 248, 0.05) 1px, transparent 1px);
+  }
+
+  .cyber-gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-cyber-cyan via-cyber-sky to-cyber-blue;
+  }
+}

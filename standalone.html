@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mohammed Mehwish V M | Robotics & Mechatronics Engineer</title>
+    <meta name="description" content="Portfolio of Mohammed Mehwish V M — Robotics Engineer, Mechatronics Engineer, and Embedded Systems Specialist." />
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              cyber: {
+                bg: '#070b19',
+                card: '#0f172a',
+                cyan: '#00f0ff',
+                blue: '#0070f3',
+                sky: '#38bdf8',
+              }
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              mono: ['"JetBrains Mono"', 'monospace']
+            }
+          }
+        }
+      }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+      body {
+        background-color: #070b19;
+        color: #f8fafc;
+        font-family: 'Inter', sans-serif;
+        overflow-x: hidden;
+      }
+      .glass-panel {
+        background: rgba(15, 23, 42, 0.65);
+        backdrop-filter: blur(16px);
+        border: 1px solid rgba(56, 189, 248, 0.15);
+      }
+      .cyber-gradient-text {
+        background: linear-gradient(to right, #00f0ff, #38bdf8, #0070f3);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .shadow-glow-cyan {
+        box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+      }
+    </style>
+  </head>
+  <body class="bg-[#070b19] text-slate-100 antialiased">
+    <div id="standalone-root">
+      <!-- Fallback interactive portfolio view -->
+      <div class="min-h-screen flex flex-col justify-between p-8 text-center max-w-4xl mx-auto space-y-8 py-16">
+        <div className="space-y-4">
+          <div className="inline-block px-4 py-1.5 rounded-full bg-cyan-950/80 border border-cyan-400/40 text-cyan-400 font-mono text-xs tracking-widest uppercase">
+            SYSTEM READY • KERALA, INDIA
+          </div>
+          <h1 className="text-4xl sm:text-6xl font-extrabold text-white">
+            MOHAMMED MEHWISH V M
+          </h1>
+          <h2 className="text-xl sm:text-2xl font-mono text-cyan-400">
+            Robotics Engineer | Mechatronics Engineer | Embedded Systems Engineer
+          </h2>
+          <p className="text-slate-300 max-w-2xl mx-auto leading-relaxed text-sm sm:text-base font-sans">
+            Detail-oriented and motivated Mechatronics Engineering graduate with hands-on experience in embedded systems, industrial automation, robotics, and computer vision. Passionate about building intelligent robotic systems and solving real-world engineering problems using AI, automation, and embedded technologies.
+          </p>
+        </div>
+
+        {/* Quick Links */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <a href="https://github.com/mohammedmehwish" target="_blank" class="p-6 rounded-2xl glass-panel hover:border-cyan-400 transition-all text-left space-y-2 group">
+            <div class="font-mono font-bold text-cyan-400 group-hover:underline">GitHub Profile &rarr;</div>
+            <div class="text-xs text-slate-400">@mohammedmehwish</div>
+          </a>
+          <a href="https://linkedin.com/in/mohammed-mehwish-202677307" target="_blank" class="p-6 rounded-2xl glass-panel hover:border-cyan-400 transition-all text-left space-y-2 group">
+            <div class="font-mono font-bold text-cyan-400 group-hover:underline">LinkedIn Profile &rarr;</div>
+            <div class="text-xs text-slate-400">Mohammed Mehwish</div>
+          </a>
+          <a href="mailto:michumehwish2004@gmail.com" class="p-6 rounded-2xl glass-panel hover:border-cyan-400 transition-all text-left space-y-2 group">
+            <div class="font-mono font-bold text-cyan-400 group-hover:underline">Direct Email &rarr;</div>
+            <div class="text-xs text-slate-400">michumehwish2004@gmail.com</div>
+          </a>
+        </div>
+
+        <div class="pt-8 border-t border-slate-800 text-xs font-mono text-slate-400">
+          © 2026 Mohammed Mehwish V M. Built with React, Tailwind CSS, and GitHub Pages.
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

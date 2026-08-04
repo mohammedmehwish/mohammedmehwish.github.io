@@ -1,0 +1,2823 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Primary SEO Meta Tags -->
+  <title>Mohammed Mehwish V M | Robotics & Mechatronics Engineer</title>
+  <meta name="title" content="Mohammed Mehwish V M | Robotics & Mechatronics Engineer" />
+  <meta name="description" content="Portfolio of Mohammed Mehwish V M — Robotics Engineer, Mechatronics Engineer, and Embedded Systems Specialist. Expert in OpenCV, YOLO, Arduino, ESP32, PLC, SCADA, and Python." />
+  <meta name="keywords" content="Mohammed Mehwish, Robotics Engineer, Mechatronics, Embedded Systems, Computer Vision, YOLO, OpenCV, PLC, SCADA, Arduino, ESP32, Kerala India, Deep Learning" />
+  <meta name="author" content="Mohammed Mehwish V M" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://mohammedmehwish.github.io/" />
+  <meta property="og:title" content="Mohammed Mehwish V M | Robotics & Mechatronics Engineer" />
+  <meta property="og:description" content="Detail-oriented Mechatronics Engineering graduate specializing in embedded systems, industrial automation, robotics, and computer vision." />
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/mohammedmehwish" />
+
+  <!-- Twitter Card -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://mohammedmehwish.github.io/" />
+  <meta property="twitter:title" content="Mohammed Mehwish V M | Robotics & Mechatronics Engineer" />
+  <meta property="twitter:description" content="Detail-oriented Mechatronics Engineering graduate specializing in embedded systems, industrial automation, robotics, and computer vision." />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://mohammedmehwish.github.io/" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #070b19;
+      --card: #0f172a;
+      --card2: #111827;
+      --cyan: #00f0ff;
+      --blue: #0070f3;
+      --sky: #38bdf8;
+      --accent: #06b6d4;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --border: rgba(56,189,248,0.15);
+      --border-hover: rgba(0,240,255,0.5);
+      --glow-cyan: 0 0 20px rgba(0,240,255,0.3);
+      --glow-blue: 0 0 25px rgba(0,112,243,0.35);
+      --glass: rgba(15,23,42,0.65);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+      overflow-x: hidden;
+      min-height: 100vh;
+      background-image:
+        radial-gradient(circle at 10% 20%, rgba(0,240,255,0.04) 0%, transparent 45%),
+        radial-gradient(circle at 90% 80%, rgba(0,112,243,0.04) 0%, transparent 45%);
+    }
+
+    /* ====== SCROLLBAR ====== */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #050814; }
+    ::-webkit-scrollbar-thumb { background: rgba(0,240,255,0.25); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(0,240,255,0.6); box-shadow: var(--glow-cyan); }
+
+    /* ====== PARTICLE CANVAS ====== */
+    #particle-canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.6;
+    }
+
+    /* ====== UTILITY ====== */
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; position: relative; z-index: 10; }
+    .gradient-text {
+      background: linear-gradient(to right, var(--cyan), var(--sky), var(--blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .glass {
+      background: var(--glass);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+    }
+    .glow-card {
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .glow-card:hover {
+      border-color: var(--border-hover) !important;
+      box-shadow: var(--glow-cyan);
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      background: rgba(0,240,255,0.1);
+      border: 1px solid rgba(0,240,255,0.3);
+      color: var(--cyan);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .badge-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--cyan);
+    }
+    .tech-tag {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 6px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(56,189,248,0.2);
+      color: var(--sky);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 500;
+    }
+    .section { padding: 96px 0; }
+    .section-alt { background: rgba(7,11,25,0.95); }
+    .section-dark { background: rgba(5,8,20,0.9); }
+    h2.section-title {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      color: white;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+    .section-header { text-align: center; max-width: 700px; margin: 0 auto 64px; }
+    .section-header p { color: var(--muted); font-family: 'JetBrains Mono', monospace; font-size: 13px; margin-top: 0.75rem; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 26px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--cyan), var(--blue));
+      color: #020917;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: var(--glow-cyan);
+    }
+    .btn-primary:hover { transform: scale(1.03); box-shadow: 0 0 30px rgba(0,240,255,0.5); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 24px;
+      border-radius: 12px;
+      background: rgba(15,23,42,0.9);
+      color: var(--text);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid rgba(0,240,255,0.35);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-secondary:hover { color: var(--cyan); border-color: var(--cyan); background: rgba(0,240,255,0.07); }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 10px 18px;
+      border-radius: 10px;
+      background: transparent;
+      color: var(--muted);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid rgba(100,116,139,0.4);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-outline:hover { color: white; border-color: rgba(148,163,184,0.7); }
+
+    /* ====== CUSTOM CURSOR ====== */
+    #cursor-dot {
+      position: fixed; width: 8px; height: 8px;
+      background: var(--cyan);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transition: transform 0.1s;
+      box-shadow: 0 0 12px var(--cyan);
+    }
+    #cursor-ring {
+      position: fixed; width: 32px; height: 32px;
+      border: 1px solid rgba(0,240,255,0.5);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transition: transform 0.15s, width 0.2s, height 0.2s, border-color 0.2s;
+    }
+    body:not(:hover) #cursor-dot, body:not(:hover) #cursor-ring { opacity: 0; }
+
+    /* ====== LOADING SCREEN ====== */
+    #loading-screen {
+      position: fixed; inset: 0;
+      background: var(--bg);
+      z-index: 9998;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'JetBrains Mono', monospace;
+      transition: opacity 0.6s;
+    }
+    .loader-ring-outer {
+      width: 120px; height: 120px;
+      border: 3px dashed rgba(0,240,255,0.4);
+      border-radius: 50%;
+      animation: spin 6s linear infinite;
+    }
+    .loader-ring-inner {
+      position: absolute;
+      width: 88px; height: 88px;
+      border: 2px solid transparent;
+      border-top-color: var(--cyan);
+      border-radius: 50%;
+      animation: spin 3s linear infinite reverse;
+    }
+    .loader-icon {
+      position: absolute;
+      width: 48px; height: 48px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(15,23,42,0.8);
+      border: 1px solid rgba(0,240,255,0.3);
+      border-radius: 12px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: none; } }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+    @keyframes radarSpin { to { transform: rotate(360deg); } }
+    @keyframes pulseGlow {
+      0%,100% { box-shadow: 0 0 15px rgba(0,240,255,0.2); }
+      50% { box-shadow: 0 0 35px rgba(0,240,255,0.6); }
+    }
+
+    /* ====== NAVBAR ====== */
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      transition: all 0.3s;
+      padding: 20px 0;
+    }
+    #navbar.scrolled {
+      background: rgba(7,11,25,0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(0,240,255,0.15);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.4);
+      padding: 12px 0;
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; }
+    .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo-box {
+      width: 38px; height: 38px;
+      background: rgba(15,23,42,0.8);
+      border: 1px solid rgba(0,240,255,0.3);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--cyan);
+      font-size: 18px;
+      transition: all 0.3s;
+      position: relative;
+    }
+    .nav-logo-box::after {
+      content: '';
+      position: absolute;
+      top: -3px; right: -3px;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--cyan);
+      animation: blink 2s infinite;
+    }
+    .nav-brand:hover .nav-logo-box { box-shadow: var(--glow-cyan); border-color: var(--cyan); }
+    .nav-brand-text { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 17px; color: white; letter-spacing: 0.05em; }
+    .nav-brand-sub { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--sky); text-transform: uppercase; letter-spacing: 0.15em; }
+    .nav-links {
+      display: flex; align-items: center; gap: 2px;
+      background: rgba(15,23,42,0.6);
+      backdrop-filter: blur(12px);
+      padding: 6px 12px;
+      border-radius: 9999px;
+      border: 1px solid rgba(56,189,248,0.12);
+    }
+    .nav-link {
+      padding: 7px 14px;
+      border-radius: 9999px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      font-weight: 500;
+      color: #94a3b8;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: all 0.2s;
+      position: relative;
+    }
+    .nav-link:hover, .nav-link.active { color: var(--cyan); }
+    .nav-link.active::before {
+      content: '';
+      position: absolute; inset: 0;
+      border-radius: 9999px;
+      background: rgba(0,240,255,0.12);
+      border: 1px solid rgba(0,240,255,0.35);
+      z-index: -1;
+    }
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
+    .theme-btn {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      background: rgba(15,23,42,0.8);
+      border: 1px solid rgba(56,189,248,0.3);
+      color: var(--cyan);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+    .theme-btn:hover { box-shadow: var(--glow-cyan); border-color: var(--cyan); }
+    .hamburger {
+      display: none;
+      flex-direction: column; gap: 5px;
+      cursor: pointer; padding: 6px;
+      border-radius: 8px;
+      background: rgba(15,23,42,0.8);
+      border: 1px solid rgba(0,240,255,0.3);
+    }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--cyan); border-radius: 2px; transition: 0.3s; }
+    .mobile-menu {
+      display: none;
+      background: rgba(15,23,42,0.97);
+      border-bottom: 1px solid rgba(0,240,255,0.2);
+      backdrop-filter: blur(20px);
+    }
+    .mobile-menu a {
+      display: block;
+      padding: 12px 24px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: #94a3b8;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      transition: all 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--cyan); background: rgba(0,240,255,0.05); }
+
+    /* ====== SCROLL PROGRESS ====== */
+    #scroll-progress {
+      position: fixed; top: 0; left: 0;
+      height: 3px;
+      background: linear-gradient(to right, var(--cyan), var(--blue));
+      z-index: 101;
+      width: 0%;
+      transition: width 0.1s linear;
+      box-shadow: var(--glow-cyan);
+    }
+
+    /* ====== HERO ====== */
+    #home {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 90px;
+      padding-bottom: 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-spotlight {
+      position: absolute;
+      top: 25%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(0,240,255,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .hero-status {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 16px;
+      border-radius: 9999px;
+      background: rgba(15,23,42,0.8);
+      border: 1px solid rgba(0,240,255,0.3);
+      backdrop-filter: blur(12px);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--sky);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--glow-cyan);
+    }
+    .hero-status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--cyan); animation: blink 1.5s infinite; }
+    .hero-name-top { font-size: 1.3rem; font-weight: 500; color: #94a3b8; font-family: 'JetBrains Mono', monospace; }
+    .hero-name-main {
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      color: white;
+    }
+    .hero-name-last { display: block; }
+    .typing-line {
+      height: 48px;
+      display: flex;
+      align-items: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.2rem;
+      color: var(--sky);
+      font-weight: 600;
+      margin: 1rem 0;
+    }
+    .typing-prompt { color: #64748b; margin-right: 8px; }
+    #typed-text { color: var(--sky); }
+    .cursor-blink { display: inline-block; width: 10px; height: 22px; background: var(--cyan); margin-left: 3px; animation: blink 1s infinite; vertical-align: middle; }
+    .hero-bio { color: #94a3b8; font-size: 1.05rem; line-height: 1.75; max-width: 540px; margin-bottom: 2rem; }
+    .hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 2.5rem; }
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .hero-stat {
+      background: rgba(15,23,42,0.5);
+      border: 1px solid rgba(0,240,255,0.1);
+      border-radius: 12px;
+      padding: 14px;
+    }
+    .hero-stat-val { font-size: 1.6rem; font-weight: 800; font-family: 'JetBrains Mono', monospace; color: var(--cyan); }
+    .hero-stat-label { font-size: 10px; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; font-family: 'JetBrains Mono', monospace; margin-top: 2px; }
+
+    /* Hero Robot Visual */
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .robot-frame {
+      position: relative;
+      width: min(420px, 100%);
+      aspect-ratio: 1;
+      border-radius: 24px;
+      background: rgba(15,23,42,0.65);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(0,240,255,0.25);
+      box-shadow: var(--glow-cyan), inset 0 1px 0 rgba(255,255,255,0.05);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      animation: pulseGlow 4s ease-in-out infinite;
+    }
+    .robot-frame::before {
+      content: '';
+      position: absolute;
+      inset: 16px;
+      border: 1px solid rgba(0,240,255,0.12);
+      border-radius: 16px;
+    }
+    .robot-frame::after {
+      content: '';
+      position: absolute;
+      inset: 30px;
+      border: 1px dashed rgba(0,112,243,0.2);
+      border-radius: 12px;
+      animation: radarSpin 12s linear infinite;
+    }
+    .robot-hud-top-left {
+      position: absolute; top: 14px; left: 14px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px; color: rgba(0,240,255,0.5);
+      line-height: 1.6;
+    }
+    .robot-hud-top-right {
+      position: absolute; top: 14px; right: 14px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px; color: rgba(56,189,248,0.5);
+      text-align: right;
+      line-height: 1.6;
+    }
+    .robot-hud-bottom {
+      position: absolute; bottom: 14px; left: 14px; right: 14px;
+      background: rgba(5,8,20,0.85);
+      border: 1px solid rgba(0,240,255,0.2);
+      border-radius: 10px;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+    }
+    .robot-hud-bottom .label { color: #64748b; }
+    .robot-hud-bottom .value { color: var(--cyan); font-weight: 700; }
+    .robot-svg { animation: float 5s ease-in-out infinite; position: relative; z-index: 2; }
+
+    /* ====== ABOUT ====== */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+    .info-card {
+      display: flex; align-items: start; gap: 14px;
+      padding: 16px;
+      border-radius: 14px;
+      background: rgba(15,23,42,0.6);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .info-card-icon {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(0,240,255,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .spec-card {
+      padding: 24px;
+      border-radius: 18px;
+      background: rgba(15,23,42,0.65);
+      border: 1px solid rgba(56,189,248,0.12);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s;
+    }
+    .spec-card:hover { border-color: rgba(0,240,255,0.4); box-shadow: var(--glow-cyan); }
+    .spec-icon {
+      width: 42px; height: 42px;
+      border-radius: 12px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(0,240,255,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+      margin-bottom: 14px;
+      transition: all 0.3s;
+    }
+    .spec-card:hover .spec-icon { background: var(--cyan); box-shadow: var(--glow-cyan); }
+
+    /* ====== SKILLS ====== */
+    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .skill-card {
+      padding: 24px;
+      border-radius: 18px;
+      background: rgba(15,23,42,0.65);
+      border: 1px solid rgba(56,189,248,0.12);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s;
+    }
+    .skill-card:hover { border-color: rgba(0,240,255,0.4); box-shadow: var(--glow-cyan); }
+    .skill-card-header {
+      display: flex; align-items: center; gap: 12px;
+      padding-bottom: 18px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .skill-card-icon {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      background: rgba(7,11,25,0.9);
+      border: 1px solid rgba(0,240,255,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+    }
+    .skill-card-title { font-weight: 700; font-size: 15px; color: white; font-family: 'JetBrains Mono', monospace; }
+    .skill-item { margin-bottom: 16px; }
+    .skill-item:last-child { margin-bottom: 0; }
+    .skill-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+    .skill-name {
+      font-size: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      color: #cbd5e1;
+      display: flex; align-items: center; gap: 5px;
+    }
+    .skill-name.highlight { color: #e2e8f0; }
+    .skill-name.highlight::before { content: '✓'; color: var(--cyan); font-size: 10px; }
+    .skill-pct { font-size: 11px; font-family: 'JetBrains Mono', monospace; color: var(--cyan); }
+    .skill-bar { width: 100%; height: 8px; background: #0f1a2e; border-radius: 9999px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); }
+    .skill-fill {
+      height: 100%;
+      border-radius: 9999px;
+      background: linear-gradient(to right, var(--blue), var(--sky), var(--cyan));
+      width: 0%;
+      transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
+    }
+    .skill-fill.plain { background: #334155; }
+    .filter-tabs { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 40px; }
+    .filter-tab {
+      padding: 8px 18px;
+      border-radius: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      border: 1px solid rgba(30,41,59,0.9);
+      background: rgba(15,23,42,0.6);
+      color: #64748b;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-tab:hover { color: white; border-color: #475569; }
+    .filter-tab.active { background: rgba(0,240,255,0.15); color: var(--cyan); border-color: rgba(0,240,255,0.5); box-shadow: var(--glow-cyan); }
+
+    /* ====== PROJECTS ====== */
+    .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .project-card {
+      border-radius: 20px;
+      background: rgba(15,23,42,0.65);
+      border: 1px solid rgba(56,189,248,0.12);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s;
+    }
+    .project-card:hover { border-color: rgba(0,240,255,0.5); box-shadow: var(--glow-cyan); transform: translateY(-4px); }
+    .project-img {
+      position: relative;
+      height: 200px;
+      overflow: hidden;
+      background: #0a0f1d;
+    }
+    .project-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; opacity: 0.8; }
+    .project-card:hover .project-img img { transform: scale(1.06); opacity: 1; }
+    .project-img-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,23,42,0.95) 0%, transparent 60%); }
+    .project-cat-badge {
+      position: absolute; top: 14px; right: 14px;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      background: rgba(0,240,255,0.18);
+      border: 1px solid rgba(0,240,255,0.4);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--cyan);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      backdrop-filter: blur(8px);
+    }
+    .project-icon-badge {
+      position: absolute; top: 14px; left: 14px;
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      background: rgba(5,8,20,0.85);
+      border: 1px solid rgba(0,240,255,0.35);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+      backdrop-filter: blur(8px);
+    }
+    .project-body { padding: 22px; flex: 1; display: flex; flex-direction: column; }
+    .project-title {
+      font-size: 17px;
+      font-weight: 800;
+      font-family: 'JetBrains Mono', monospace;
+      color: white;
+      margin-bottom: 8px;
+      transition: color 0.2s;
+    }
+    .project-card:hover .project-title { color: var(--cyan); }
+    .project-desc { font-size: 12.5px; color: #94a3b8; line-height: 1.65; margin-bottom: 14px; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
+    .project-actions { display: flex; gap: 8px; margin-top: auto; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.06); }
+
+    /* ====== EXPERIENCE ====== */
+    .timeline { position: relative; max-width: 800px; margin: 0 auto; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 24px;
+      top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--cyan), var(--blue), transparent);
+    }
+    .timeline-item { position: relative; padding-left: 72px; margin-bottom: 48px; }
+    .timeline-dot {
+      position: absolute;
+      left: 9px;
+      top: 20px;
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      background: rgba(15,23,42,0.9);
+      border: 2px solid var(--cyan);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px;
+      box-shadow: var(--glow-cyan);
+      transition: transform 0.3s;
+    }
+    .timeline-item:hover .timeline-dot { transform: scale(1.2); }
+    .timeline-card {
+      padding: 28px 32px;
+      border-radius: 18px;
+      background: rgba(15,23,42,0.65);
+      border: 1px solid rgba(56,189,248,0.15);
+      backdrop-filter: blur(12px);
+      transition: all 0.3s;
+    }
+    .timeline-item:hover .timeline-card { border-color: rgba(0,240,255,0.4); box-shadow: var(--glow-cyan); }
+    .timeline-period {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      background: rgba(0,240,255,0.12);
+      border: 1px solid rgba(0,240,255,0.3);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--cyan);
+      margin-bottom: 14px;
+    }
+    .timeline-role { font-size: 20px; font-weight: 800; font-family: 'JetBrains Mono', monospace; color: white; }
+    .timeline-company { font-size: 13px; color: var(--sky); font-family: 'JetBrains Mono', monospace; font-weight: 600; margin-bottom: 12px; }
+    .timeline-location { font-size: 11px; color: #64748b; }
+    .achievement-item {
+      display: flex; gap: 8px; align-items: flex-start;
+      font-size: 12.5px; color: #94a3b8; line-height: 1.6;
+      margin-bottom: 8px;
+    }
+    .achievement-check { color: var(--cyan); margin-top: 2px; flex-shrink: 0; font-size: 12px; }
+
+    /* ====== CERTIFICATES ====== */
+    .cert-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .cert-card {
+      border-radius: 18px;
+      background: rgba(15,23,42,0.65);
+      border: 1px solid rgba(56,189,248,0.12);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s;
+    }
+    .cert-card:hover { border-color: rgba(0,240,255,0.45); box-shadow: var(--glow-cyan); transform: translateY(-4px); }
+    .cert-img { position: relative; height: 140px; background: #0a0f1d; overflow: hidden; }
+    .cert-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.75; transition: all 0.4s; }
+    .cert-card:hover .cert-img img { opacity: 1; transform: scale(1.05); }
+    .cert-img-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,23,42,0.9) 0%, transparent 60%); }
+    .cert-award-icon {
+      position: absolute; top: 10px; left: 10px;
+      width: 30px; height: 30px;
+      background: rgba(5,8,20,0.9);
+      border: 1px solid rgba(0,240,255,0.35);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px;
+    }
+    .cert-date {
+      position: absolute; top: 10px; right: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--cyan);
+      background: rgba(5,8,20,0.9);
+      border: 1px solid rgba(0,240,255,0.3);
+      border-radius: 6px;
+      padding: 3px 8px;
+    }
+    .cert-body { padding: 18px; flex: 1; display: flex; flex-direction: column; }
+    .cert-title { font-size: 13px; font-weight: 800; font-family: 'JetBrains Mono', monospace; color: white; margin-bottom: 4px; line-height: 1.4; transition: color 0.2s; }
+    .cert-card:hover .cert-title { color: var(--cyan); }
+    .cert-issuer { font-size: 11px; color: var(--sky); font-family: 'JetBrains Mono', monospace; margin-bottom: 10px; }
+    .cert-desc { font-size: 11px; color: #64748b; line-height: 1.6; margin-bottom: 12px; }
+    .cert-skills { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 14px; }
+    .cert-skill { padding: 2px 8px; border-radius: 4px; background: rgba(5,8,20,0.9); border: 1px solid rgba(255,255,255,0.07); font-family: 'JetBrains Mono', monospace; font-size: 9px; color: #64748b; }
+
+    /* ====== EDUCATION ====== */
+    .edu-card {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 40px 48px;
+      border-radius: 24px;
+      background: rgba(15,23,42,0.65);
+      border: 1px solid rgba(0,240,255,0.25);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--glow-cyan);
+      position: relative;
+      overflow: hidden;
+    }
+    .edu-card-bg-icon {
+      position: absolute; right: 30px; top: 50%;
+      transform: translateY(-50%);
+      font-size: 120px;
+      opacity: 0.06;
+      pointer-events: none;
+    }
+
+    /* ====== GITHUB SECTION ====== */
+    .github-profile-card {
+      padding: 32px;
+      border-radius: 20px;
+      background: rgba(15,23,42,0.65);
+      border: 1px solid rgba(0,240,255,0.25);
+      backdrop-filter: blur(12px);
+      margin-bottom: 32px;
+      box-shadow: var(--glow-cyan);
+    }
+    .github-profile-inner { display: grid; grid-template-columns: auto 1fr auto; gap: 24px; align-items: center; }
+    .github-avatar { width: 80px; height: 80px; border-radius: 16px; border: 2px solid var(--cyan); box-shadow: var(--glow-cyan); object-fit: cover; }
+    .github-avatar-placeholder {
+      width: 80px; height: 80px;
+      border-radius: 16px;
+      background: rgba(0,240,255,0.1);
+      border: 2px solid rgba(0,240,255,0.4);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 32px;
+    }
+    .github-stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .github-stat-box {
+      text-align: center;
+      padding: 14px;
+      border-radius: 14px;
+      background: rgba(5,8,20,0.8);
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+    .github-stat-icon { font-size: 18px; margin-bottom: 4px; }
+    .github-stat-val { font-size: 22px; font-weight: 900; font-family: 'JetBrains Mono', monospace; color: white; }
+    .github-stat-label { font-size: 9px; color: #64748b; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.08em; }
+    .lang-bar-wrapper { margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.06); }
+    .lang-bar {
+      height: 12px;
+      border-radius: 9999px;
+      overflow: hidden;
+      display: flex;
+      margin-bottom: 12px;
+    }
+    .lang-bar-seg { height: 100%; transition: width 1s ease; }
+    .lang-legend { display: flex; flex-wrap: wrap; gap: 16px; }
+    .lang-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; margin-top: 3px; }
+    .heatmap-card {
+      padding: 24px;
+      border-radius: 18px;
+      background: rgba(15,23,42,0.65);
+      border: 1px solid rgba(56,189,248,0.15);
+      margin-bottom: 32px;
+    }
+    .heatmap-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; font-family: 'JetBrains Mono', monospace; font-size: 13px; }
+    .heatmap-title { color: var(--cyan); font-weight: 700; }
+    .repo-controls {
+      display: flex; flex-wrap: wrap; gap: 12px;
+      background: rgba(15,23,42,0.6);
+      padding: 16px 20px;
+      border-radius: 16px;
+      border: 1px solid rgba(56,189,248,0.12);
+      margin-bottom: 24px;
+    }
+    .search-box {
+      position: relative;
+      flex: 1;
+      min-width: 220px;
+    }
+    .search-box input {
+      width: 100%;
+      background: rgba(5,8,20,0.9);
+      border: 1px solid rgba(56,189,248,0.2);
+      border-radius: 12px;
+      padding: 10px 12px 10px 38px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: white;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .search-box input::placeholder { color: #475569; }
+    .search-box input:focus { border-color: var(--cyan); }
+    .search-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); font-size: 14px; color: var(--cyan); }
+    .repo-select {
+      background: rgba(5,8,20,0.9);
+      border: 1px solid rgba(56,189,248,0.2);
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--cyan);
+      outline: none;
+      cursor: pointer;
+    }
+    .repos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .repo-card {
+      padding: 22px;
+      border-radius: 16px;
+      background: rgba(15,23,42,0.65);
+      border: 1px solid rgba(56,189,248,0.12);
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s;
+    }
+    .repo-card:hover { border-color: rgba(0,240,255,0.5); box-shadow: var(--glow-cyan); }
+    .repo-name { font-size: 14px; font-weight: 800; font-family: 'JetBrains Mono', monospace; color: white; margin-bottom: 6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: color 0.2s; }
+    .repo-card:hover .repo-name { color: var(--cyan); }
+    .repo-desc { font-size: 11.5px; color: #64748b; line-height: 1.6; margin-bottom: 14px; flex: 1; }
+    .repo-lang-badge { padding: 3px 10px; border-radius: 6px; background: rgba(0,240,255,0.12); border: 1px solid rgba(0,240,255,0.3); font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 600; color: var(--cyan); }
+    .repo-stats { display: flex; gap: 12px; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #475569; }
+    .repo-stars { color: #f59e0b; font-weight: 700; }
+    .repo-forks { color: var(--sky); }
+    .loading-repos { text-align: center; padding: 48px 0; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--cyan); }
+    .loading-spinner {
+      display: inline-block; width: 20px; height: 20px;
+      border: 2px solid rgba(0,240,255,0.2);
+      border-top-color: var(--cyan);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+
+    /* ====== RESUME ====== */
+    .resume-window {
+      max-width: 860px;
+      margin: 0 auto;
+      border-radius: 22px;
+      background: rgba(15,23,42,0.65);
+      border: 1px solid rgba(0,240,255,0.25);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--glow-cyan);
+      overflow: hidden;
+    }
+    .resume-titlebar {
+      padding: 16px 24px;
+      background: rgba(5,8,20,0.6);
+      border-bottom: 1px solid rgba(0,240,255,0.15);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .resume-titlebar-dots { display: flex; gap: 6px; }
+    .resume-titlebar-dots span {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+    }
+    .resume-body { padding: 36px 40px; }
+    .resume-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 28px; padding-bottom: 24px; border-bottom: 1px solid rgba(0,240,255,0.15); }
+    .resume-name { font-size: 2rem; font-weight: 900; color: white; font-family: 'JetBrains Mono', monospace; }
+    .resume-role { font-size: 13px; color: var(--cyan); font-family: 'JetBrains Mono', monospace; margin-top: 4px; }
+    .resume-contact-info { font-size: 11px; font-family: 'JetBrains Mono', monospace; color: #64748b; line-height: 1.8; text-align: right; }
+    .resume-section-title { font-size: 11px; font-family: 'JetBrains Mono', monospace; color: var(--sky); font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 14px; padding-bottom: 6px; border-bottom: 1px solid rgba(56,189,248,0.2); }
+    .resume-section { margin-bottom: 24px; }
+    .resume-actions { display: flex; gap: 12px; justify-content: center; margin-top: 28px; }
+
+    /* ====== CONTACT ====== */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 40px; }
+    .contact-info-card {
+      display: flex; align-items: center; gap: 14px;
+      padding: 20px;
+      border-radius: 16px;
+      background: rgba(15,23,42,0.65);
+      border: 1px solid rgba(56,189,248,0.12);
+      transition: all 0.3s;
+      text-decoration: none;
+    }
+    .contact-info-card:hover { border-color: rgba(0,240,255,0.4); box-shadow: var(--glow-cyan); }
+    .contact-icon-wrap {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      background: rgba(7,11,25,0.8);
+      border: 1px solid rgba(0,240,255,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+      transition: all 0.3s;
+    }
+    .contact-info-card:hover .contact-icon-wrap { background: var(--cyan); box-shadow: var(--glow-cyan); }
+    .contact-label { font-size: 10px; font-family: 'JetBrains Mono', monospace; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; }
+    .contact-value { font-size: 13px; font-weight: 600; color: white; font-family: 'JetBrains Mono', monospace; }
+    .form-group { margin-bottom: 20px; }
+    .form-label { display: block; font-size: 11px; font-family: 'JetBrains Mono', monospace; color: #94a3b8; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; }
+    .form-input {
+      width: 100%;
+      background: rgba(5,8,20,0.9);
+      border: 1px solid rgba(56,189,248,0.2);
+      border-radius: 12px;
+      padding: 12px 16px;
+      font-family: 'Inter', sans-serif;
+      font-size: 13.5px;
+      color: white;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .form-input::placeholder { color: #334155; }
+    .form-input:focus { border-color: var(--cyan); box-shadow: 0 0 0 3px rgba(0,240,255,0.1); }
+    textarea.form-input { resize: vertical; min-height: 130px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-grid { padding: 32px 36px; border-radius: 22px; background: rgba(15,23,42,0.65); border: 1px solid rgba(0,240,255,0.25); backdrop-filter: blur(14px); box-shadow: var(--glow-cyan); }
+    .copy-btn {
+      background: none; border: none;
+      cursor: pointer;
+      font-size: 16px;
+      color: var(--cyan);
+      transition: transform 0.2s;
+      padding: 4px;
+    }
+    .copy-btn:hover { transform: scale(1.2); }
+
+    /* ====== MODAL ====== */
+    .modal-overlay {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(5,8,20,0.85);
+      backdrop-filter: blur(12px);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-box {
+      background: rgba(15,23,42,0.97);
+      border: 1px solid rgba(0,240,255,0.3);
+      border-radius: 22px;
+      width: 100%;
+      max-width: 900px;
+      max-height: 88vh;
+      overflow: hidden;
+      display: flex; flex-direction: column;
+      box-shadow: 0 0 60px rgba(0,240,255,0.15);
+    }
+    .modal-header {
+      padding: 18px 24px;
+      border-bottom: 1px solid rgba(0,240,255,0.15);
+      background: rgba(5,8,20,0.6);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .modal-title { font-family: 'JetBrains Mono', monospace; font-size: 15px; font-weight: 700; color: var(--cyan); display: flex; align-items: center; gap: 8px; }
+    .modal-close {
+      width: 32px; height: 32px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: #94a3b8;
+      font-size: 18px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .modal-close:hover { color: white; background: rgba(255,255,255,0.12); }
+    .modal-body { padding: 24px; overflow-y: auto; flex: 1; }
+
+    /* ====== SCROLL TO TOP ====== */
+    #scroll-top-btn {
+      position: fixed; bottom: 24px; right: 24px;
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(0,240,255,0.35);
+      color: var(--cyan);
+      font-size: 20px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 50;
+      box-shadow: var(--glow-cyan);
+      transition: all 0.3s;
+    }
+    #scroll-top-btn:hover { transform: scale(1.1); background: rgba(0,240,255,0.1); }
+
+    /* ====== FOOTER ====== */
+    footer {
+      background: #050814;
+      border-top: 1px solid rgba(0,240,255,0.1);
+      padding: 56px 0 32px;
+      position: relative;
+    }
+    footer::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 500px; height: 200px;
+      background: radial-gradient(ellipse, rgba(0,240,255,0.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+    .footer-bottom { padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; align-items: center; }
+    .footer-link { color: #64748b; text-decoration: none; font-family: 'JetBrains Mono', monospace; font-size: 12px; display: block; margin-bottom: 10px; transition: color 0.2s; }
+    .footer-link:hover { color: var(--cyan); }
+    .footer-social { display: flex; gap: 10px; margin-top: 16px; }
+    .social-icon {
+      width: 36px; height: 36px;
+      border-radius: 9px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(56,189,248,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .social-icon:hover { border-color: var(--cyan); box-shadow: var(--glow-cyan); transform: translateY(-2px); }
+    .available-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      background: rgba(16,185,129,0.12);
+      border: 1px solid rgba(16,185,129,0.35);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 600;
+      color: #10b981;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 14px;
+    }
+    .available-ping { width: 8px; height: 8px; border-radius: 50%; background: #10b981; animation: blink 1.5s infinite; }
+
+    /* ====== ANIMATIONS ====== */
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-in.visible { opacity: 1; transform: none; }
+
+    /* ====== SUCCESS TOAST ====== */
+    #toast {
+      position: fixed; bottom: 80px; right: 24px;
+      padding: 14px 20px;
+      background: rgba(16,185,129,0.18);
+      border: 1px solid rgba(16,185,129,0.4);
+      border-radius: 14px;
+      backdrop-filter: blur(12px);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: #10b981;
+      z-index: 300;
+      display: none;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 0 20px rgba(16,185,129,0.2);
+    }
+
+    /* ====== LIGHT MODE ====== */
+    body.light-mode {
+      --bg: #f0f4ff;
+      --card: #ffffff;
+      --card2: #f8fafc;
+      --text: #0f172a;
+      --muted: #475569;
+      --border: rgba(0,112,243,0.15);
+      --glass: rgba(255,255,255,0.85);
+      background-image:
+        radial-gradient(circle at 10% 20%, rgba(0,112,243,0.04) 0%, transparent 45%),
+        radial-gradient(circle at 90% 80%, rgba(0,240,255,0.04) 0%, transparent 45%);
+    }
+    body.light-mode #navbar { color: #0f172a; }
+    body.light-mode .nav-link { color: #475569; }
+    body.light-mode .glass { background: rgba(255,255,255,0.85); border-color: rgba(0,112,243,0.15); }
+    body.light-mode .skill-card, body.light-mode .project-card, body.light-mode .spec-card,
+    body.light-mode .cert-card, body.light-mode .timeline-card, body.light-mode .github-profile-card,
+    body.light-mode .repo-card, body.light-mode .form-grid, body.light-mode .edu-card,
+    body.light-mode .resume-window, body.light-mode .contact-info-card, body.light-mode .heatmap-card {
+      background: rgba(255,255,255,0.85); border-color: rgba(0,112,243,0.15); color: #0f172a;
+    }
+    body.light-mode .project-title, body.light-mode .cert-title, body.light-mode .timeline-role,
+    body.light-mode .repo-name, body.light-mode .skill-card-title { color: #0f172a; }
+    body.light-mode .project-desc, body.light-mode .cert-desc, body.light-mode .repo-desc,
+    body.light-mode .hero-bio { color: #475569; }
+    body.light-mode footer { background: #e8edf8; }
+
+    /* ====== RESPONSIVE ====== */
+    @media (max-width: 1024px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+      .hero-visual { display: none; }
+      .about-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .projects-grid { grid-template-columns: repeat(2, 1fr); }
+      .cert-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .github-profile-inner { grid-template-columns: auto 1fr; }
+      .repos-grid { grid-template-columns: repeat(2, 1fr); }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .nav-actions .btn-primary { display: none; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .cert-grid { grid-template-columns: 1fr; }
+      .repos-grid { grid-template-columns: 1fr; }
+      .github-stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .github-profile-inner { grid-template-columns: 1fr; text-align: center; }
+      .github-avatar, .github-avatar-placeholder { margin: 0 auto; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+      .hero-stats { grid-template-columns: repeat(2, 1fr); }
+      .resume-header { flex-direction: column; gap: 14px; }
+      .resume-contact-info { text-align: left; }
+      .resume-body { padding: 24px; }
+    }
+    @media (max-width: 480px) {
+      .hero-ctas { flex-direction: column; }
+      .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Custom Cursors (Desktop) -->
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
+
+  <!-- Scroll Progress Line -->
+  <div id="scroll-progress"></div>
+
+  <!-- Particle Canvas -->
+  <canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+  <!-- Loading Screen -->
+  <div id="loading-screen" role="status" aria-label="Loading portfolio">
+    <div style="position:relative;width:120px;height:120px;display:flex;align-items:center;justify-content:center;margin-bottom:32px;">
+      <div class="loader-ring-outer" aria-hidden="true"></div>
+      <div class="loader-ring-inner" aria-hidden="true"></div>
+      <div class="loader-icon">⚙️</div>
+    </div>
+    <h1 style="font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:800;background:linear-gradient(to right,#00f0ff,#fff,#0070f3);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.06em;margin-bottom:6px;">MOHAMMED MEHWISH V M</h1>
+    <p style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#38bdf8;text-transform:uppercase;letter-spacing:0.18em;margin-bottom:36px;">ROBOTICS & MECHATRONICS ENGINEERING</p>
+    <div style="width:320px;background:rgba(15,23,42,0.8);padding:6px;border-radius:9999px;border:1px solid rgba(0,240,255,0.2);">
+      <div style="height:10px;background:#070b19;border-radius:9999px;overflow:hidden;">
+        <div id="loader-bar" style="height:100%;width:0%;background:linear-gradient(to right,#0070f3,#38bdf8,#00f0ff);border-radius:9999px;transition:width 0.1s;"></div>
+      </div>
+    </div>
+    <div style="margin-top:14px;display:flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:11px;color:#64748b;">
+      <span id="loader-pct" style="color:#00f0ff;font-weight:700;">0%</span>
+      <span>|</span>
+      <span id="loader-status">INITIALIZING ROBOTICS CORE...</span>
+    </div>
+    <div style="position:absolute;top:24px;left:24px;font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(0,240,255,0.35);line-height:1.8;">
+      SYS_BOOT_VER_2.4.0<br>ARCH: MECHATRONICS_OS
+    </div>
+    <div style="position:absolute;top:24px;right:24px;font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(56,189,248,0.35);text-align:right;line-height:1.8;">
+      LATENCY: 0.2ms<br>SECURE ENCLAVE OK
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <header id="navbar" role="banner">
+    <div class="container">
+      <nav class="nav-inner" aria-label="Main navigation">
+        <a href="#home" class="nav-brand" aria-label="Mohammed Mehwish - Home">
+          <div class="nav-logo-box" aria-hidden="true">⚙️</div>
+          <div>
+            <div class="nav-brand-text">M. MEHWISH</div>
+            <div class="nav-brand-sub">ROBOTICS ENGINEER</div>
+          </div>
+        </a>
+
+        <div class="nav-links" role="list">
+          <a href="#home" class="nav-link active" role="listitem">Home</a>
+          <a href="#about" class="nav-link" role="listitem">About</a>
+          <a href="#skills" class="nav-link" role="listitem">Skills</a>
+          <a href="#projects" class="nav-link" role="listitem">Projects</a>
+          <a href="#experience" class="nav-link" role="listitem">Experience</a>
+          <a href="#certificates" class="nav-link" role="listitem">Certificates</a>
+          <a href="#github" class="nav-link" role="listitem">GitHub</a>
+          <a href="#resume" class="nav-link" role="listitem">Resume</a>
+          <a href="#contact" class="nav-link" role="listitem">Contact</a>
+        </div>
+
+        <div class="nav-actions">
+          <button class="theme-btn" id="theme-toggle" aria-label="Toggle dark/light mode" title="Toggle theme">🌙</button>
+          <a href="#contact" class="btn-primary" style="padding:9px 18px;font-size:11px;">GET IN TOUCH</a>
+          <button class="hamburger" id="hamburger-btn" aria-label="Toggle mobile menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </nav>
+    </div>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu" role="navigation" aria-label="Mobile navigation">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#certificates">Certificates</a>
+      <a href="#github">GitHub</a>
+      <a href="#resume">Resume</a>
+      <a href="#contact">Contact</a>
+      <div style="padding:16px 24px;">
+        <a href="#contact" class="btn-primary" style="width:100%;justify-content:center;">CONTACT ME</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- ========== HERO ========== -->
+    <section id="home" aria-labelledby="hero-title">
+      <div class="hero-spotlight" aria-hidden="true"></div>
+      <div class="container">
+        <div class="hero-grid">
+          <!-- Left Column -->
+          <div>
+            <div class="hero-status">
+              <span class="hero-status-dot" aria-hidden="true"></span>
+              SYSTEM ONLINE • KERALA, INDIA
+            </div>
+            <div class="hero-name-top">Hi, I'm</div>
+            <h1 id="hero-title" class="hero-name-main">
+              Mohammed<br><span class="hero-name-last gradient-text">Mehwish V M</span>
+            </h1>
+            <div class="typing-line" aria-live="polite" aria-label="Dynamic role description">
+              <span class="typing-prompt" aria-hidden="true">&gt;</span>
+              <span id="typed-text"></span><span class="cursor-blink" aria-hidden="true"></span>
+            </div>
+            <p class="hero-bio">
+              Detail-oriented and motivated <strong style="color:#00f0ff;">Mechatronics Engineer</strong> with hands-on experience in embedded systems, industrial automation, robotics, and computer vision. Passionate about building intelligent robotic systems.
+            </p>
+            <div class="hero-ctas">
+              <button class="btn-primary" onclick="openResumeModal()" id="hero-resume-btn">
+                ⬇ DOWNLOAD RESUME
+              </button>
+              <a href="#projects" class="btn-secondary">
+                🚀 VIEW PROJECTS
+              </a>
+              <a href="#contact" class="btn-outline">
+                ✉ CONTACT ME
+              </a>
+            </div>
+            <div class="hero-stats" role="list" aria-label="Key achievements">
+              <div class="hero-stat" role="listitem">
+                <div class="hero-stat-val">10+</div>
+                <div class="hero-stat-label">Projects Completed</div>
+              </div>
+              <div class="hero-stat" role="listitem">
+                <div class="hero-stat-val">5+</div>
+                <div class="hero-stat-label">Hardware Platforms</div>
+              </div>
+              <div class="hero-stat" role="listitem">
+                <div class="hero-stat-val">4</div>
+                <div class="hero-stat-label">Certifications</div>
+              </div>
+              <div class="hero-stat" role="listitem">
+                <div class="hero-stat-val">1</div>
+                <div class="hero-stat-label">Industrial Internship</div>
+              </div>
+            </div>
+          </div>
+          <!-- Right Column: Robot Visual -->
+          <div class="hero-visual">
+            <div class="robot-frame" aria-hidden="true">
+              <div class="robot-hud-top-left">SYS_CORE_V2.4<br>MECHATRONICS_OS<br>KERNEL: LOADED</div>
+              <div class="robot-hud-top-right">FPS: 120 • STABLE<br>PWR: 99.8%<br>NET: CONNECTED</div>
+              <svg class="robot-svg" width="220" height="220" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Animated robot illustration">
+                <!-- Antenna -->
+                <line x1="110" y1="30" x2="110" y2="14" stroke="#00f0ff" stroke-width="3" stroke-linecap="round"/>
+                <circle cx="110" cy="10" r="7" fill="#00f0ff" opacity="0.9"/>
+                <circle cx="110" cy="10" r="14" fill="#00f0ff" opacity="0.15"/>
+                <!-- Head -->
+                <rect x="48" y="30" width="124" height="100" rx="22" fill="#0f172a" stroke="#00f0ff" stroke-width="3.5"/>
+                <!-- Visor -->
+                <rect x="62" y="52" width="96" height="42" rx="10" fill="#070b19" stroke="#0070f3" stroke-width="2"/>
+                <!-- Eyes -->
+                <circle cx="88" cy="73" r="11" fill="#00f0ff" opacity="0.95"/>
+                <circle cx="88" cy="73" r="5" fill="white"/>
+                <circle cx="132" cy="73" r="11" fill="#00f0ff" opacity="0.95"/>
+                <circle cx="132" cy="73" r="5" fill="white"/>
+                <!-- Mouth area -->
+                <path d="M84 118 L94 128 L126 128 L136 118" stroke="#38bdf8" stroke-width="3" stroke-linecap="round"/>
+                <circle cx="110" cy="128" r="4" fill="#00f0ff"/>
+                <!-- Neck / Body -->
+                <path d="M76 130 L76 165 L144 165 L144 130" fill="#0f172a" stroke="#0070f3" stroke-width="3"/>
+                <line x1="90" y1="148" x2="130" y2="148" stroke="#00f0ff" stroke-width="2" stroke-dasharray="5 3"/>
+                <!-- Shoulders -->
+                <rect x="30" y="145" width="36" height="50" rx="10" fill="#0f172a" stroke="#0070f3" stroke-width="2.5"/>
+                <rect x="154" y="145" width="36" height="50" rx="10" fill="#0f172a" stroke="#0070f3" stroke-width="2.5"/>
+                <!-- Hands -->
+                <circle cx="48" cy="205" r="9" fill="#00f0ff" opacity="0.5"/>
+                <circle cx="172" cy="205" r="9" fill="#00f0ff" opacity="0.5"/>
+                <!-- Chest panel -->
+                <rect x="76" y="165" width="68" height="45" rx="8" fill="#070b19" stroke="#0070f3" stroke-width="1.5"/>
+                <circle cx="95" cy="180" r="5" fill="#00f0ff" opacity="0.7"/>
+                <circle cx="110" cy="180" r="5" fill="#38bdf8" opacity="0.7"/>
+                <circle cx="125" cy="180" r="5" fill="#0070f3" opacity="0.7"/>
+                <line x1="84" y1="193" x2="136" y2="193" stroke="#0070f3" stroke-width="1.5" stroke-dasharray="4 2"/>
+              </svg>
+              <div class="robot-hud-bottom">
+                <span class="label">CORE:</span>
+                <span class="value">MECHATRONICS + AI</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== ABOUT ========== -->
+    <section id="about" class="section section-alt" aria-labelledby="about-title">
+      <div class="container">
+        <div class="section-header fade-in">
+          <div class="badge"><span class="badge-dot"></span>ENGINEERING PROFILE</div>
+          <h2 class="section-title" id="about-title">About <span class="gradient-text">Mohammed Mehwish</span></h2>
+          <p>Bridging hardware, software, and artificial intelligence to build the future of robotics.</p>
+        </div>
+        <div class="about-grid">
+          <!-- Bio Card -->
+          <div class="glass" style="padding:36px;border-radius:20px;display:flex;flex-direction:column;justify-content:space-between;" role="article">
+            <div>
+              <h3 style="font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:700;color:#00f0ff;display:flex;align-items:center;gap:8px;margin-bottom:22px;">
+                <span style="width:10px;height:10px;background:#00f0ff;border-radius:2px;display:inline-block;"></span>
+                EXECUTIVE SUMMARY
+              </h3>
+              <p style="color:#94a3b8;line-height:1.8;font-size:15px;margin-bottom:28px;">
+                Detail-oriented and motivated Mechatronics Engineering graduate with hands-on experience in embedded systems, industrial automation, robotics, and computer vision. Passionate about building intelligent robotic systems and solving real-world engineering problems using AI, automation, and embedded technologies.
+              </p>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+                <div class="info-card">
+                  <div class="info-card-icon">📍</div>
+                  <div>
+                    <div style="font-size:10px;font-family:'JetBrains Mono',monospace;color:#475569;text-transform:uppercase;letter-spacing:0.08em;">Location</div>
+                    <div style="font-size:13px;font-weight:600;color:#e2e8f0;">Kerala, India</div>
+                  </div>
+                </div>
+                <div class="info-card">
+                  <div class="info-card-icon">🎓</div>
+                  <div>
+                    <div style="font-size:10px;font-family:'JetBrains Mono',monospace;color:#475569;text-transform:uppercase;letter-spacing:0.08em;">Degree</div>
+                    <div style="font-size:13px;font-weight:600;color:#e2e8f0;">B.E. Mechatronics</div>
+                  </div>
+                </div>
+                <div class="info-card">
+                  <div class="info-card-icon">✉️</div>
+                  <div>
+                    <div style="font-size:10px;font-family:'JetBrains Mono',monospace;color:#475569;text-transform:uppercase;letter-spacing:0.08em;">Email</div>
+                    <div style="font-size:11.5px;font-weight:600;color:#e2e8f0;word-break:break-all;">michumehwish2004@gmail.com</div>
+                  </div>
+                </div>
+                <div class="info-card">
+                  <div class="info-card-icon">🏆</div>
+                  <div>
+                    <div style="font-size:10px;font-family:'JetBrains Mono',monospace;color:#475569;text-transform:uppercase;letter-spacing:0.08em;">Focus</div>
+                    <div style="font-size:13px;font-weight:600;color:#e2e8f0;">Robotics & Vision</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div style="margin-top:28px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;">
+              <span style="font-size:11px;font-family:'JetBrains Mono',monospace;color:#475569;">STATUS: OPEN TO OPPORTUNITIES</span>
+              <a href="https://linkedin.com/in/mohammed-mehwish-202677307" target="_blank" rel="noopener noreferrer" style="font-size:11px;font-family:'JetBrains Mono',monospace;color:#00f0ff;text-decoration:none;font-weight:600;" aria-label="Connect on LinkedIn">LINKEDIN →</a>
+            </div>
+          </div>
+          <!-- Specialization Cards -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+            <div class="spec-card fade-in">
+              <div class="spec-icon">⚡</div>
+              <h4 style="font-size:15px;font-weight:800;font-family:'JetBrains Mono',monospace;color:white;margin-bottom:8px;">Embedded Systems</h4>
+              <p style="font-size:12px;color:#64748b;line-height:1.7;">Microcontroller firmware using C/C++, Arduino, ESP32, multi-sensor interfacing, and hardware protocols (I2C, SPI, UART).</p>
+            </div>
+            <div class="spec-card fade-in">
+              <div class="spec-icon">🤖</div>
+              <h4 style="font-size:15px;font-weight:800;font-family:'JetBrains Mono',monospace;color:white;margin-bottom:8px;">Robotics & Control</h4>
+              <p style="font-size:12px;color:#64748b;line-height:1.7;">Autonomous navigation, motor actuation, kinematic control, trajectory planning, and hardware-in-the-loop sensor fusion.</p>
+            </div>
+            <div class="spec-card fade-in">
+              <div class="spec-icon">👁️</div>
+              <h4 style="font-size:15px;font-weight:800;font-family:'JetBrains Mono',monospace;color:white;margin-bottom:8px;">Computer Vision & AI</h4>
+              <p style="font-size:12px;color:#64748b;line-height:1.7;">Real-time object detection using OpenCV, YOLO, Python deep learning pipelines for safety and surveillance applications.</p>
+            </div>
+            <div class="spec-card fade-in">
+              <div class="spec-icon">🏭</div>
+              <h4 style="font-size:15px;font-weight:800;font-family:'JetBrains Mono',monospace;color:white;margin-bottom:8px;">Industrial Automation</h4>
+              <p style="font-size:12px;color:#64748b;line-height:1.7;">PLC ladder logic programming, SCADA supervisory dashboards, HMI control panels, and VFD motor drive configuration.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SKILLS ========== -->
+    <section id="skills" class="section" aria-labelledby="skills-title">
+      <div class="container">
+        <div class="section-header fade-in">
+          <div class="badge"><span class="badge-dot"></span>TECHNICAL COMPETENCIES</div>
+          <h2 class="section-title" id="skills-title">Engineering <span class="gradient-text">Skillset</span></h2>
+          <p>Core technologies, programming paradigms, hardware architectures, and automation suites.</p>
+        </div>
+        <div class="filter-tabs" role="tablist" aria-label="Skill category filter">
+          <button class="filter-tab active" onclick="filterSkills('all')" role="tab" aria-selected="true">ALL SKILLS</button>
+          <button class="filter-tab" onclick="filterSkills('programming')" role="tab" aria-selected="false">PROGRAMMING</button>
+          <button class="filter-tab" onclick="filterSkills('vision')" role="tab" aria-selected="false">AI & VISION</button>
+          <button class="filter-tab" onclick="filterSkills('embedded')" role="tab" aria-selected="false">EMBEDDED</button>
+          <button class="filter-tab" onclick="filterSkills('automation')" role="tab" aria-selected="false">AUTOMATION</button>
+          <button class="filter-tab" onclick="filterSkills('robotics')" role="tab" aria-selected="false">ROBOTICS</button>
+          <button class="filter-tab" onclick="filterSkills('cad')" role="tab" aria-selected="false">CAD & TOOLS</button>
+        </div>
+        <div class="skills-grid" id="skills-grid" role="list" aria-label="Skills by category"></div>
+      </div>
+    </section>
+
+    <!-- ========== PROJECTS ========== -->
+    <section id="projects" class="section section-alt" aria-labelledby="projects-title">
+      <div class="container">
+        <div class="section-header fade-in">
+          <div class="badge"><span class="badge-dot"></span>ENGINEERING PORTFOLIO</div>
+          <h2 class="section-title" id="projects-title">Featured <span class="gradient-text">Projects</span></h2>
+          <p>Robotics, computer vision models, and autonomous hardware prototypes.</p>
+        </div>
+        <div class="projects-grid" role="list" aria-label="Featured projects">
+          <!-- Project 1: Helmet Detection -->
+          <article class="project-card" role="listitem">
+            <div class="project-img">
+              <img src="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?q=80&w=800&auto=format&fit=crop" alt="Helmet Detection using Deep Learning project" loading="lazy" />
+              <div class="project-img-overlay" aria-hidden="true"></div>
+              <span class="project-cat-badge">COMPUTER VISION</span>
+              <span class="project-icon-badge" aria-hidden="true">🛡️</span>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Helmet Detection using Deep Learning</h3>
+              <p class="project-desc">Real-time helmet detection system for road safety powered by YOLO object detection and OpenCV — monitors compliance with instant violation alerts.</p>
+              <div class="project-tags" role="list" aria-label="Technologies used">
+                <span class="tech-tag" role="listitem">Python</span>
+                <span class="tech-tag" role="listitem">OpenCV</span>
+                <span class="tech-tag" role="listitem">YOLO</span>
+                <span class="tech-tag" role="listitem">Deep Learning</span>
+                <span class="tech-tag" role="listitem">PyTorch</span>
+              </div>
+              <div class="project-actions">
+                <a href="https://github.com/mohammedmehwish/helmet-detection-deep-learning" target="_blank" rel="noopener noreferrer" class="btn-outline" aria-label="View Helmet Detection on GitHub">⬡ GitHub</a>
+                <button class="btn-outline" onclick="openProjectModal(0)" aria-label="View Helmet Detection project details">ℹ Details</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2: Fire Rescue Robot -->
+          <article class="project-card" role="listitem">
+            <div class="project-img">
+              <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=800&auto=format&fit=crop" alt="Fire Rescue Robot project" loading="lazy" />
+              <div class="project-img-overlay" aria-hidden="true"></div>
+              <span class="project-cat-badge">ROBOTICS</span>
+              <span class="project-icon-badge" aria-hidden="true">🔥</span>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Fire Rescue Robot</h3>
+              <p class="project-desc">Autonomous robot capable of detecting fire and assisting rescue operations using flame sensors, temperature telemetry, and obstacle-avoidance ultrasonic arrays.</p>
+              <div class="project-tags" role="list" aria-label="Technologies used">
+                <span class="tech-tag" role="listitem">Embedded C</span>
+                <span class="tech-tag" role="listitem">Arduino</span>
+                <span class="tech-tag" role="listitem">ESP32</span>
+                <span class="tech-tag" role="listitem">Sensors</span>
+                <span class="tech-tag" role="listitem">Motor Control</span>
+              </div>
+              <div class="project-actions">
+                <a href="https://github.com/mohammedmehwish/fire-rescue-autonomous-robot" target="_blank" rel="noopener noreferrer" class="btn-outline" aria-label="View Fire Rescue Robot on GitHub">⬡ GitHub</a>
+                <button class="btn-outline" onclick="openProjectModal(1)" aria-label="View Fire Rescue Robot project details">ℹ Details</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 3: Drone -->
+          <article class="project-card" role="listitem">
+            <div class="project-img">
+              <img src="https://images.unsplash.com/photo-1508614589041-895b88991e3e?q=80&w=800&auto=format&fit=crop" alt="Fire Rescue Surveillance Drone project" loading="lazy" />
+              <div class="project-img-overlay" aria-hidden="true"></div>
+              <span class="project-cat-badge">DRONE SYSTEMS</span>
+              <span class="project-icon-badge" aria-hidden="true">📡</span>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Fire Rescue & Surveillance Drone</h3>
+              <p class="project-desc">Aerial reconnaissance UAV system for thermal anomaly mapping and surveillance with real-time multi-sensor telemetry and video downlink streaming.</p>
+              <div class="project-tags" role="list" aria-label="Technologies used">
+                <span class="tech-tag" role="listitem">Python</span>
+                <span class="tech-tag" role="listitem">ESP32</span>
+                <span class="tech-tag" role="listitem">Sensors</span>
+                <span class="tech-tag" role="listitem">Flight Control</span>
+                <span class="tech-tag" role="listitem">OpenCV</span>
+              </div>
+              <div class="project-actions">
+                <a href="https://github.com/mohammedmehwish/fire-surveillance-drone-system" target="_blank" rel="noopener noreferrer" class="btn-outline" aria-label="View Drone project on GitHub">⬡ GitHub</a>
+                <button class="btn-outline" onclick="openProjectModal(2)" aria-label="View Drone project details">ℹ Details</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== EXPERIENCE ========== -->
+    <section id="experience" class="section" aria-labelledby="experience-title">
+      <div class="container">
+        <div class="section-header fade-in">
+          <div class="badge"><span class="badge-dot"></span>CAREER TRAJECTORY</div>
+          <h2 class="section-title" id="experience-title">Work <span class="gradient-text">Experience</span></h2>
+          <p>Professional industry internships and hands-on engineering roles.</p>
+        </div>
+        <div class="timeline" role="list" aria-label="Work experience timeline">
+          <div class="timeline-item fade-in" role="listitem">
+            <div class="timeline-dot" aria-hidden="true">💼</div>
+            <div class="timeline-card">
+              <div class="timeline-period">
+                📅 July 2024 – August 2024
+              </div>
+              <h3 class="timeline-role">Embedded Systems Intern</h3>
+              <div class="timeline-company">Centre for Skill Enhancement & Employability Development (CSEED)</div>
+              <div class="timeline-location">📍 Kerala, India</div>
+              <p style="color:#64748b;font-size:12.5px;line-height:1.7;margin:14px 0;">Gained intensive hands-on practical experience in embedded systems architecture, microcontroller programming, sensor integration, and hardware circuit testing.</p>
+              <div style="margin-bottom:16px;">
+                <div class="achievement-item"><span class="achievement-check">✓</span><span>Programmed microcontrollers (Arduino, ESP32) using C/C++ and Embedded C for real-time control applications.</span></div>
+                <div class="achievement-item"><span class="achievement-check">✓</span><span>Interfaced multi-sensor modules including Ultrasonic, IR, Gas, and Temperature sensors with analog & digital signal filtering.</span></div>
+                <div class="achievement-item"><span class="achievement-check">✓</span><span>Implemented hardware communication protocols (UART, SPI, I2C) for reliable multi-device telemetry systems.</span></div>
+                <div class="achievement-item"><span class="achievement-check">✓</span><span>Designed and validated custom electronic schematics and breadboard prototypes for real-world automation scenarios.</span></div>
+              </div>
+              <div style="display:flex;flex-wrap:wrap;gap:6px;padding-top:14px;border-top:1px solid rgba(255,255,255,0.06);">
+                <span class="tech-tag">Embedded C</span>
+                <span class="tech-tag">Arduino</span>
+                <span class="tech-tag">ESP32</span>
+                <span class="tech-tag">Sensors</span>
+                <span class="tech-tag">I2C/SPI/UART</span>
+                <span class="tech-tag">Circuit Design</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== EDUCATION ========== -->
+    <section id="education" class="section section-alt" aria-labelledby="education-title">
+      <div class="container">
+        <div class="section-header fade-in">
+          <div class="badge"><span class="badge-dot"></span>ACADEMIC BACKGROUND</div>
+          <h2 class="section-title" id="education-title">Education & <span class="gradient-text">Degree</span></h2>
+          <p>Formal Mechatronics Engineering degree curriculum and specialized coursework.</p>
+        </div>
+        <div class="edu-card fade-in" role="article">
+          <div class="edu-card-bg-icon" aria-hidden="true">🎓</div>
+          <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px;border-bottom:1px solid rgba(0,240,255,0.12);padding-bottom:28px;margin-bottom:28px;">
+            <div style="display:flex;align-items:center;gap:18px;">
+              <div style="width:60px;height:60px;border-radius:18px;background:rgba(7,11,25,0.9);border:2px solid rgba(0,240,255,0.4);display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:var(--glow-cyan);">🎓</div>
+              <div>
+                <h3 style="font-size:2rem;font-weight:900;font-family:'JetBrains Mono',monospace;color:white;">B.E. Mechatronics Engineering</h3>
+                <div style="font-size:15px;color:#00f0ff;font-family:'JetBrains Mono',monospace;font-weight:600;margin-top:4px;">Mechatronics Engineering Major</div>
+              </div>
+            </div>
+            <div style="text-align:right;">
+              <div class="badge" style="margin-bottom:8px;">📅 2021 – 2025</div>
+              <div style="font-size:11px;font-family:'JetBrains Mono',monospace;color:#64748b;">📍 Coimbatore, India</div>
+            </div>
+          </div>
+          <div style="font-size:15px;font-weight:700;color:#cbd5e1;font-family:'JetBrains Mono',monospace;margin-bottom:24px;">
+            📚 Hindusthan College of Engineering and Technology
+          </div>
+          <h4 style="font-size:11px;font-family:'JetBrains Mono',monospace;color:#00f0ff;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:16px;">ACADEMIC HIGHLIGHTS & SPECIALIZATIONS</h4>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;" role="list" aria-label="Academic highlights">
+            <div class="achievement-item" style="padding:12px;background:rgba(5,8,20,0.7);border-radius:12px;border:1px solid rgba(255,255,255,0.06);" role="listitem"><span class="achievement-check">✓</span><span>Specialized in Robotics, Embedded Systems, Microcontrollers, Pneumatics & Hydraulics, and Computer Vision.</span></div>
+            <div class="achievement-item" style="padding:12px;background:rgba(5,8,20,0.7);border-radius:12px;border:1px solid rgba(255,255,255,0.06);" role="listitem"><span class="achievement-check">✓</span><span>Led student engineering projects focusing on autonomous disaster response robotics and aerial surveillance drones.</span></div>
+            <div class="achievement-item" style="padding:12px;background:rgba(5,8,20,0.7);border-radius:12px;border:1px solid rgba(255,255,255,0.06);" role="listitem"><span class="achievement-check">✓</span><span>Active member of Mechatronics & Robotics Engineering Association and competitive academic teams.</span></div>
+            <div class="achievement-item" style="padding:12px;background:rgba(5,8,20,0.7);border-radius:12px;border:1px solid rgba(255,255,255,0.06);" role="listitem"><span class="achievement-check">✓</span><span>Participated in national-level robotics and innovation challenges (TechnoXian World Robotics Championship).</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CERTIFICATES ========== -->
+    <section id="certificates" class="section section-dark" aria-labelledby="certificates-title">
+      <div class="container">
+        <div class="section-header fade-in">
+          <div class="badge"><span class="badge-dot"></span>ACCREDITATIONS</div>
+          <h2 class="section-title" id="certificates-title">Certifications & <span class="gradient-text">Awards</span></h2>
+          <p>Verified industry credentials, competition honors, and specialization certificates.</p>
+        </div>
+        <div class="cert-grid" role="list" aria-label="Certifications and awards">
+          <article class="cert-card" role="listitem">
+            <div class="cert-img">
+              <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=600&auto=format&fit=crop" alt="Industrial Automation Certificate" loading="lazy" />
+              <div class="cert-img-overlay" aria-hidden="true"></div>
+              <div class="cert-award-icon" aria-hidden="true">🏅</div>
+              <div class="cert-date">2024</div>
+            </div>
+            <div class="cert-body">
+              <h3 class="cert-title">Industrial Automation Specialist</h3>
+              <div class="cert-issuer">Industrial Training Center</div>
+              <p class="cert-desc">Comprehensive PLC, SCADA, HMI, and VFD speed control engineering certification.</p>
+              <div class="cert-skills"><span class="cert-skill">PLC</span><span class="cert-skill">SCADA</span><span class="cert-skill">HMI</span><span class="cert-skill">VFD</span></div>
+              <button class="btn-outline" style="width:100%;justify-content:center;" onclick="openCertModal(0)" aria-label="Preview Industrial Automation certificate">👁 PREVIEW CERTIFICATE</button>
+            </div>
+          </article>
+          <article class="cert-card" role="listitem">
+            <div class="cert-img">
+              <img src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?q=80&w=600&auto=format&fit=crop" alt="Embedded Systems Internship Certificate" loading="lazy" />
+              <div class="cert-img-overlay" aria-hidden="true"></div>
+              <div class="cert-award-icon" aria-hidden="true">🏅</div>
+              <div class="cert-date">Aug 2024</div>
+            </div>
+            <div class="cert-body">
+              <h3 class="cert-title">Embedded Systems Internship</h3>
+              <div class="cert-issuer">CSEED</div>
+              <p class="cert-desc">Official completion of intensive Embedded Systems engineering internship program.</p>
+              <div class="cert-skills"><span class="cert-skill">ESP32</span><span class="cert-skill">Embedded C</span><span class="cert-skill">Sensors</span></div>
+              <button class="btn-outline" style="width:100%;justify-content:center;" onclick="openCertModal(1)" aria-label="Preview Embedded Systems certificate">👁 PREVIEW CERTIFICATE</button>
+            </div>
+          </article>
+          <article class="cert-card" role="listitem">
+            <div class="cert-img">
+              <img src="https://images.unsplash.com/photo-1561557944-6e7860d1a7eb?q=80&w=600&auto=format&fit=crop" alt="Introduction to Robotics Certificate" loading="lazy" />
+              <div class="cert-img-overlay" aria-hidden="true"></div>
+              <div class="cert-award-icon" aria-hidden="true">🤖</div>
+              <div class="cert-date">2023</div>
+            </div>
+            <div class="cert-body">
+              <h3 class="cert-title">Introduction to Robotics</h3>
+              <div class="cert-issuer">Robotics Academy</div>
+              <p class="cert-desc">Foundational robotics: kinematics, sensors, actuation, and control loop systems.</p>
+              <div class="cert-skills"><span class="cert-skill">Kinematics</span><span class="cert-skill">Actuators</span><span class="cert-skill">Control</span></div>
+              <button class="btn-outline" style="width:100%;justify-content:center;" onclick="openCertModal(2)" aria-label="Preview Robotics certificate">👁 PREVIEW CERTIFICATE</button>
+            </div>
+          </article>
+          <article class="cert-card" role="listitem">
+            <div class="cert-img">
+              <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=600&auto=format&fit=crop" alt="TechnoXian World Robotics Championship" loading="lazy" />
+              <div class="cert-img-overlay" aria-hidden="true"></div>
+              <div class="cert-award-icon" aria-hidden="true">🥇</div>
+              <div class="cert-date">2023</div>
+            </div>
+            <div class="cert-body">
+              <h3 class="cert-title">TechnoXian Innovation Challenge</h3>
+              <div class="cert-issuer">World Robotics Championship</div>
+              <p class="cert-desc">Global Innovation Challenge participant at TechnoXian World Robotics Championship.</p>
+              <div class="cert-skills"><span class="cert-skill">Autonomy</span><span class="cert-skill">Innovation</span><span class="cert-skill">Robotics</span></div>
+              <button class="btn-outline" style="width:100%;justify-content:center;" onclick="openCertModal(3)" aria-label="Preview TechnoXian certificate">👁 PREVIEW CERTIFICATE</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== GITHUB ========== -->
+    <section id="github" class="section section-alt" aria-labelledby="github-title">
+      <div class="container">
+        <div class="section-header fade-in">
+          <div class="badge"><span class="badge-dot"></span>OPEN SOURCE ACTIVITY</div>
+          <h2 class="section-title" id="github-title">GitHub <span class="gradient-text">Ecosystem</span></h2>
+          <p>Live repositories fetched from GitHub API — search, filter, and explore public projects.</p>
+        </div>
+        <!-- Profile Card -->
+        <div class="github-profile-card fade-in" id="github-profile-card">
+          <div class="loading-repos"><span class="loading-spinner" aria-hidden="true"></span>FETCHING GITHUB PROFILE...</div>
+        </div>
+        <!-- Heatmap Card -->
+        <div class="heatmap-card fade-in">
+          <div class="heatmap-header">
+            <span class="heatmap-title">📊 CONTRIBUTION HEATMAP & ACTIVITY MATRIX</span>
+            <span style="color:#64748b;font-size:11px;">@mohammedmehwish</span>
+          </div>
+          <div style="overflow-x:auto;padding-bottom:8px;">
+            <img
+              src="https://ghchart.rshah.org/00f0ff/mohammedmehwish"
+              alt="GitHub contribution heatmap for mohammedmehwish"
+              style="width:100%;min-width:700px;border-radius:10px;filter:drop-shadow(0 0 8px rgba(0,240,255,0.15));"
+              loading="lazy"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div style="display:none;align-items:center;justify-content:center;height:100px;font-family:'JetBrains Mono',monospace;font-size:12px;color:#475569;">Contribution graph available on <a href="https://github.com/mohammedmehwish" target="_blank" style="color:#00f0ff;margin-left:6px;">github.com/mohammedmehwish →</a></div>
+          </div>
+        </div>
+        <!-- Repository Controls -->
+        <div class="repo-controls fade-in">
+          <div class="search-box">
+            <span class="search-icon" aria-hidden="true">🔍</span>
+            <input type="text" id="repo-search" placeholder="Search repositories..." oninput="filterRepos()" aria-label="Search repositories" />
+          </div>
+          <select class="repo-select" id="lang-filter" onchange="filterRepos()" aria-label="Filter by language">
+            <option value="all">All Languages</option>
+          </select>
+          <select class="repo-select" id="sort-select" onchange="filterRepos()" aria-label="Sort repositories">
+            <option value="stars">Most Stars</option>
+            <option value="updated">Recently Updated</option>
+            <option value="name">Name A–Z</option>
+          </select>
+        </div>
+        <!-- Repos Grid -->
+        <div id="repos-grid" class="repos-grid" role="list" aria-label="GitHub repositories">
+          <div class="loading-repos" style="grid-column:1/-1;"><span class="loading-spinner" aria-hidden="true"></span>FETCHING REPOSITORIES FROM GITHUB API...</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== RESUME ========== -->
+    <section id="resume" class="section" aria-labelledby="resume-title">
+      <div class="container">
+        <div class="section-header fade-in">
+          <div class="badge"><span class="badge-dot"></span>CURRICULUM VITAE</div>
+          <h2 class="section-title" id="resume-title">Engineering <span class="gradient-text">Resume</span></h2>
+          <p>Detailed breakdown of qualifications, academic background, and technical expertise.</p>
+        </div>
+        <div class="resume-window fade-in" role="document" aria-label="Resume preview">
+          <!-- Title Bar -->
+          <div class="resume-titlebar">
+            <div style="display:flex;align-items:center;gap:12px;">
+              <div class="resume-titlebar-dots" aria-hidden="true">
+                <span style="background:#ef4444;"></span>
+                <span style="background:#f59e0b;"></span>
+                <span style="background:#22c55e;"></span>
+              </div>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#64748b;">Mohammed_Mehwish_Resume.pdf</span>
+            </div>
+            <div style="display:flex;gap:8px;">
+              <button class="btn-outline" style="font-size:10px;padding:6px 14px;" onclick="openResumeModal()" aria-label="Open full resume preview">👁 PREVIEW</button>
+              <button class="btn-primary" style="font-size:10px;padding:6px 16px;" onclick="downloadResume()" aria-label="Download resume as PDF">⬇ DOWNLOAD</button>
+            </div>
+          </div>
+          <!-- Resume Preview Content -->
+          <div class="resume-body">
+            <div class="resume-header">
+              <div>
+                <div class="resume-name">MOHAMMED MEHWISH V M</div>
+                <div class="resume-role">Robotics Engineer | Mechatronics Engineer | Embedded Systems Engineer</div>
+              </div>
+              <div class="resume-contact-info">
+                📍 Kerala, India<br>
+                ✉ michumehwish2004@gmail.com<br>
+                🔗 linkedin.com/in/mohammed-mehwish-202677307<br>
+                ⬡ github.com/mohammedmehwish
+              </div>
+            </div>
+            <div class="resume-section">
+              <div class="resume-section-title">PROFESSIONAL SUMMARY</div>
+              <p style="font-size:12.5px;color:#94a3b8;line-height:1.75;">Detail-oriented and motivated Mechatronics Engineering graduate with hands-on experience in embedded systems, industrial automation, robotics, and computer vision. Passionate about building intelligent robotic systems and solving real-world engineering problems using AI, automation, and embedded technologies.</p>
+            </div>
+            <div class="resume-section">
+              <div class="resume-section-title">EXPERIENCE</div>
+              <div style="margin-bottom:8px;">
+                <div style="font-size:13.5px;font-weight:800;font-family:'JetBrains Mono',monospace;color:white;">Embedded Systems Intern — CSEED</div>
+                <div style="font-size:11px;font-family:'JetBrains Mono',monospace;color:#00f0ff;margin-bottom:8px;">July 2024 – August 2024 | Kerala, India</div>
+                <div class="achievement-item"><span class="achievement-check">✓</span><span>Programmed Arduino & ESP32 using Embedded C for real-time control applications.</span></div>
+                <div class="achievement-item"><span class="achievement-check">✓</span><span>Interfaced Ultrasonic, IR, Gas, and Temperature sensors with filtering circuits.</span></div>
+                <div class="achievement-item"><span class="achievement-check">✓</span><span>Implemented hardware protocols (UART, SPI, I2C) for reliable device communication.</span></div>
+              </div>
+            </div>
+            <div class="resume-section">
+              <div class="resume-section-title">EDUCATION</div>
+              <div style="font-size:13.5px;font-weight:800;font-family:'JetBrains Mono',monospace;color:white;">B.E. Mechatronics Engineering (2021 – 2025)</div>
+              <div style="font-size:11px;font-family:'JetBrains Mono',monospace;color:#64748b;margin-top:2px;">Hindusthan College of Engineering and Technology, Coimbatore</div>
+            </div>
+            <div class="resume-section">
+              <div class="resume-section-title">SKILLS</div>
+              <div style="display:flex;flex-wrap:wrap;gap:6px;">
+                <span class="tech-tag">C</span><span class="tech-tag">Python</span><span class="tech-tag">Embedded C</span>
+                <span class="tech-tag">OpenCV</span><span class="tech-tag">YOLO</span><span class="tech-tag">Deep Learning</span>
+                <span class="tech-tag">Arduino</span><span class="tech-tag">ESP32</span><span class="tech-tag">PLC</span>
+                <span class="tech-tag">SCADA</span><span class="tech-tag">HMI</span><span class="tech-tag">SolidWorks</span>
+                <span class="tech-tag">Linux</span><span class="tech-tag">Git</span><span class="tech-tag">Fusion 360</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="resume-actions">
+          <button class="btn-primary" onclick="openResumeModal()" id="resume-preview-btn">👁 INTERACTIVE PREVIEW</button>
+          <button class="btn-secondary" onclick="downloadResume()" id="resume-download-btn">⬇ DOWNLOAD RESUME PDF</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CONTACT ========== -->
+    <section id="contact" class="section section-alt" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="section-header fade-in">
+          <div class="badge"><span class="badge-dot"></span>COMMUNICATION PROTOCOL</div>
+          <h2 class="section-title" id="contact-title">Get In <span class="gradient-text">Touch</span></h2>
+          <p>Project collaboration, job opportunities, or technical consultations — reach out directly.</p>
+        </div>
+        <div class="contact-grid">
+          <!-- Info Links -->
+          <div style="display:flex;flex-direction:column;gap:14px;">
+            <a href="mailto:michumehwish2004@gmail.com" class="contact-info-card" aria-label="Send email to Mohammed Mehwish">
+              <div class="contact-icon-wrap" aria-hidden="true">✉️</div>
+              <div>
+                <div class="contact-label">DIRECT EMAIL</div>
+                <div class="contact-value">michumehwish2004@gmail.com</div>
+              </div>
+              <button class="copy-btn" onclick="copyEmail(event)" aria-label="Copy email address" title="Copy email">📋</button>
+            </a>
+            <a href="https://linkedin.com/in/mohammed-mehwish-202677307" target="_blank" rel="noopener noreferrer" class="contact-info-card" aria-label="View LinkedIn profile">
+              <div class="contact-icon-wrap" aria-hidden="true">💼</div>
+              <div>
+                <div class="contact-label">LINKEDIN PROFILE</div>
+                <div class="contact-value">Mohammed Mehwish V M</div>
+              </div>
+              <span style="color:#00f0ff;font-size:14px;" aria-hidden="true">→</span>
+            </a>
+            <a href="https://github.com/mohammedmehwish" target="_blank" rel="noopener noreferrer" class="contact-info-card" aria-label="View GitHub profile">
+              <div class="contact-icon-wrap" aria-hidden="true">⬡</div>
+              <div>
+                <div class="contact-label">GITHUB PROFILE</div>
+                <div class="contact-value">@mohammedmehwish</div>
+              </div>
+              <span style="color:#00f0ff;font-size:14px;" aria-hidden="true">→</span>
+            </a>
+            <div class="contact-info-card" style="cursor:default;">
+              <div class="contact-icon-wrap" aria-hidden="true">📍</div>
+              <div>
+                <div class="contact-label">LOCATION</div>
+                <div class="contact-value">Kerala, India</div>
+              </div>
+            </div>
+          </div>
+          <!-- Contact Form -->
+          <div class="form-grid" role="form">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;color:#00f0ff;margin-bottom:22px;display:flex;align-items:center;gap:8px;">
+              💬 TRANSMIT DIRECT MESSAGE
+            </div>
+            <form id="contact-form" onsubmit="submitContactForm(event)" novalidate>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="contact-name">YOUR NAME *</label>
+                  <input class="form-input" type="text" id="contact-name" name="name" placeholder="e.g. John Doe" required autocomplete="name" aria-required="true" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="contact-email">EMAIL ADDRESS *</label>
+                  <input class="form-input" type="email" id="contact-email" name="email" placeholder="e.g. john@company.com" required autocomplete="email" aria-required="true" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="contact-subject">SUBJECT</label>
+                <input class="form-input" type="text" id="contact-subject" name="subject" placeholder="e.g. Robotics Collaboration Opportunity" autocomplete="off" />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="contact-message">YOUR MESSAGE *</label>
+                <textarea class="form-input" id="contact-message" name="message" placeholder="Write your project details or inquiry here..." required rows="5" aria-required="true"></textarea>
+              </div>
+              <button type="submit" class="btn-primary" style="width:100%;justify-content:center;padding:16px;" id="send-btn" aria-label="Send message">
+                ✈ SEND MESSAGE
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer role="contentinfo">
+    <div class="container" style="position:relative;z-index:10;">
+      <div class="footer-grid">
+        <div>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+            <div style="width:36px;height:36px;border-radius:10px;background:rgba(15,23,42,0.9);border:1px solid rgba(0,240,255,0.3);display:flex;align-items:center;justify-content:center;font-size:16px;">⚙️</div>
+            <span style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:16px;color:white;letter-spacing:0.05em;">MOHAMMED MEHWISH V M</span>
+          </div>
+          <p style="font-size:13px;color:#475569;line-height:1.75;max-width:340px;">Detail-oriented Mechatronics Engineer passionate about building intelligent robotic systems, embedded controllers, computer vision, and industrial automation.</p>
+          <div class="available-badge">
+            <span class="available-ping" aria-hidden="true"></span>
+            OPEN FOR OPPORTUNITIES
+          </div>
+          <div class="footer-social" aria-label="Social media links">
+            <a href="https://github.com/mohammedmehwish" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="GitHub profile" title="GitHub">⬡</a>
+            <a href="https://linkedin.com/in/mohammed-mehwish-202677307" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="LinkedIn profile" title="LinkedIn">💼</a>
+            <a href="mailto:michumehwish2004@gmail.com" class="social-icon" aria-label="Send email" title="Email">✉</a>
+          </div>
+        </div>
+        <div>
+          <h4 style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:#00f0ff;text-transform:uppercase;letter-spacing:0.15em;margin-bottom:18px;">NAVIGATE</h4>
+          <a href="#about" class="footer-link">About Me</a>
+          <a href="#skills" class="footer-link">Skills & Tech</a>
+          <a href="#projects" class="footer-link">Featured Projects</a>
+          <a href="#experience" class="footer-link">Experience</a>
+          <a href="#certificates" class="footer-link">Certifications</a>
+          <a href="#github" class="footer-link">GitHub Activity</a>
+          <a href="#contact" class="footer-link">Get In Touch</a>
+        </div>
+        <div>
+          <h4 style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:#00f0ff;text-transform:uppercase;letter-spacing:0.15em;margin-bottom:18px;">CONNECT</h4>
+          <a href="https://github.com/mohammedmehwish" target="_blank" rel="noopener noreferrer" class="footer-link">⬡ github.com/mohammedmehwish</a>
+          <a href="https://linkedin.com/in/mohammed-mehwish-202677307" target="_blank" rel="noopener noreferrer" class="footer-link">💼 LinkedIn Profile</a>
+          <a href="mailto:michumehwish2004@gmail.com" class="footer-link">✉ michumehwish2004@gmail.com</a>
+          <div style="font-size:11px;font-family:'JetBrains Mono',monospace;color:#334155;margin-top:12px;">📍 Kerala, India</div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#475569;">© 2026 Mohammed Mehwish V M. All rights reserved.</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#334155;">Built with React, Tailwind CSS, and GitHub Pages.</div>
+        <button onclick="window.scrollTo({top:0,behavior:'smooth'})" style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#00f0ff;background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:5px;" aria-label="Back to top">BACK TO TOP ↑</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll To Top Button -->
+  <button id="scroll-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Scroll to top" title="Back to top">↑</button>
+
+  <!-- Toast Notification -->
+  <div id="toast" role="alert" aria-live="polite"></div>
+
+  <!-- ===== MODALS ===== -->
+  <!-- Project Details Modal -->
+  <div class="modal-overlay" id="project-modal" role="dialog" aria-modal="true" aria-labelledby="project-modal-title">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div class="modal-title"><span style="width:8px;height:8px;border-radius:50%;background:#00f0ff;animation:blink 1.5s infinite;display:inline-block;"></span><span id="project-modal-title">Project Details</span></div>
+        <button class="modal-close" onclick="closeModal('project-modal')" aria-label="Close project details modal">✕</button>
+      </div>
+      <div class="modal-body" id="project-modal-body"></div>
+    </div>
+  </div>
+
+  <!-- Certificate Modal -->
+  <div class="modal-overlay" id="cert-modal" role="dialog" aria-modal="true" aria-labelledby="cert-modal-title">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div class="modal-title"><span style="width:8px;height:8px;border-radius:50%;background:#00f0ff;animation:blink 1.5s infinite;display:inline-block;"></span><span id="cert-modal-title">Certificate Preview</span></div>
+        <button class="modal-close" onclick="closeModal('cert-modal')" aria-label="Close certificate preview modal">✕</button>
+      </div>
+      <div class="modal-body" id="cert-modal-body"></div>
+    </div>
+  </div>
+
+  <!-- Resume Modal -->
+  <div class="modal-overlay" id="resume-modal" role="dialog" aria-modal="true" aria-labelledby="resume-modal-title">
+    <div class="modal-box" style="max-width:1000px;">
+      <div class="modal-header">
+        <div class="modal-title"><span style="width:8px;height:8px;border-radius:50%;background:#00f0ff;animation:blink 1.5s infinite;display:inline-block;"></span><span id="resume-modal-title">CURRICULUM VITAE PREVIEW</span></div>
+        <button class="modal-close" onclick="closeModal('resume-modal')" aria-label="Close resume modal">✕</button>
+      </div>
+      <div class="modal-body" id="resume-modal-body">
+        <div style="background:#0a0f1d;border:1px solid rgba(0,240,255,0.2);border-radius:16px;padding:40px;font-family:'Inter',sans-serif;">
+          <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;border-bottom:1px solid rgba(0,240,255,0.15);padding-bottom:24px;margin-bottom:24px;">
+            <div>
+              <h2 style="font-size:28px;font-weight:900;font-family:'JetBrains Mono',monospace;color:white;">MOHAMMED MEHWISH V M</h2>
+              <div style="font-size:14px;color:#00f0ff;font-family:'JetBrains Mono',monospace;margin-top:4px;">Robotics Engineer | Mechatronics Engineer | Embedded Systems Engineer</div>
+            </div>
+            <div style="font-size:11px;font-family:'JetBrains Mono',monospace;color:#64748b;line-height:1.9;text-align:right;">
+              📍 Kerala, India<br>✉ michumehwish2004@gmail.com<br>🔗 linkedin.com/in/mohammed-mehwish-202677307<br>⬡ github.com/mohammedmehwish
+            </div>
+          </div>
+          <div style="margin-bottom:22px;">
+            <div style="font-size:11px;font-family:'JetBrains Mono',monospace;color:#38bdf8;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;border-bottom:1px solid rgba(56,189,248,0.2);padding-bottom:6px;margin-bottom:12px;">PROFESSIONAL SUMMARY</div>
+            <p style="font-size:13px;color:#94a3b8;line-height:1.8;">Detail-oriented and motivated Mechatronics Engineering graduate with hands-on experience in embedded systems, industrial automation, robotics, and computer vision. Passionate about building intelligent robotic systems and solving real-world engineering problems using AI, automation, and embedded technologies.</p>
+          </div>
+          <div style="margin-bottom:22px;">
+            <div style="font-size:11px;font-family:'JetBrains Mono',monospace;color:#38bdf8;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;border-bottom:1px solid rgba(56,189,248,0.2);padding-bottom:6px;margin-bottom:12px;">EXPERIENCE</div>
+            <div style="font-size:14px;font-weight:800;font-family:'JetBrains Mono',monospace;color:white;">Embedded Systems Intern — CSEED</div>
+            <div style="font-size:11px;font-family:'JetBrains Mono',monospace;color:#00f0ff;margin-bottom:10px;">July 2024 – August 2024 | Kerala, India</div>
+            <div class="achievement-item"><span class="achievement-check">✓</span><span>Programmed Arduino & ESP32 using Embedded C for real-time control.</span></div>
+            <div class="achievement-item"><span class="achievement-check">✓</span><span>Interfaced Ultrasonic, IR, Gas, and Temperature sensors with filtering circuits.</span></div>
+            <div class="achievement-item"><span class="achievement-check">✓</span><span>Implemented UART, SPI, I2C communication protocols.</span></div>
+            <div class="achievement-item"><span class="achievement-check">✓</span><span>Designed electronic schematics and breadboard prototypes.</span></div>
+          </div>
+          <div style="margin-bottom:22px;">
+            <div style="font-size:11px;font-family:'JetBrains Mono',monospace;color:#38bdf8;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;border-bottom:1px solid rgba(56,189,248,0.2);padding-bottom:6px;margin-bottom:12px;">EDUCATION</div>
+            <div style="font-size:14px;font-weight:800;font-family:'JetBrains Mono',monospace;color:white;">B.E. Mechatronics Engineering — 2021 to 2025</div>
+            <div style="font-size:12px;font-family:'JetBrains Mono',monospace;color:#64748b;margin-top:4px;">Hindusthan College of Engineering and Technology, Coimbatore, India</div>
+          </div>
+          <div style="margin-bottom:22px;">
+            <div style="font-size:11px;font-family:'JetBrains Mono',monospace;color:#38bdf8;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;border-bottom:1px solid rgba(56,189,248,0.2);padding-bottom:6px;margin-bottom:12px;">CERTIFICATIONS</div>
+            <div class="achievement-item"><span class="achievement-check">🏅</span><span>Industrial Automation Specialist — Industrial Training Center (2024)</span></div>
+            <div class="achievement-item"><span class="achievement-check">🏅</span><span>Embedded Systems Internship — CSEED (August 2024)</span></div>
+            <div class="achievement-item"><span class="achievement-check">🤖</span><span>Introduction to Robotics — Robotics Academy (2023)</span></div>
+            <div class="achievement-item"><span class="achievement-check">🥇</span><span>Innovation Challenge — TechnoXian World Robotics Championship (2023)</span></div>
+          </div>
+          <div>
+            <div style="font-size:11px;font-family:'JetBrains Mono',monospace;color:#38bdf8;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;border-bottom:1px solid rgba(56,189,248,0.2);padding-bottom:6px;margin-bottom:12px;">TECHNICAL SKILLS</div>
+            <div style="display:flex;flex-wrap:wrap;gap:6px;">
+              <span class="tech-tag">C</span><span class="tech-tag">Python</span><span class="tech-tag">Embedded C</span><span class="tech-tag">OpenCV</span><span class="tech-tag">YOLO</span><span class="tech-tag">Deep Learning</span><span class="tech-tag">Machine Learning</span><span class="tech-tag">Arduino</span><span class="tech-tag">ESP32</span><span class="tech-tag">Microcontrollers</span><span class="tech-tag">Sensors</span><span class="tech-tag">PLC</span><span class="tech-tag">SCADA</span><span class="tech-tag">HMI</span><span class="tech-tag">VFD</span><span class="tech-tag">SolidWorks</span><span class="tech-tag">Fusion 360</span><span class="tech-tag">Git</span><span class="tech-tag">Linux</span><span class="tech-tag">VS Code</span>
+            </div>
+          </div>
+          <div style="margin-top:28px;text-align:center;">
+            <button class="btn-primary" onclick="downloadResume()" style="margin:0 auto;" aria-label="Download resume">⬇ DOWNLOAD RESUME</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  // ============= DATA =============
+  const PROJECTS = [
+    {
+      title: "Helmet Detection using Deep Learning",
+      category: "Computer Vision",
+      icon: "🛡️",
+      image: "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?q=80&w=800&auto=format&fit=crop",
+      description: "Real-time helmet detection system for road safety powered by YOLO object detection and OpenCV. Processes high-frame-rate video feeds to accurately identify motorcycle riders wearing or missing helmets, broadcasting instant violation alerts.",
+      highlights: [
+        "Trained YOLO object detection model on thousands of traffic footage frames",
+        "Achieved high accuracy detection across varying lighting and weather conditions",
+        "Implemented real-time bounding box rendering with minimal processing latency",
+        "Deployed as a real-time embedded monitoring system for traffic surveillance"
+      ],
+      stack: ["Python", "OpenCV", "YOLO", "Deep Learning", "PyTorch", "NumPy"],
+      github: "https://github.com/mohammedmehwish/helmet-detection-deep-learning"
+    },
+    {
+      title: "Fire Rescue Robot",
+      category: "Robotics",
+      icon: "🔥",
+      image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=800&auto=format&fit=crop",
+      description: "Autonomous robot capable of detecting fire and assisting rescue operations using sensors and embedded systems. Integrates flame sensor arrays, temperature telemetry, obstacle avoidance ultrasonic sensors, and remote wireless override.",
+      highlights: [
+        "Designed custom chassis and motor driver actuation system for rugged terrain navigation",
+        "Integrated flame detection arrays with automatic water pump actuation system",
+        "Configured real-time wireless telemetry feedback to mission control operator interface",
+        "Implemented obstacle avoidance algorithm using ultrasonic sensor arrays"
+      ],
+      stack: ["Embedded C", "Arduino", "ESP32", "Sensors", "Motor Control", "Flame Detection"],
+      github: "https://github.com/mohammedmehwish/fire-rescue-autonomous-robot"
+    },
+    {
+      title: "Fire Rescue & Surveillance Drone",
+      category: "Drone Systems",
+      icon: "📡",
+      image: "https://images.unsplash.com/photo-1508614589041-895b88991e3e?q=80&w=800&auto=format&fit=crop",
+      description: "Aerial reconnaissance UAV system engineered for thermal anomaly mapping and aerial surveillance over high-risk disaster zones. Features onboard sensors, camera video telemetry streaming, and flight stabilization control.",
+      highlights: [
+        "Built multi-sensor aerial payload monitoring ambient temperature and gas levels",
+        "Configured real-time wireless video downlink feed for emergency response teams",
+        "Optimized flight controller parameters for payload stability during wind gusts",
+        "Integrated thermal anomaly detection algorithm with GPS coordinate logging"
+      ],
+      stack: ["Python", "ESP32", "Sensors", "Flight Control", "Telemetry", "OpenCV", "ArduPilot"],
+      github: "https://github.com/mohammedmehwish/fire-surveillance-drone-system"
+    }
+  ];
+
+  const CERTS = [
+    {
+      title: "Industrial Automation Specialist",
+      issuer: "Industrial Training Center",
+      date: "2024",
+      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=800&auto=format&fit=crop",
+      description: "Comprehensive certification covering Programmable Logic Controllers (PLC), SCADA programming, HMI interface configuration, and VFD speed control for industrial automation applications.",
+      skills: ["PLC", "SCADA", "HMI", "VFD", "Relay Logic", "Industrial Wiring"]
+    },
+    {
+      title: "Embedded Systems Internship Certificate",
+      issuer: "Centre for Skill Enhancement & Employability Development (CSEED)",
+      date: "August 2024",
+      credentialId: "CSEED-EMB-2024-07",
+      image: "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?q=80&w=800&auto=format&fit=crop",
+      description: "Official certification of successful completion of intensive Embedded Systems engineering internship program covering microcontroller programming, sensor integration, and hardware design.",
+      skills: ["Embedded C", "ESP32", "Microcontrollers", "Sensors", "Hardware Design", "I2C/SPI/UART"]
+    },
+    {
+      title: "Introduction to Robotics",
+      issuer: "Robotics Academy",
+      date: "2023",
+      image: "https://images.unsplash.com/photo-1561557944-6e7860d1a7eb?q=80&w=800&auto=format&fit=crop",
+      description: "Foundational robotics certification focusing on kinematic equations, sensor feedback control, trajectory planning, and robotic arm programming for industrial applications.",
+      skills: ["Robot Kinematics", "Sensor Integration", "Actuation Systems", "Control Loops", "Trajectory Planning"]
+    },
+    {
+      title: "Innovation Challenge – TechnoXian World Robotics Championship",
+      issuer: "TechnoXian World Robotics Championship",
+      date: "2023",
+      image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=800&auto=format&fit=crop",
+      description: "Honored participant and competitor in the global Innovation Challenge at TechnoXian World Robotics Championship representing engineering innovation in autonomous systems.",
+      skills: ["Autonomous Robotics", "Problem Solving", "Rapid Prototyping", "Team Innovation", "Competition Engineering"]
+    }
+  ];
+
+  const SKILLS_DATA = [
+    {
+      cat: "programming",
+      title: "Programming & Software",
+      icon: "💻",
+      skills: [
+        { name: "C", level: 88, highlight: true },
+        { name: "Python", level: 90, highlight: true },
+        { name: "Embedded C", level: 92, highlight: true }
+      ]
+    },
+    {
+      cat: "vision",
+      title: "Computer Vision & AI",
+      icon: "👁️",
+      skills: [
+        { name: "OpenCV", level: 85, highlight: true },
+        { name: "YOLO", level: 88, highlight: true },
+        { name: "Deep Learning", level: 82, highlight: false },
+        { name: "Machine Learning", level: 80, highlight: false }
+      ]
+    },
+    {
+      cat: "embedded",
+      title: "Embedded Systems & Hardware",
+      icon: "⚡",
+      skills: [
+        { name: "Arduino", level: 95, highlight: true },
+        { name: "ESP32", level: 92, highlight: true },
+        { name: "Microcontrollers", level: 88, highlight: false },
+        { name: "Sensors & Interfacing", level: 90, highlight: true },
+        { name: "Electronics", level: 86, highlight: false }
+      ]
+    },
+    {
+      cat: "automation",
+      title: "Industrial Automation",
+      icon: "🏭",
+      skills: [
+        { name: "PLC Programming", level: 85, highlight: true },
+        { name: "SCADA Systems", level: 82, highlight: false },
+        { name: "HMI Configuration", level: 80, highlight: false },
+        { name: "VFD Control", level: 78, highlight: false }
+      ]
+    },
+    {
+      cat: "robotics",
+      title: "Robotics & Control",
+      icon: "🤖",
+      skills: [
+        { name: "Robot Control", level: 88, highlight: true },
+        { name: "Sensor Fusion", level: 92, highlight: true },
+        { name: "Control Systems", level: 85, highlight: false }
+      ]
+    },
+    {
+      cat: "cad",
+      title: "CAD & Tools",
+      icon: "🔧",
+      skills: [
+        { name: "SolidWorks", level: 86, highlight: true },
+        { name: "Fusion 360", level: 84, highlight: true },
+        { name: "Git & GitHub", level: 90, highlight: true },
+        { name: "Linux", level: 85, highlight: false },
+        { name: "VS Code", level: 92, highlight: false }
+      ]
+    }
+  ];
+
+  const FALLBACK_REPOS = [
+    { name: "helmet-detection-deep-learning", description: "Real-time helmet detection system for road safety using YOLO and OpenCV.", language: "Python", stargazers_count: 18, forks_count: 7, updated_at: "2024-11-10T14:30:00Z", html_url: "https://github.com/mohammedmehwish/helmet-detection-deep-learning" },
+    { name: "fire-rescue-autonomous-robot", description: "Autonomous robot capable of detecting fire and assisting rescue operations using embedded sensors.", language: "C++", stargazers_count: 24, forks_count: 9, updated_at: "2024-10-25T11:15:00Z", html_url: "https://github.com/mohammedmehwish/fire-rescue-autonomous-robot" },
+    { name: "fire-surveillance-drone-system", description: "Aerial surveillance drone with multi-sensor telemetry and real-time monitoring.", language: "Python", stargazers_count: 15, forks_count: 4, updated_at: "2024-09-18T16:00:00Z", html_url: "https://github.com/mohammedmehwish/fire-surveillance-drone-system" },
+    { name: "industrial-plc-scada-automation", description: "SCADA HMI dashboard and PLC ladder logic for industrial water treatment and motor control.", language: "Structured Text", stargazers_count: 12, forks_count: 3, updated_at: "2024-08-12T09:45:00Z", html_url: "https://github.com/mohammedmehwish/industrial-plc-scada-automation" },
+    { name: "esp32-embedded-sensor-hub", description: "Multi-sensor telemetry node using ESP32 with Wi-Fi web interface and MQTT data streaming.", language: "C++", stargazers_count: 19, forks_count: 6, updated_at: "2024-07-29T18:20:00Z", html_url: "https://github.com/mohammedmehwish/esp32-embedded-sensor-hub" },
+    { name: "solidworks-robot-arm-kinematics", description: "SolidWorks 3D CAD models and kinematic scripts for 6-DOF robotic manipulator.", language: "Python", stargazers_count: 14, forks_count: 5, updated_at: "2024-06-04T12:00:00Z", html_url: "https://github.com/mohammedmehwish/solidworks-robot-arm-kinematics" }
+  ];
+
+  const LANG_COLORS = { 'Python': '#3572A5','C++': '#f34b7d','C': '#555555','Embedded C': '#00f0ff','TypeScript': '#3178c6','JavaScript': '#f1e05a','Structured Text': '#0070f3','HTML': '#e34c26' };
+
+  // ============= STATE =============
+  let allRepos = [];
+  let isDarkMode = true;
+  let menuOpen = false;
+
+  // ============= LOADING SCREEN =============
+  let loadPct = 0;
+  const statuses = ["INITIALIZING ROBOTICS CORE...", "LOADING EMBEDDED SUBSYSTEMS...", "COMPUTING VISION MODELS...", "CONNECTING GITHUB API...", "PORTFOLIO SYSTEM READY ✓"];
+  const loaderInterval = setInterval(() => {
+    loadPct += Math.floor(Math.random() * 16) + 4;
+    if (loadPct > 100) loadPct = 100;
+    document.getElementById('loader-bar').style.width = loadPct + '%';
+    document.getElementById('loader-pct').textContent = loadPct + '%';
+    const si = loadPct < 25 ? 0 : loadPct < 55 ? 1 : loadPct < 75 ? 2 : loadPct < 95 ? 3 : 4;
+    document.getElementById('loader-status').textContent = statuses[si];
+    if (loadPct >= 100) {
+      clearInterval(loaderInterval);
+      setTimeout(() => {
+        const ls = document.getElementById('loading-screen');
+        ls.style.opacity = '0';
+        setTimeout(() => ls.style.display = 'none', 600);
+      }, 500);
+    }
+  }, 100);
+
+  // ============= TYPING ANIMATION =============
+  const TAGLINES = ["Robotics Engineer", "Embedded Systems Engineer", "Computer Vision Enthusiast", "Automation Engineer", "Mechatronics Specialist"];
+  let ti = 0, charIdx = 0, deleting = false;
+  function typeLoop() {
+    const t = TAGLINES[ti];
+    const el = document.getElementById('typed-text');
+    if (!deleting) {
+      el.textContent = t.substring(0, charIdx + 1);
+      charIdx++;
+      if (charIdx === t.length) { setTimeout(() => { deleting = true; }, 1800); setTimeout(typeLoop, 80); return; }
+    } else {
+      el.textContent = t.substring(0, charIdx - 1);
+      charIdx--;
+      if (charIdx === 0) { deleting = false; ti = (ti + 1) % TAGLINES.length; }
+    }
+    setTimeout(typeLoop, deleting ? 40 : 80);
+  }
+  typeLoop();
+
+  // ============= CUSTOM CURSOR =============
+  const dot = document.getElementById('cursor-dot');
+  const ring = document.getElementById('cursor-ring');
+  document.addEventListener('mousemove', e => {
+    dot.style.transform = `translate(${e.clientX - 4}px, ${e.clientY - 4}px)`;
+    ring.style.transform = `translate(${e.clientX - 16}px, ${e.clientY - 16}px)`;
+    const target = e.target;
+    const hovering = target.matches('a,button,[role="button"]') || target.closest('a,button');
+    ring.style.width = hovering ? '48px' : '32px';
+    ring.style.height = hovering ? '48px' : '32px';
+    ring.style.marginTop = hovering ? '-8px' : '0';
+    ring.style.marginLeft = hovering ? '-8px' : '0';
+    ring.style.borderColor = hovering ? 'rgba(0,240,255,0.85)' : 'rgba(0,240,255,0.5)';
+  });
+
+  // ============= NAVBAR SCROLL & SPY =============
+  const navbar = document.getElementById('navbar');
+  const progress = document.getElementById('scroll-progress');
+  const scrollTopBtn = document.getElementById('scroll-top-btn');
+  const navLinks = document.querySelectorAll('.nav-link');
+  const sections = ['home','about','skills','projects','experience','education','certificates','github','resume','contact'];
+
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    const total = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.width = (scrolled / total * 100) + '%';
+    navbar.classList.toggle('scrolled', scrolled > 20);
+    scrollTopBtn.style.display = scrolled > 300 ? 'flex' : 'none';
+
+    // Section spy
+    let active = 'home';
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && el.offsetTop - 100 <= scrolled) active = id;
+    });
+    navLinks.forEach(link => {
+      link.classList.toggle('active', link.getAttribute('href') === '#' + active);
+    });
+  }, { passive: true });
+
+  // ============= SMOOTH SCROLL NAV =============
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (menuOpen) toggleMenu();
+      }
+    });
+  });
+
+  // ============= HAMBURGER MENU =============
+  const hamburgerBtn = document.getElementById('hamburger-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  function toggleMenu() {
+    menuOpen = !menuOpen;
+    mobileMenu.style.display = menuOpen ? 'block' : 'none';
+    hamburgerBtn.setAttribute('aria-expanded', menuOpen);
+  }
+  hamburgerBtn.addEventListener('click', toggleMenu);
+
+  // ============= THEME TOGGLE =============
+  const themeBtn = document.getElementById('theme-toggle');
+  function toggleTheme() {
+    isDarkMode = !isDarkMode;
+    document.body.classList.toggle('light-mode', !isDarkMode);
+    themeBtn.textContent = isDarkMode ? '🌙' : '☀️';
+    localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+  }
+  themeBtn.addEventListener('click', toggleTheme);
+  if (localStorage.getItem('theme') === 'light') toggleTheme();
+
+  // ============= RENDER SKILLS =============
+  function renderSkills(filter = 'all') {
+    const grid = document.getElementById('skills-grid');
+    const filtered = filter === 'all' ? SKILLS_DATA : SKILLS_DATA.filter(c => c.cat === filter);
+    grid.innerHTML = filtered.map(cat => `
+      <div class="skill-card fade-in visible" role="listitem">
+        <div class="skill-card-header">
+          <div class="skill-card-icon" aria-hidden="true">${cat.icon}</div>
+          <div class="skill-card-title">${cat.title}</div>
+        </div>
+        ${cat.skills.map(s => `
+          <div class="skill-item">
+            <div class="skill-header">
+              <span class="skill-name${s.highlight ? ' highlight' : ''}">${s.name}</span>
+              <span class="skill-pct">${s.level}%</span>
+            </div>
+            <div class="skill-bar" role="progressbar" aria-valuenow="${s.level}" aria-valuemin="0" aria-valuemax="100" aria-label="${s.name} proficiency ${s.level}%">
+              <div class="skill-fill${s.highlight ? '' : ' plain'}" data-width="${s.level}" style="width:0%"></div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `).join('');
+    // Animate bars
+    requestAnimationFrame(() => {
+      document.querySelectorAll('.skill-fill').forEach(bar => {
+        bar.style.width = bar.dataset.width + '%';
+      });
+    });
+  }
+
+  function filterSkills(cat) {
+    document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+    event.target.classList.add('active');
+    event.target.setAttribute('aria-selected', 'true');
+    renderSkills(cat);
+  }
+
+  renderSkills();
+
+  // ============= GITHUB API =============
+  const GITHUB_USERNAME = 'mohammedmehwish';
+  const CACHE_KEY_PROFILE = 'gh_profile_' + GITHUB_USERNAME;
+  const CACHE_KEY_REPOS = 'gh_repos_' + GITHUB_USERNAME;
+  const CACHE_TTL = 1800000; // 30 min
+
+  function getCached(key) {
+    try {
+      const item = localStorage.getItem(key);
+      if (!item) return null;
+      const { data, ts } = JSON.parse(item);
+      return Date.now() - ts < CACHE_TTL ? data : null;
+    } catch { return null; }
+  }
+
+  function setCache(key, data) {
+    try { localStorage.setItem(key, JSON.stringify({ data, ts: Date.now() })); } catch {}
+  }
+
+  async function fetchGitHubProfile() {
+    const cached = getCached(CACHE_KEY_PROFILE);
+    if (cached) return cached;
+    try {
+      const res = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}`, { headers: { 'Accept': 'application/vnd.github.v3+json' } });
+      if (!res.ok) throw new Error(res.status);
+      const data = await res.json();
+      setCache(CACHE_KEY_PROFILE, data);
+      return data;
+    } catch { return null; }
+  }
+
+  async function fetchGitHubRepos() {
+    const cached = getCached(CACHE_KEY_REPOS);
+    if (cached) return cached;
+    try {
+      const res = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=100`, { headers: { 'Accept': 'application/vnd.github.v3+json' } });
+      if (!res.ok) throw new Error(res.status);
+      const data = await res.json();
+      setCache(CACHE_KEY_REPOS, data);
+      return data;
+    } catch { return null; }
+  }
+
+  function computeStats(repos) {
+    let stars = 0, forks = 0;
+    const langCount = {};
+    repos.forEach(r => {
+      stars += r.stargazers_count || 0;
+      forks += r.forks_count || 0;
+      if (r.language) langCount[r.language] = (langCount[r.language] || 0) + 1;
+    });
+    const total = Object.values(langCount).reduce((a,b)=>a+b,0) || 1;
+    const langs = Object.entries(langCount).sort((a,b)=>b[1]-a[1]).slice(0,5).map(([name,c]) => ({
+      name, pct: Math.round(c/total*100), color: LANG_COLORS[name] || '#38bdf8'
+    }));
+    return { stars, forks, langs };
+  }
+
+  function renderProfile(profile, repos) {
+    const card = document.getElementById('github-profile-card');
+    const stats = computeStats(repos);
+    card.innerHTML = `
+      <div class="github-profile-inner">
+        <div>
+          ${profile && profile.avatar_url
+            ? `<img src="${profile.avatar_url}" alt="GitHub avatar of ${profile.name || GITHUB_USERNAME}" class="github-avatar" loading="lazy" />`
+            : `<div class="github-avatar-placeholder" aria-hidden="true">👤</div>`}
+        </div>
+        <div>
+          <h3 style="font-size:20px;font-weight:800;font-family:'JetBrains Mono',monospace;color:white;margin-bottom:4px;">${profile?.name || 'Mohammed Mehwish V M'} <a href="${profile?.html_url || 'https://github.com/mohammedmehwish'}" target="_blank" rel="noopener noreferrer" style="color:#00f0ff;font-size:14px;text-decoration:none;" aria-label="Open GitHub profile">↗</a></h3>
+          <div style="font-size:12px;font-family:'JetBrains Mono',monospace;color:#38bdf8;margin-bottom:6px;">@${profile?.login || GITHUB_USERNAME}</div>
+          <div style="font-size:13px;color:#64748b;line-height:1.6;">${profile?.bio || 'Robotics & Mechatronics Engineer | Embedded Systems | Computer Vision | Automation'}</div>
+        </div>
+        <div class="github-stats-grid">
+          <div class="github-stat-box">
+            <div class="github-stat-icon" aria-hidden="true">📁</div>
+            <div class="github-stat-val">${repos.length}</div>
+            <div class="github-stat-label">Public Repos</div>
+          </div>
+          <div class="github-stat-box">
+            <div class="github-stat-icon" aria-hidden="true">⭐</div>
+            <div class="github-stat-val">${stats.stars}</div>
+            <div class="github-stat-label">Total Stars</div>
+          </div>
+          <div class="github-stat-box">
+            <div class="github-stat-icon" aria-hidden="true">🍴</div>
+            <div class="github-stat-val">${stats.forks}</div>
+            <div class="github-stat-label">Forks</div>
+          </div>
+          <div class="github-stat-box">
+            <div class="github-stat-icon" aria-hidden="true">👥</div>
+            <div class="github-stat-val">${profile?.followers || '—'}</div>
+            <div class="github-stat-label">Followers</div>
+          </div>
+        </div>
+      </div>
+      <div class="lang-bar-wrapper">
+        <div style="font-size:11px;font-family:'JetBrains Mono',monospace;color:#00f0ff;font-weight:700;margin-bottom:10px;">PRIMARY LANGUAGES</div>
+        <div class="lang-bar" role="img" aria-label="Language distribution bar">
+          ${stats.langs.map(l => `<div class="lang-bar-seg" style="width:${l.pct}%;background:${l.color};" title="${l.name}: ${l.pct}%"></div>`).join('')}
+        </div>
+        <div class="lang-legend">
+          ${stats.langs.map(l => `
+            <div style="display:flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:11.5px;">
+              <div class="lang-dot" style="background:${l.color};" aria-hidden="true"></div>
+              <span style="font-weight:600;color:#cbd5e1;">${l.name}</span>
+              <span style="color:#475569;">${l.pct}%</span>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  }
+
+  function renderRepos(repos) {
+    allRepos = repos;
+    // Populate language filter
+    const langs = [...new Set(repos.map(r=>r.language).filter(Boolean))];
+    const sel = document.getElementById('lang-filter');
+    langs.forEach(l => sel.insertAdjacentHTML('beforeend', `<option value="${l}">${l}</option>`));
+    filterRepos();
+  }
+
+  function filterRepos() {
+    const search = document.getElementById('repo-search').value.toLowerCase();
+    const lang = document.getElementById('lang-filter').value;
+    const sort = document.getElementById('sort-select').value;
+    let filtered = allRepos.filter(r => {
+      const matchName = r.name.toLowerCase().includes(search);
+      const matchDesc = r.description && r.description.toLowerCase().includes(search);
+      const matchLang = lang === 'all' || r.language === lang;
+      return (matchName || matchDesc) && matchLang;
+    });
+    if (sort === 'stars') filtered.sort((a,b) => b.stargazers_count - a.stargazers_count);
+    else if (sort === 'updated') filtered.sort((a,b) => new Date(b.updated_at) - new Date(a.updated_at));
+    else filtered.sort((a,b) => a.name.localeCompare(b.name));
+
+    const grid = document.getElementById('repos-grid');
+    if (!filtered.length) {
+      grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:40px 0;font-family:'JetBrains Mono',monospace;font-size:13px;color:#475569;">No repositories match your search criteria.</div>`;
+      return;
+    }
+    grid.innerHTML = filtered.map(repo => `
+      <article class="repo-card" role="listitem">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+          <div class="repo-name">${repo.name}</div>
+          ${repo.language ? `<span class="repo-lang-badge">${repo.language}</span>` : ''}
+        </div>
+        <p class="repo-desc">${repo.description || 'Engineering & Mechatronics project repository.'}</p>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding-top:14px;border-top:1px solid rgba(255,255,255,0.06);margin-top:auto;">
+          <div class="repo-stats">
+            <span class="repo-stars">⭐ ${repo.stargazers_count || 0}</span>
+            <span class="repo-forks">🍴 ${repo.forks_count || 0}</span>
+            <span style="color:#334155;font-size:10px;">📅 ${new Date(repo.updated_at).toLocaleDateString(undefined,{month:'short',year:'numeric'})}</span>
+          </div>
+          <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer" class="btn-outline" style="font-size:10px;padding:7px 14px;" aria-label="View ${repo.name} on GitHub">⬡ GitHub →</a>
+        </div>
+      </article>
+    `).join('');
+  }
+
+  async function initGitHub() {
+    const [profile, repos] = await Promise.all([fetchGitHubProfile(), fetchGitHubRepos()]);
+    const repoData = (repos && repos.length > 0) ? repos : FALLBACK_REPOS;
+    renderProfile(profile, repoData);
+    renderRepos(repoData);
+  }
+
+  initGitHub();
+
+  // ============= FADE IN OBSERVER =============
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        // Animate skill bars when visible
+        e.target.querySelectorAll('.skill-fill').forEach(bar => { bar.style.width = bar.dataset.width + '%'; });
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // ============= PARTICLE CANVAS =============
+  (function() {
+    const canvas = document.getElementById('particle-canvas');
+    const ctx = canvas.getContext('2d');
+    let W, H, particles = [], animId;
+    const mouse = { x: -1000, y: -1000 };
+
+    function resize() {
+      W = canvas.width = window.innerWidth;
+      H = canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+    document.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+
+    const cols = ['#00f0ff','#0070f3','#38bdf8','#06b6d4'];
+    const count = Math.min(Math.floor(W*H/15000), 65);
+    for (let i = 0; i < count; i++) {
+      particles.push({
+        x: Math.random()*W, y: Math.random()*H,
+        vx: (Math.random()-.5)*.7, vy: (Math.random()-.5)*.7,
+        r: Math.random()*2+1,
+        c: cols[Math.floor(Math.random()*cols.length)]
+      });
+    }
+
+    function draw() {
+      ctx.clearRect(0,0,W,H);
+      // Grid
+      ctx.strokeStyle='rgba(56,189,248,0.03)';
+      ctx.lineWidth=1;
+      for(let x=0;x<W;x+=60){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();}
+      for(let y=0;y<H;y+=60){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();}
+      // Particles
+      for(let i=0;i<particles.length;i++){
+        const p=particles[i];
+        p.x+=p.vx; p.y+=p.vy;
+        if(p.x<0||p.x>W) p.vx*=-1;
+        if(p.y<0||p.y>H) p.vy*=-1;
+        const dx=mouse.x-p.x, dy=mouse.y-p.y, d=Math.sqrt(dx*dx+dy*dy);
+        if(d<150){const f=(150-d)/150;p.x-=dx/d*f*1.5;p.y-=dy/d*f*1.5;}
+        ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fillStyle=p.c;ctx.shadowBlur=8;ctx.shadowColor=p.c;ctx.fill();ctx.shadowBlur=0;
+        for(let j=i+1;j<particles.length;j++){
+          const p2=particles[j];
+          const dd=Math.sqrt((p.x-p2.x)**2+(p.y-p2.y)**2);
+          if(dd<110){ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(p2.x,p2.y);ctx.strokeStyle=`rgba(0,240,255,${.2*(1-dd/110)})`;ctx.lineWidth=.8;ctx.stroke();}
+        }
+      }
+      animId=requestAnimationFrame(draw);
+    }
+    draw();
+  })();
+
+  // ============= MODAL FUNCTIONS =============
+  function openModal(id) {
+    document.getElementById(id).classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(id) {
+    document.getElementById(id).classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.modal-overlay').forEach(overlay => {
+    overlay.addEventListener('click', e => {
+      if (e.target === overlay) closeModal(overlay.id);
+    });
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') document.querySelectorAll('.modal-overlay.open').forEach(m => closeModal(m.id));
+  });
+
+  function openProjectModal(idx) {
+    const p = PROJECTS[idx];
+    document.getElementById('project-modal-title').textContent = p.title;
+    document.getElementById('project-modal-body').innerHTML = `
+      <img src="${p.image}" alt="${p.title}" style="width:100%;height:260px;object-fit:cover;border-radius:14px;border:1px solid rgba(0,240,255,0.25);margin-bottom:22px;" loading="lazy" />
+      <div style="margin-bottom:18px;">
+        <div style="font-size:10px;font-family:'JetBrains Mono',monospace;color:#00f0ff;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px;">OVERVIEW</div>
+        <p style="font-size:13.5px;color:#94a3b8;line-height:1.8;">${p.description}</p>
+      </div>
+      <div style="margin-bottom:18px;">
+        <div style="font-size:10px;font-family:'JetBrains Mono',monospace;color:#00f0ff;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:10px;">KEY HIGHLIGHTS & INNOVATIONS</div>
+        ${p.highlights.map(h=>`<div class="achievement-item"><span class="achievement-check">→</span><span>${h}</span></div>`).join('')}
+      </div>
+      <div style="margin-bottom:22px;">
+        <div style="font-size:10px;font-family:'JetBrains Mono',monospace;color:#00f0ff;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:10px;">TECHNOLOGY STACK</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;">${p.stack.map(s=>`<span class="tech-tag">${s}</span>`).join('')}</div>
+      </div>
+      <div style="padding-top:16px;border-top:1px solid rgba(255,255,255,0.06);">
+        <a href="${p.github}" target="_blank" rel="noopener noreferrer" class="btn-primary" style="text-decoration:none;" aria-label="View ${p.title} on GitHub">⬡ VIEW REPOSITORY ON GITHUB</a>
+      </div>
+    `;
+    openModal('project-modal');
+  }
+
+  function openCertModal(idx) {
+    const c = CERTS[idx];
+    document.getElementById('cert-modal-title').textContent = c.title;
+    document.getElementById('cert-modal-body').innerHTML = `
+      <div style="position:relative;border-radius:14px;overflow:hidden;border:1px solid rgba(0,240,255,0.3);margin-bottom:22px;background:#0a0f1d;">
+        <img src="${c.image}" alt="${c.title} certificate" style="width:100%;height:300px;object-fit:cover;opacity:0.6;" loading="lazy" />
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(5,8,20,0.65);backdrop-filter:blur(2px);">
+          <div style="text-align:center;padding:28px;border:1px solid rgba(0,240,255,0.4);border-radius:16px;background:rgba(15,23,42,0.9);max-width:380px;box-shadow:0 0 30px rgba(0,240,255,0.15);">
+            <div style="font-size:38px;margin-bottom:12px;">🏅</div>
+            <h4 style="font-size:16px;font-weight:800;font-family:'JetBrains Mono',monospace;color:white;margin-bottom:8px;">${c.title}</h4>
+            <div style="font-size:12px;font-family:'JetBrains Mono',monospace;color:#38bdf8;">Issued by: ${c.issuer}</div>
+            <div style="font-size:11px;font-family:'JetBrains Mono',monospace;color:#64748b;margin-top:4px;">${c.date}</div>
+            ${c.credentialId ? `<div style="font-size:10px;font-family:'JetBrains Mono',monospace;color:#334155;margin-top:4px;">ID: ${c.credentialId}</div>` : ''}
+          </div>
+        </div>
+      </div>
+      <div style="margin-bottom:16px;">
+        <div style="font-size:10px;font-family:'JetBrains Mono',monospace;color:#00f0ff;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px;">DESCRIPTION</div>
+        <p style="font-size:13px;color:#94a3b8;line-height:1.75;">${c.description}</p>
+      </div>
+      <div>
+        <div style="font-size:10px;font-family:'JetBrains Mono',monospace;color:#00f0ff;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:10px;">SKILLS & TOPICS COVERED</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;">${c.skills.map(s=>`<span class="tech-tag" style="color:#00f0ff;border-color:rgba(0,240,255,0.3);">${s}</span>`).join('')}</div>
+      </div>
+    `;
+    openModal('cert-modal');
+  }
+
+  function openResumeModal() {
+    openModal('resume-modal');
+  }
+
+  // ============= RESUME DOWNLOAD =============
+  function downloadResume() {
+    const content = `MOHAMMED MEHWISH V M
+Robotics Engineer | Mechatronics Engineer | Embedded Systems Engineer
+
+CONTACT
+Email: michumehwish2004@gmail.com
+Location: Kerala, India
+LinkedIn: linkedin.com/in/mohammed-mehwish-202677307
+GitHub: github.com/mohammedmehwish
+
+PROFESSIONAL SUMMARY
+Detail-oriented and motivated Mechatronics Engineering graduate with hands-on experience in embedded systems, industrial automation, robotics, and computer vision. Passionate about building intelligent robotic systems and solving real-world engineering problems using AI, automation, and embedded technologies.
+
+EXPERIENCE
+Embedded Systems Intern — Centre for Skill Enhancement & Employability Development (CSEED)
+July 2024 – August 2024 | Kerala, India
+  • Programmed microcontrollers (Arduino, ESP32) using C/C++ and Embedded C for real-time control applications.
+  • Interfaced multi-sensor modules including Ultrasonic, IR, Gas, and Temperature sensors with analog & digital filtering.
+  • Implemented hardware communication protocols (UART, SPI, I2C) for reliable multi-device telemetry systems.
+  • Designed and validated custom electronic schematics and breadboard prototypes for automation scenarios.
+
+EDUCATION
+B.E. Mechatronics Engineering (2021 – 2025)
+Hindusthan College of Engineering and Technology, Coimbatore, India
+
+PROJECTS
+1. Helmet Detection using Deep Learning — Python, OpenCV, YOLO, PyTorch
+   Real-time helmet detection system for road safety powered by YOLO object detection and OpenCV.
+
+2. Fire Rescue Robot — Embedded C, Arduino, ESP32, Sensors, Motor Control
+   Autonomous robot capable of detecting fire and assisting rescue operations.
+
+3. Fire Rescue & Surveillance Drone — Python, ESP32, Flight Control, Telemetry, OpenCV
+   Aerial surveillance UAV for thermal anomaly mapping and emergency response.
+
+CERTIFICATIONS
+  • Industrial Automation Specialist — Industrial Training Center (2024)
+  • Embedded Systems Internship — CSEED (August 2024)
+  • Introduction to Robotics — Robotics Academy (2023)
+  • TechnoXian Innovation Challenge — World Robotics Championship (2023)
+
+TECHNICAL SKILLS
+Programming:   C, Python, Embedded C
+Computer Vision: OpenCV, YOLO, Deep Learning, Machine Learning
+Embedded Hardware: Arduino, ESP32, Microcontrollers, Sensors, Electronics
+Industrial Automation: PLC, SCADA, HMI, VFD
+Robotics: Robot Control, Sensor Fusion, Control Systems
+CAD: SolidWorks, Fusion 360
+Tools: Git, GitHub, Linux, VS Code`;
+
+    const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'Mohammed_Mehwish_VM_Resume.txt';
+    a.click();
+    URL.revokeObjectURL(url);
+    showToast('✅ Resume downloaded successfully!');
+  }
+
+  // ============= CONTACT FORM =============
+  function submitContactForm(e) {
+    e.preventDefault();
+    const name = document.getElementById('contact-name').value.trim();
+    const email = document.getElementById('contact-email').value.trim();
+    const message = document.getElementById('contact-message').value.trim();
+    if (!name || !email || !message) {
+      showToast('⚠ Please fill in all required fields.', 'warn');
+      return;
+    }
+    const btn = document.getElementById('send-btn');
+    btn.textContent = '⌛ TRANSMITTING...';
+    btn.disabled = true;
+    setTimeout(() => {
+      document.getElementById('contact-form').innerHTML = `
+        <div style="text-align:center;padding:40px 20px;">
+          <div style="width:72px;height:72px;border-radius:50%;background:rgba(16,185,129,0.15);border:2px solid #10b981;display:flex;align-items:center;justify-content:center;font-size:36px;margin:0 auto 16px;animation:float 3s infinite;">✅</div>
+          <h3 style="font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:800;color:white;margin-bottom:12px;">MESSAGE TRANSMITTED!</h3>
+          <p style="font-size:13px;color:#64748b;font-family:'JetBrains Mono',monospace;line-height:1.7;">Thank you, <strong style="color:#00f0ff;">${name}</strong>! Mohammed Mehwish will review your message and respond promptly.</p>
+        </div>
+      `;
+      showToast('✅ Message sent successfully!');
+    }, 1400);
+  }
+
+  // ============= COPY EMAIL =============
+  function copyEmail(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    navigator.clipboard.writeText('michumehwish2004@gmail.com').then(() => {
+      showToast('📋 Email address copied to clipboard!');
+    });
+  }
+
+  // ============= TOAST =============
+  function showToast(msg, type = 'success') {
+    const toast = document.getElementById('toast');
+    toast.innerHTML = msg;
+    toast.style.display = 'flex';
+    toast.style.borderColor = type === 'warn' ? 'rgba(245,158,11,0.4)' : 'rgba(16,185,129,0.4)';
+    toast.style.background = type === 'warn' ? 'rgba(245,158,11,0.12)' : 'rgba(16,185,129,0.12)';
+    toast.style.color = type === 'warn' ? '#f59e0b' : '#10b981';
+    setTimeout(() => { toast.style.display = 'none'; }, 3500);
+  }
+  </script>
+</body>
+</html>
