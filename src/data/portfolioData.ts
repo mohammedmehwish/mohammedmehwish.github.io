@@ -89,6 +89,23 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
 
 export const FEATURED_PROJECTS: Project[] = [
   {
+    id: "turtlebot3-nav2",
+    title: "TurtleBot3 Burger Autonomous Navigation (Nav2 + AMCL)",
+    description: "Autonomous navigation, SLAM map building, and localization system for TurtleBot3 Burger in ROS 2 Humble Gazebo simulation.",
+    longDescription: "A full autonomous mobile robot navigation pipeline built on ROS 2 Humble. Maps unknown environments with SLAM Toolbox, localizes with AMCL, and plans collision-free paths using Nav2 in Gazebo simulation, visualized in RViz2.",
+    techStack: ["ROS 2 Humble", "Nav2", "AMCL", "SLAM Toolbox", "Gazebo", "RViz2", "Ubuntu 22.04", "Python", "Bash"],
+    githubUrl: "https://github.com/mohammedmehwish/turtlebot3-nav2-navigation",
+    liveDemoUrl: "https://github.com/mohammedmehwish/turtlebot3-nav2-navigation#readme",
+    category: "robotics",
+    featured: true,
+    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=800&auto=format&fit=crop",
+    highlights: [
+      "Generated 2D occupancy grid map of Gazebo simulation world using SLAM Toolbox and saved YAML/PGM map assets",
+      "Configured AMCL Monte Carlo localization and Nav2 stack for autonomous goal navigation",
+      "Created single-script launch pipeline (run_navigation.sh) for streamlined deployment in RViz2"
+    ]
+  },
+  {
     id: "helmet-detection",
     title: "Helmet Detection using Deep Learning",
     description: "Real-time helmet detection system for road safety powered by computer vision algorithms.",
