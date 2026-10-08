@@ -16,13 +16,15 @@ export const CustomCursor: React.FC = () => {
     const onMouseMove = (e: MouseEvent) => {
       setPosition({ x: e.clientX, y: e.clientY });
 
-      const target = e.target as HTMLElement;
+      const target = e.target as HTMLElement | null;
       if (
-        target.tagName === 'A' ||
-        target.tagName === 'BUTTON' ||
-        target.closest('a') ||
-        target.closest('button') ||
-        target.getAttribute('role') === 'button'
+        target &&
+        typeof target.closest === 'function' &&
+        (target.tagName === 'A' ||
+          target.tagName === 'BUTTON' ||
+          target.closest('a') ||
+          target.closest('button') ||
+          (typeof target.getAttribute === 'function' && target.getAttribute('role') === 'button'))
       ) {
         setIsHovered(true);
       } else {

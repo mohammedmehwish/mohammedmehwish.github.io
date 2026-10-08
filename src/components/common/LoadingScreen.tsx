@@ -11,6 +11,11 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
   const [statusText, setStatusText] = useState("INITIALIZING ROBOTICS CORE...");
   const [isVisible, setIsVisible] = useState(true);
 
+  const onCompleteRef = React.useRef(onComplete);
+  useEffect(() => {
+    onCompleteRef.current = onComplete;
+  }, [onComplete]);
+
   useEffect(() => {
     const interval = setInterval(() => {
       setProgress((prev) => {
@@ -18,11 +23,11 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
           clearInterval(interval);
           setTimeout(() => {
             setIsVisible(false);
-            if (onComplete) onComplete();
-          }, 400);
+            if (onCompleteRef.current) onCompleteRef.current();
+          }, 300);
           return 100;
         }
-        const next = prev + Math.floor(Math.random() * 15) + 5;
+        const next = prev + Math.floor(Math.random() * 15) + 10;
         if (next > 30 && next < 60) {
           setStatusText("LOADING EMBEDDED SUBSYSTEMS & SENSORS...");
         } else if (next >= 60 && next < 90) {
@@ -32,10 +37,19 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
         }
         return next > 100 ? 100 : next;
       });
-    }, 120);
+    }, 80);
 
-    return () => clearInterval(interval);
-  }, [onComplete]);
+    // Safeguard fallback: ensure loading screen disappears after at most 2.5s
+    const fallbackTimer = setTimeout(() => {
+      setIsVisible(false);
+      if (onCompleteRef.current) onCompleteRef.current();
+    }, 2500);
+
+    return () => {
+      clearInterval(interval);
+      clearTimeout(fallbackTimer);
+    };
+  }, []);
 
   return (
     <AnimatePresence>
