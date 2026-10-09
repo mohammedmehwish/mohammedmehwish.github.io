@@ -106,20 +106,20 @@ export const FEATURED_PROJECTS: Project[] = [
     ]
   },
   {
-    id: "helmet-detection",
-    title: "Helmet Detection using Deep Learning",
-    description: "Real-time helmet detection system for road safety powered by computer vision algorithms.",
-    longDescription: "Automated real-time safety compliance monitoring system using YOLO object detection and OpenCV. Processes high-frame-rate video feeds to accurately identify motorcycle riders wearing or missing helmets, broadcasting instant violation alerts.",
-    techStack: ["Python", "OpenCV", "YOLO", "Deep Learning", "PyTorch"],
-    githubUrl: "https://github.com/mohammedmehwish/helmet-detection",
-    liveDemoUrl: "https://github.com/mohammedmehwish/helmet-detection#readme",
+    id: "vision-guard",
+    title: "Vision Guard: Real-Time Helmet Detection (YOLOv8 + ESP32-CAM)",
+    description: "Final-year B.E. project — ESP32-CAM streams traffic frames over Wi-Fi to a PC running a customised YOLOv8-Nano model that detects helmet compliance and logs violations to MySQL with PaddleOCR number-plate extraction.",
+    longDescription: "Customised YOLOv8-Nano (modified C2f module + lightweight spatial attention mechanism) trained on a synthetically augmented dataset (Albumentations, Imgaug) achieving ~92% mAP@0.5. Violations are annotated in real time with bounding boxes and confidence scores, then logged to a MySQL traffic_db with timestamp and PaddleOCR-extracted number-plate text. Patent approved. B.E. Mechatronics, Hindusthan College of Engineering and Technology, April 2026.",
+    techStack: ["Python", "YOLOv8-Nano", "PyTorch", "OpenCV", "ESP32-CAM", "PaddleOCR", "MySQL", "Albumentations", "cvzone", "Arduino"],
+    githubUrl: "https://github.com/mohammedmehwish/vision-guard-helmet-detection",
+    liveDemoUrl: "https://github.com/mohammedmehwish/vision-guard-helmet-detection#readme",
     category: "vision",
     featured: true,
     image: "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?q=80&w=800&auto=format&fit=crop",
     highlights: [
-      "Trained YOLO object detection model on thousands of traffic footage frames",
-      "Achieved high accuracy detection across varying lighting and weather conditions",
-      "Implemented real-time bounding box rendering with minimal processing latency"
+      "Customised YOLOv8-Nano with modified C2f module and spatial attention mechanism achieving ~92% mAP@0.5",
+      "ESP32-CAM (OV2640) captures and streams 640×480 frames over Wi-Fi for real-time on-PC inference",
+      "Violation logging pipeline: PaddleOCR number-plate extraction + MySQL traffic_db storage with timestamps"
     ]
   },
   {
