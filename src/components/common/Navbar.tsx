@@ -1,55 +1,103 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Cpu, Menu, X, FileText, Github, Linkedin, Mail } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { ThemeToggle } from './ThemeToggle';
-import { PERSONAL_INFO } from '../../data/portfolioData';
 
-const NAV_ITEMS = [
-  { label: 'Home', href: '#home' },
-  { label: 'About', href: '#about' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Experience', href: '#experience' },
-  { label: 'Certificates', href: '#certificates' },
-  { label: 'GitHub', href: '#github' },
-  { label: 'Resume', href: '#resume' },
-  { label: 'Contact', href: '#contact' },
+interface NavItem {
+  label: string;
+  href: string;
+  id: string;
+}
+
+const NAV_ITEMS: NavItem[] = [
+  { label: 'Home', href: '#hero', id: 'hero' },
+  { label: 'About', href: '#about', id: 'about' },
+  { label: 'Skills', href: '#skills', id: 'skills' },
+  { label: 'Projects', href: '#projects', id: 'projects' },
+  { label: 'Experience', href: '#experience', id: 'experience' },
+  { label: 'Certifications', href: '#certifications', id: 'certifications' },
+  { label: 'Education', href: '#education', id: 'education' },
+  { label: 'GitHub', href: '#github', id: 'github' },
+  { label: 'Resume', href: '#resume', id: 'resume' },
+  { label: 'Contact', href: '#contact', id: 'contact' },
 ];
 
 export const Navbar: React.FC = () => {
-  const [activeSection, setActiveSection] = useState('home');
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>('hero');
+  const [isScrolled, setIsScrolled] = useState<boolean>(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
+
+  const getElementForId = (id: string): HTMLElement | null => {
+    let el = document.getElementById(id);
+    if (!el && id === 'hero') el = document.getElementById('home');
+    if (!el && id === 'certifications') el = document.getElementById('certificates');
+    return el;
+  };
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
 
-      // Section spy algorithm
-      const sections = NAV_ITEMS.map(item => item.href.substring(1));
-      const scrollPosition = window.scrollY + 200;
+      // Section spy
+      const scrollPosition = window.scrollY + 140;
+      const windowHeight = window.innerHeight;
+      const fullHeight = document.documentElement.scrollHeight;
 
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const sectionEl = document.getElementById(sections[i]);
-        if (sectionEl && sectionEl.offsetTop <= scrollPosition) {
-          setActiveSection(sections[i]);
-          break;
+      // Bottom of page detection for Contact section
+      if (windowHeight + window.scrollY >= fullHeight - 60) {
+        setActiveSection('contact');
+        return;
+      }
+
+      // Top of page
+      if (window.scrollY < 120) {
+        setActiveSection('hero');
+        return;
+      }
+
+      for (let i = NAV_ITEMS.length - 1; i >= 0; i--) {
+        const item = NAV_ITEMS[i];
+        const el = getElementForId(item.id);
+        if (el) {
+          const top = el.offsetTop;
+          if (scrollPosition >= top) {
+            setActiveSection(item.id);
+            break;
+          }
         }
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string, id: string) => {
     e.preventDefault();
     setIsMobileMenuOpen(false);
-    const targetId = href.substring(1);
-    const targetEl = document.getElementById(targetId);
+
+    if (id === 'hero' && !getElementForId('hero')) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setActiveSection('hero');
+      return;
+    }
+
+    const targetEl = getElementForId(id);
     if (targetEl) {
-      const offsetTop = targetEl.offsetTop - 80;
-      window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+      const navOffset = 76;
+      const elementTop = targetEl.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({
+        top: elementTop - navOffset,
+        behavior: 'smooth',
+      });
+      setActiveSection(id);
+    } else {
+      const fallback = document.querySelector(href);
+      if (fallback) {
+        fallback.scrollIntoView({ behavior: 'smooth' });
+        setActiveSection(id);
+      }
     }
   };
 
@@ -57,118 +105,107 @@ export const Navbar: React.FC = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         isScrolled
-          ? 'bg-cyber-bg/85 dark:bg-[#070b19]/85 backdrop-blur-lg border-b border-cyber-cyan/20 shadow-lg py-3'
-          : 'bg-transparent py-5'
+          ? 'bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-sm border-b border-slate-200 dark:border-slate-800 py-3'
+          : 'bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm border-b border-transparent py-4'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        {/* Brand Logo */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+        {/* Logo */}
         <a
-          href="#home"
-          onClick={(e) => handleNavClick(e, '#home')}
-          className="flex items-center gap-2.5 group cursor-pointer"
+          href="#hero"
+          onClick={(e) => handleNavClick(e, '#hero', 'hero')}
+          className="flex flex-col text-left group cursor-pointer focus:outline-none"
         >
-          <div className="relative p-2 rounded-xl bg-cyber-card/80 border border-cyber-cyan/30 group-hover:border-cyber-cyan transition-colors shadow-glow-cyan">
-            <Cpu className="w-5 h-5 text-cyber-cyan group-hover:rotate-45 transition-transform duration-300" />
-            <span className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-cyber-cyan animate-ping" />
-          </div>
-          <div className="flex flex-col">
-            <span className="font-mono font-bold text-lg tracking-wider text-white group-hover:text-cyber-cyan transition-colors">
-              M. MEHWISH
-            </span>
-            <span className="text-[10px] font-mono text-cyber-sky tracking-widest uppercase">
-              ROBOTICS ENGINEER
-            </span>
-          </div>
+          <span className="text-lg font-bold text-slate-900 dark:text-white leading-tight">
+            M. Mehwish
+          </span>
+          <span className="text-xs text-slate-500 dark:text-slate-400 font-medium">
+            Robotics Engineer
+          </span>
         </a>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-1 bg-cyber-card/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-cyber-cyan/15">
+        <nav className="hidden lg:flex items-center space-x-1 xl:space-x-2 text-xs xl:text-sm font-medium">
           {NAV_ITEMS.map((item) => {
-            const isActive = activeSection === item.href.substring(1);
+            const isActive = activeSection === item.id;
             return (
               <a
-                key={item.label}
+                key={item.id}
                 href={item.href}
-                onClick={(e) => handleNavClick(e, item.href)}
-                className={`relative px-3.5 py-1.5 text-xs font-mono tracking-wide rounded-full transition-all duration-200 ${
+                onClick={(e) => handleNavClick(e, item.href, item.id)}
+                className={`px-2.5 py-1.5 transition-colors ${
                   isActive
-                    ? 'text-cyber-cyan font-bold'
-                    : 'text-slate-300 hover:text-white hover:bg-slate-800/50'
+                    ? 'text-blue-600 dark:text-blue-400 font-semibold underline underline-offset-8 decoration-2'
+                    : 'text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white'
                 }`}
               >
                 {item.label}
-                {isActive && (
-                  <motion.div
-                    layoutId="activeIndicator"
-                    className="absolute inset-0 rounded-full bg-cyber-cyan/15 border border-cyber-cyan/40 -z-10 shadow-glow-cyan"
-                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                  />
-                )}
               </a>
             );
           })}
         </nav>
 
         {/* Desktop Right Actions */}
-        <div className="hidden lg:flex items-center gap-3">
+        <div className="hidden lg:flex items-center space-x-3">
           <ThemeToggle />
           <a
             href="#contact"
-            onClick={(e) => handleNavClick(e, '#contact')}
-            className="px-4 py-2 text-xs font-mono font-semibold rounded-lg bg-gradient-to-r from-cyber-cyan to-cyber-blue text-slate-950 hover:shadow-glow-cyan hover:scale-[1.02] transition-all"
+            onClick={(e) => handleNavClick(e, '#contact', 'contact')}
+            className="btn-primary text-xs xl:text-sm px-4 py-2"
           >
-            GET IN TOUCH
+            Contact
           </a>
         </div>
 
-        {/* Mobile Menu Trigger & Theme Toggle */}
-        <div className="flex items-center gap-2 lg:hidden">
+        {/* Mobile Hamburger & ThemeToggle */}
+        <div className="flex items-center space-x-2 lg:hidden">
           <ThemeToggle />
           <button
+            type="button"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="p-2 rounded-lg bg-cyber-card border border-cyber-cyan/30 text-cyber-cyan hover:bg-cyber-cyan/10 transition-colors"
-            aria-label="Toggle Mobile Menu"
+            className="p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+            aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Drawer Dropdown */}
+      {/* Mobile Drawer */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-cyber-card/95 border-b border-cyber-cyan/20 backdrop-blur-xl overflow-hidden"
+            transition={{ duration: 0.2 }}
+            className="lg:hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden"
           >
-            <div className="px-4 py-6 space-y-2 max-w-7xl mx-auto">
+            <div className="px-4 pt-3 pb-6 space-y-1">
               {NAV_ITEMS.map((item) => {
-                const isActive = activeSection === item.href.substring(1);
+                const isActive = activeSection === item.id;
                 return (
                   <a
-                    key={item.label}
+                    key={item.id}
                     href={item.href}
-                    onClick={(e) => handleNavClick(e, item.href)}
-                    className={`block px-4 py-2.5 rounded-lg text-sm font-mono tracking-wide transition-colors ${
+                    onClick={(e) => handleNavClick(e, item.href, item.id)}
+                    className={`block px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
                       isActive
-                        ? 'bg-cyber-cyan/20 text-cyber-cyan border border-cyber-cyan/40 font-bold'
-                        : 'text-slate-300 hover:bg-slate-800 hover:text-white'
+                        ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20 font-semibold'
+                        : 'text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-800'
                     }`}
                   >
                     {item.label}
                   </a>
                 );
               })}
-              <div className="pt-4 border-t border-slate-800 flex items-center justify-between">
+              <div className="pt-3">
                 <a
                   href="#contact"
-                  onClick={(e) => handleNavClick(e, '#contact')}
-                  className="w-full text-center py-2.5 rounded-lg bg-gradient-to-r from-cyber-cyan to-cyber-blue text-slate-950 font-mono text-xs font-bold shadow-glow-cyan"
+                  onClick={(e) => handleNavClick(e, '#contact', 'contact')}
+                  className="btn-primary w-full text-center block text-sm"
                 >
-                  CONTACT ME
+                  Contact
                 </a>
               </div>
             </div>

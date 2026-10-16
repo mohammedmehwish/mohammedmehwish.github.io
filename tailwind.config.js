@@ -8,51 +8,43 @@ export default {
   theme: {
     extend: {
       colors: {
-        cyber: {
-          bg: '#070b19',
-          card: '#0f172a',
-          cardLight: '#ffffff',
-          border: 'rgba(56, 189, 248, 0.15)',
-          cyan: '#00f0ff',
-          blue: '#0070f3',
-          sky: '#38bdf8',
-          accent: '#06b6d4',
-          glow: '#00f0ff33',
-        }
+        primary: {
+          50: '#eff6ff',
+          100: '#dbeafe',
+          200: '#bfdbfe',
+          300: '#93c5fd',
+          400: '#60a5fa',
+          500: '#3b82f6',
+          600: '#2563eb',
+          700: '#1d4ed8',
+          800: '#1e40af',
+          900: '#1e3a5f',
+        },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        mono: ['"JetBrains Mono"', 'monospace'],
+        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
       },
       boxShadow: {
-        'glow-cyan': '0 0 20px rgba(0, 240, 255, 0.35)',
-        'glow-blue': '0 0 25px rgba(0, 112, 243, 0.4)',
-        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.37)',
+        'soft': '0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04)',
+        'card': '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1)',
+        'card-hover': '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
+        'nav': '0 1px 3px 0 rgba(0, 0, 0, 0.06)',
       },
       animation: {
-        'pulse-glow': 'pulseGlow 3s infinite ease-in-out',
-        'float': 'float 6s ease-in-out infinite',
-        'scanline': 'scanline 8s linear infinite',
-        'radar-spin': 'radarSpin 10s linear infinite',
+        'fade-in': 'fadeIn 0.5s ease-out',
+        'slide-up': 'slideUp 0.5s ease-out',
       },
       keyframes: {
-        pulseGlow: {
-          '0%, 100%': { boxShadow: '0 0 15px rgba(0, 240, 255, 0.2)' },
-          '50%': { boxShadow: '0 0 35px rgba(0, 240, 255, 0.6)' },
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
         },
-        float: {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-12px)' },
+        slideUp: {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
         },
-        scanline: {
-          '0%': { transform: 'translateY(-100%)' },
-          '100%': { transform: 'translateY(1000%)' },
-        },
-        radarSpin: {
-          '0%': { transform: 'rotate(0deg)' },
-          '100%': { transform: 'rotate(360deg)' },
-        }
-      }
+      },
     },
   },
   plugins: [],

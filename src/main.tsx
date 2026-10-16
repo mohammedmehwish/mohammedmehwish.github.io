@@ -23,23 +23,23 @@ class ErrorBoundary extends Component<Props, State> {
   }
 
   public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.error('Uncaught error in portfolio:', error, errorInfo);
+    console.error('Portfolio error:', error, errorInfo);
   }
 
   public render() {
     if (this.state.hasError) {
       return (
-        <div style={{ padding: '40px', background: '#070b19', color: '#00f0ff', fontFamily: 'monospace', minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
-          <h2 style={{ fontSize: '24px', marginBottom: '16px' }}>SYSTEM RECOVERY INITIALIZED</h2>
-          <p style={{ color: '#94a3b8', marginBottom: '24px' }}>An unexpected interface event was intercepted.</p>
-          <pre style={{ background: '#0f172a', padding: '16px', borderRadius: '8px', border: '1px solid rgba(0,240,255,0.3)', color: '#f43f5e', maxWidth: '600px', overflowX: 'auto', marginBottom: '24px', textAlign: 'left' }}>
+        <div style={{ padding: '40px', background: '#ffffff', color: '#1e293b', fontFamily: 'Inter, system-ui, sans-serif', minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
+          <h2 style={{ fontSize: '24px', marginBottom: '12px', fontWeight: 700 }}>Something went wrong</h2>
+          <p style={{ color: '#64748b', marginBottom: '24px', maxWidth: '400px' }}>An unexpected error occurred while loading the portfolio. Please try refreshing the page.</p>
+          <pre style={{ background: '#f8fafc', padding: '16px', borderRadius: '8px', border: '1px solid #e2e8f0', color: '#ef4444', maxWidth: '600px', overflowX: 'auto', marginBottom: '24px', textAlign: 'left', fontSize: '13px' }}>
             {this.state.error?.toString()}
           </pre>
           <button
             onClick={() => window.location.reload()}
-            style={{ padding: '12px 24px', background: '#00f0ff', color: '#070b19', border: 'none', borderRadius: '8px', fontWeight: 'bold', cursor: 'pointer', fontFamily: 'monospace' }}
+            style={{ padding: '12px 24px', background: '#2563eb', color: '#ffffff', border: 'none', borderRadius: '8px', fontWeight: 600, cursor: 'pointer', fontSize: '14px' }}
           >
-            REBOOT SYSTEM (RELOAD)
+            Refresh Page
           </button>
         </div>
       );
@@ -56,4 +56,3 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     </ErrorBoundary>
   </React.StrictMode>,
 );
-

@@ -1,129 +1,119 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Cpu, Bot, Eye, Cog, MapPin, Mail, Award, GraduationCap } from 'lucide-react';
+import { MapPin, GraduationCap, Mail, Cpu, Bot, Eye, Settings } from 'lucide-react';
 import { PERSONAL_INFO } from '../../data/portfolioData';
 
 export const AboutSection: React.FC = () => {
+  const INFO_ITEMS = [
+    {
+      icon: MapPin,
+      label: 'Location',
+      value: PERSONAL_INFO.location,
+    },
+    {
+      icon: GraduationCap,
+      label: 'Degree',
+      value: 'B.E. Mechatronics',
+    },
+    {
+      icon: Mail,
+      label: 'Email',
+      value: PERSONAL_INFO.email,
+    },
+    {
+      icon: Cpu,
+      label: 'Specialization',
+      value: 'Robotics & Embedded',
+    },
+  ];
+
   const HIGHLIGHT_CARDS = [
     {
       icon: Cpu,
-      title: "Embedded Systems",
-      description: "Microcontroller firmware development using C/C++, Arduino, ESP32, multi-sensor interfacing, and hardware communication protocols (I2C, SPI, UART)."
+      title: 'Embedded Systems',
+      description: 'Arduino, ESP32, STM32, microcontroller firmware, sensor integration, and reliable hardware protocols.',
     },
     {
       icon: Bot,
-      title: "Robotics & Controls",
-      description: "Autonomous robot navigation, motor actuation, kinematic control, trajectory planning, and hardware-in-the-loop sensor fusion."
+      title: 'Robotics',
+      description: 'Autonomous systems, ROS 2, robot control algorithms, obstacle avoidance, and kinematics.',
     },
     {
       icon: Eye,
-      title: "Computer Vision & AI",
-      description: "Real-time object detection models utilizing OpenCV, YOLO, and Python deep learning pipelines for safety and surveillance."
+      title: 'Computer Vision',
+      description: 'OpenCV, YOLO object detection, deep learning pipelines, and real-time image processing.',
     },
     {
-      icon: Cog,
-      title: "Industrial Automation",
-      description: "PLC ladder logic programming, SCADA supervisory dashboards, HMI control panels, and VFD variable frequency motor drives."
-    }
+      icon: Settings,
+      title: 'Industrial Automation',
+      description: 'PLC ladder programming, SCADA supervisory control, HMI dashboards, and VFD drives.',
+    },
   ];
 
   return (
-    <section id="about" className="relative py-24 bg-slate-950/40 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-16 space-y-3"
-        >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyber-cyan/10 border border-cyber-cyan/30 text-cyber-cyan font-mono text-xs uppercase tracking-widest">
-            <span className="w-1.5 h-1.5 rounded-full bg-cyber-cyan" />
-            ENGINEERING PROFILE
-          </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-            About <span className="cyber-gradient-text">Mohammed Mehwish</span>
-          </h2>
-          <p className="text-slate-400 font-mono text-sm">
-            Bridging hardware, software, and artificial intelligence to build the future of robotics.
+    <section id="about" className="section-padding bg-slate-50 dark:bg-slate-900 transition-colors">
+      <div className="section-container">
+        {/* Section Title Header */}
+        <div className="text-center mb-16">
+          <p className="section-label">About Me</p>
+          <h2 className="section-title">Background & Core Expertise</h2>
+          <p className="section-subtitle">
+            Bridging hardware, software, and intelligence to build robust autonomous solutions.
           </p>
-        </motion.div>
+        </div>
 
-        {/* Main Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
-          
-          {/* Bio Glass Card */}
+        {/* Two-Column Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          {/* Left Column: Summary and Quick Info Grid */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="lg:col-span-6 glass-panel p-8 rounded-2xl border border-cyber-cyan/20 flex flex-col justify-between"
+            transition={{ duration: 0.5 }}
+            className="space-y-8"
           >
-            <div className="space-y-6">
-              <h3 className="text-xl font-bold font-mono text-cyber-cyan flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-sm bg-cyber-cyan" />
-                EXECUTIVE SUMMARY
+            <div className="space-y-4">
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-white">
+                Passionate Engineer with Hands-On Industry Experience
               </h3>
-
-              <p className="text-slate-300 leading-relaxed text-base sm:text-lg font-sans">
+              <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-base">
                 {PERSONAL_INFO.aboutSummary}
               </p>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
-                <div className="flex items-center gap-3 p-3.5 rounded-xl bg-slate-900/60 border border-slate-800">
-                  <MapPin className="w-5 h-5 text-cyber-cyan shrink-0" />
-                  <div>
-                    <div className="text-[11px] font-mono text-slate-400">LOCATION</div>
-                    <div className="text-sm font-semibold text-slate-200">{PERSONAL_INFO.location}</div>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-3 p-3.5 rounded-xl bg-slate-900/60 border border-slate-800">
-                  <GraduationCap className="w-5 h-5 text-cyber-cyan shrink-0" />
-                  <div>
-                    <div className="text-[11px] font-mono text-slate-400">DEGREE</div>
-                    <div className="text-sm font-semibold text-slate-200">B.E. Mechatronics</div>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-3 p-3.5 rounded-xl bg-slate-900/60 border border-slate-800">
-                  <Mail className="w-5 h-5 text-cyber-cyan shrink-0" />
-                  <div className="truncate">
-                    <div className="text-[11px] font-mono text-slate-400">EMAIL</div>
-                    <div className="text-xs font-semibold text-slate-200 truncate">{PERSONAL_INFO.email}</div>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-3 p-3.5 rounded-xl bg-slate-900/60 border border-slate-800">
-                  <Award className="w-5 h-5 text-cyber-cyan shrink-0" />
-                  <div>
-                    <div className="text-[11px] font-mono text-slate-400">SPECIALIZATION</div>
-                    <div className="text-xs font-semibold text-slate-200">Robotics & Vision</div>
-                  </div>
-                </div>
-              </div>
+              <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-base">
+                Whether deploying SLAM navigation for mobile robots or developing real-time neural network detection models, I focus on clean code, solid engineering fundamentals, and high reliability.
+              </p>
             </div>
 
-            <div className="mt-8 pt-6 border-t border-slate-800 flex items-center justify-between">
-              <span className="text-xs font-mono text-slate-400">STATUS: OPEN FOR NEW OPPORTUNITIES</span>
-              <a
-                href={PERSONAL_INFO.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs font-mono font-semibold text-cyber-cyan hover:underline"
-              >
-                CONNECT ON LINKEDIN &rarr;
-              </a>
+            {/* 2x2 Info Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+              {INFO_ITEMS.map((item, idx) => {
+                const IconComponent = item.icon;
+                return (
+                  <div
+                    key={idx}
+                    className="p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-card flex items-center gap-3.5"
+                  >
+                    <div className="p-2.5 rounded-lg bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 shrink-0">
+                      <IconComponent className="w-5 h-5" />
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-xs font-medium text-slate-500 dark:text-slate-400">
+                        {item.label}
+                      </p>
+                      <p className="text-sm font-semibold text-slate-900 dark:text-white truncate">
+                        {item.value}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </motion.div>
 
-          {/* Highlight Cards Grid */}
-          <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {/* Right Column: 4 Highlight Cards in 2x2 Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {HIGHLIGHT_CARDS.map((card, idx) => {
-              const Icon = card.icon;
+              const CardIcon = card.icon;
               return (
                 <motion.div
                   key={card.title}
@@ -131,16 +121,16 @@ export const AboutSection: React.FC = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  className="glass-panel p-6 rounded-2xl border border-cyber-cyan/15 hover:border-cyber-cyan/50 hover:shadow-glow-cyan transition-all group flex flex-col justify-between"
+                  className="pro-card p-6 flex flex-col justify-between"
                 >
-                  <div className="space-y-3">
-                    <div className="w-10 h-10 rounded-xl bg-cyber-card border border-cyber-cyan/30 flex items-center justify-center text-cyber-cyan group-hover:scale-110 group-hover:bg-cyber-cyan group-hover:text-slate-950 transition-all">
-                      <Icon className="w-5 h-5" />
+                  <div>
+                    <div className="w-12 h-12 rounded-lg bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-4">
+                      <CardIcon className="w-6 h-6" />
                     </div>
-                    <h4 className="text-lg font-bold font-mono text-white group-hover:text-cyber-cyan transition-colors">
+                    <h4 className="text-lg font-bold text-slate-900 dark:text-white mb-2">
                       {card.title}
                     </h4>
-                    <p className="text-xs font-sans text-slate-300 leading-relaxed">
+                    <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                       {card.description}
                     </p>
                   </div>
@@ -148,7 +138,6 @@ export const AboutSection: React.FC = () => {
               );
             })}
           </div>
-
         </div>
       </div>
     </section>

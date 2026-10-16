@@ -1,6 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
-import { Github, Star, GitFork, Calendar, Search, Filter, ExternalLink, Code2, Users, FolderGit2, Activity, RefreshCw } from 'lucide-react';
+import {
+  Github,
+  Star,
+  GitFork,
+  ExternalLink,
+  Search,
+  Loader2,
+  BookOpen,
+  Users,
+  Code,
+  Calendar,
+} from 'lucide-react';
 import { fetchGitHubProfile, fetchGitHubRepos, computeGitHubStats } from '../../services/github';
 import { GitHubUser, GitHubRepo, GitHubStats } from '../../types';
 import { PERSONAL_INFO } from '../../data/portfolioData';
@@ -11,310 +22,379 @@ export const GitHubSection: React.FC = () => {
   const [stats, setStats] = useState<GitHubStats | null>(null);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedLanguage, setSelectedLanguage] = useState<string>('all');
+  const [selectedLanguage, setSelectedLanguage] = useState('all');
   const [sortBy, setSortBy] = useState<'stars' | 'updated' | 'name'>('stars');
 
   useEffect(() => {
-    async function loadGitHubData() {
-      setLoading(true);
-      const profileData = await fetchGitHubProfile(PERSONAL_INFO.githubUsername);
-      const reposData = await fetchGitHubRepos(PERSONAL_INFO.githubUsername);
-      const computedStats = computeGitHubStats(reposData);
+    let isMounted = true;
+    async function loadData() {
+      try {
+        setLoading(true);
+        const [profileData, reposData] = await Promise.all([
+          fetchGitHubProfile(PERSONAL_INFO.githubUsername),
+          fetchGitHubRepos(PERSONAL_INFO.githubUsername),
+        ]);
 
-      setProfile(profileData);
-      setRepos(reposData);
-      setStats(computedStats);
-      setLoading(false);
+        if (isMounted) {
+          setProfile(profileData);
+          setRepos(reposData);
+          setStats(computeGitHubStats(reposData));
+        }
+      } catch (err) {
+        console.error('Failed to load GitHub activity', err);
+      } finally {
+        if (isMounted) {
+          setLoading(false);
+        }
+      }
     }
 
-    loadGitHubData();
+    loadData();
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
-  // Filter & Sort Repositories
-  const languagesList = Array.from(new Set(repos.map(r => r.language).filter(Boolean))) as string[];
+  const languages = useMemo(() => {
+    const set = new Set<string>();
+    repos.forEach((r) => {
+      if (r.language) set.add(r.language);
+    });
+    return Array.from(set).sort();
+  }, [repos]);
 
-  const filteredRepos = repos.filter(repo => {
-    const matchesSearch = repo.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      (repo.description && repo.description.toLowerCase().includes(searchQuery.toLowerCase()));
-    const matchesLang = selectedLanguage === 'all' || repo.language === selectedLanguage;
-    return matchesSearch && matchesLang;
-  }).sort((a, b) => {
-    if (sortBy === 'stars') return b.stargazers_count - a.stargazers_count;
-    if (sortBy === 'updated') return new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime();
-    if (sortBy === 'name') return a.name.localeCompare(b.name);
-    return 0;
-  });
+  const filteredRepos = useMemo(() => {
+    return repos
+      .filter((repo) => {
+        const matchesSearch =
+          repo.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          (repo.description &&
+            repo.description.toLowerCase().includes(searchQuery.toLowerCase()));
+        const matchesLang =
+          selectedLanguage === 'all' || repo.language === selectedLanguage;
+        return matchesSearch && matchesLang;
+      })
+      .sort((a, b) => {
+        if (sortBy === 'stars') return b.stargazers_count - a.stargazers_count;
+        if (sortBy === 'updated') {
+          return new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime();
+        }
+        if (sortBy === 'name') return a.name.localeCompare(b.name);
+        return 0;
+      });
+  }, [repos, searchQuery, selectedLanguage, sortBy]);
 
   return (
-    <section id="github" className="relative py-24 bg-[#050814]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+    <section id="github" className="section-padding bg-slate-50 dark:bg-slate-900">
+      <div className="section-container">
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-16 space-y-3"
-        >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyber-cyan/10 border border-cyber-cyan/30 text-cyber-cyan font-mono text-xs uppercase tracking-widest">
-            <span className="w-1.5 h-1.5 rounded-full bg-cyber-cyan" />
-            OPEN SOURCE ACTIVITY
-          </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-            GitHub <span className="cyber-gradient-text">Ecosystem</span>
-          </h2>
-          <p className="text-slate-400 font-mono text-sm">
-            Live repositories, metrics, top languages, and contribution analytics fetched from GitHub API.
+        <div className="text-center mb-16">
+          <p className="section-label">Open Source & Code</p>
+          <h2 className="section-title">GitHub Activity</h2>
+          <p className="section-subtitle">
+            Real-time repository metrics, top programming languages, and recent contributions powered by the GitHub API.
           </p>
-        </motion.div>
+        </div>
 
-        {/* Profile Stats Summary Panel */}
+        {/* Profile Summary & Stats */}
         {profile && stats && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="glass-panel p-6 sm:p-8 rounded-3xl border border-cyber-cyan/30 mb-12 shadow-glow-cyan"
-          >
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-              
-              {/* Profile Bio */}
-              <div className="lg:col-span-5 flex items-center gap-5">
+          <div className="space-y-6 mb-12">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+              {/* Profile Card */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="lg:col-span-6 pro-card p-6 flex flex-col sm:flex-row items-center sm:items-start gap-5"
+              >
                 <img
                   src={profile.avatar_url}
-                  alt={profile.name}
-                  className="w-20 h-20 rounded-2xl border-2 border-cyber-cyan shadow-glow-cyan object-cover"
+                  alt={profile.name || profile.login}
+                  className="w-20 h-20 rounded-full border-2 border-blue-600/30 object-cover shadow-sm shrink-0"
                 />
-                <div className="space-y-1">
-                  <div className="flex items-center gap-2">
-                    <h3 className="text-xl font-bold font-mono text-white">{profile.name || profile.login}</h3>
+                <div className="flex-1 text-center sm:text-left">
+                  <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
+                    <h3 className="text-xl font-bold text-slate-900 dark:text-white">
+                      {profile.name || profile.login}
+                    </h3>
+                    <span className="text-xs text-slate-500 dark:text-slate-400">
+                      @{profile.login}
+                    </span>
+                  </div>
+                  <p className="text-sm text-slate-600 dark:text-slate-300 mt-1 leading-relaxed">
+                    {profile.bio || PERSONAL_INFO.aboutSummary}
+                  </p>
+                  <div className="mt-4">
                     <a
                       href={profile.html_url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-cyber-cyan hover:scale-110 transition-transform"
+                      className="btn-primary py-2 px-4 text-xs inline-flex items-center gap-1.5"
                     >
-                      <ExternalLink className="w-4 h-4" />
+                      <Github className="w-3.5 h-3.5" />
+                      <span>View GitHub Profile</span>
+                      <ExternalLink className="w-3 h-3 ml-0.5" />
                     </a>
                   </div>
-                  <p className="text-xs font-mono text-cyber-sky">@{profile.login}</p>
-                  <p className="text-xs font-sans text-slate-300 line-clamp-2">{profile.bio}</p>
                 </div>
+              </motion.div>
+
+              {/* 4 Stats Cards */}
+              <div className="lg:col-span-6 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-2 gap-4">
+                {[
+                  {
+                    label: 'Public Repos',
+                    value: profile.public_repos ?? stats.totalRepos,
+                    icon: BookOpen,
+                  },
+                  {
+                    label: 'Total Stars',
+                    value: stats.totalStars,
+                    icon: Star,
+                  },
+                  {
+                    label: 'Total Forks',
+                    value: stats.totalForks,
+                    icon: GitFork,
+                  },
+                  {
+                    label: 'Followers',
+                    value: profile.followers ?? 0,
+                    icon: Users,
+                  },
+                ].map((stat, idx) => {
+                  const Icon = stat.icon;
+                  return (
+                    <motion.div
+                      key={stat.label}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: idx * 0.05 }}
+                      className="pro-card p-5 flex items-center gap-4"
+                    >
+                      <div className="w-12 h-12 rounded-xl bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0">
+                        <Icon className="w-6 h-6" />
+                      </div>
+                      <div>
+                        <p className="text-2xl font-bold text-slate-900 dark:text-white">
+                          {stat.value}
+                        </p>
+                        <p className="text-xs font-medium text-slate-500 dark:text-slate-400">
+                          {stat.label}
+                        </p>
+                      </div>
+                    </motion.div>
+                  );
+                })}
               </div>
-
-              {/* Stats Metrics Grid */}
-              <div className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-4 gap-4">
-                <div className="bg-slate-900/80 p-3.5 rounded-xl border border-slate-800 text-center">
-                  <FolderGit2 className="w-5 h-5 text-cyber-cyan mx-auto mb-1" />
-                  <div className="text-xl font-bold font-mono text-white">{stats.totalRepos}</div>
-                  <div className="text-[10px] font-mono text-slate-400 uppercase">Public Repos</div>
-                </div>
-
-                <div className="bg-slate-900/80 p-3.5 rounded-xl border border-slate-800 text-center">
-                  <Star className="w-5 h-5 text-amber-400 mx-auto mb-1" />
-                  <div className="text-xl font-bold font-mono text-white">{stats.totalStars}</div>
-                  <div className="text-[10px] font-mono text-slate-400 uppercase">Total Stars</div>
-                </div>
-
-                <div className="bg-slate-900/80 p-3.5 rounded-xl border border-slate-800 text-center">
-                  <GitFork className="w-5 h-5 text-cyber-sky mx-auto mb-1" />
-                  <div className="text-xl font-bold font-mono text-white">{stats.totalForks}</div>
-                  <div className="text-[10px] font-mono text-slate-400 uppercase">Forks</div>
-                </div>
-
-                <div className="bg-slate-900/80 p-3.5 rounded-xl border border-slate-800 text-center">
-                  <Users className="w-5 h-5 text-emerald-400 mx-auto mb-1" />
-                  <div className="text-xl font-bold font-mono text-white">{profile.followers}</div>
-                  <div className="text-[10px] font-mono text-slate-400 uppercase">Followers</div>
-                </div>
-              </div>
-
             </div>
 
-            {/* Top Languages Progress Bar */}
-            <div className="mt-8 pt-6 border-t border-slate-800/80 space-y-3">
-              <div className="flex items-center justify-between text-xs font-mono">
-                <span className="text-cyber-cyan font-bold flex items-center gap-1.5">
-                  <Code2 className="w-4 h-4" />
-                  PRIMARY PROGRAMMING LANGUAGES
+            {/* Top Languages Bar */}
+            {stats.topLanguages.length > 0 && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="pro-card p-6"
+              >
+                <div className="flex items-center justify-between mb-3">
+                  <h4 className="text-sm font-semibold text-slate-900 dark:text-white uppercase tracking-wider flex items-center gap-2">
+                    <Code className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                    <span>Top Languages</span>
+                  </h4>
+                  <span className="text-xs text-slate-500 dark:text-slate-400">
+                    Based on public repositories
+                  </span>
+                </div>
+
+                {/* Stacked Horizontal Bar */}
+                <div className="h-3 w-full bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden flex">
+                  {stats.topLanguages.map((lang) => (
+                    <div
+                      key={lang.name}
+                      style={{
+                        width: `${lang.percentage}%`,
+                        backgroundColor: lang.color || '#2563eb',
+                      }}
+                      title={`${lang.name}: ${lang.percentage}%`}
+                      className="h-full transition-all duration-500"
+                    />
+                  ))}
+                </div>
+
+                {/* Legend */}
+                <div className="flex flex-wrap items-center gap-x-5 gap-y-2 mt-4 pt-2">
+                  {stats.topLanguages.map((lang) => (
+                    <div key={lang.name} className="flex items-center gap-2 text-xs">
+                      <span
+                        className="w-2.5 h-2.5 rounded-full"
+                        style={{ backgroundColor: lang.color || '#2563eb' }}
+                      />
+                      <span className="font-medium text-slate-700 dark:text-slate-300">
+                        {lang.name}
+                      </span>
+                      <span className="text-slate-400 dark:text-slate-500">
+                        {lang.percentage}%
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+
+            {/* Contribution Heatmap */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="pro-card p-6"
+            >
+              <div className="flex items-center justify-between mb-4">
+                <h4 className="text-sm font-semibold text-slate-900 dark:text-white uppercase tracking-wider">
+                  Contribution Heatmap
+                </h4>
+                <span className="text-xs text-slate-500 dark:text-slate-400">
+                  Annual contribution graph
                 </span>
-                <span className="text-slate-400">COMPUTED FROM PUBLIC REPOSITORIES</span>
               </div>
-
-              {/* Stacked Multi-color Bar */}
-              <div className="h-3 w-full bg-slate-900 rounded-full overflow-hidden flex">
-                {stats.topLanguages.map((lang) => (
-                  <div
-                    key={lang.name}
-                    style={{ width: `${lang.percentage}%`, backgroundColor: lang.color }}
-                    className="h-full first:rounded-l-full last:rounded-r-full transition-all"
-                    title={`${lang.name}: ${lang.percentage}%`}
-                  />
-                ))}
+              <div className="overflow-x-auto pb-2">
+                <img
+                  src={`https://ghchart.rshah.org/2563eb/${PERSONAL_INFO.githubUsername}`}
+                  alt={`${PERSONAL_INFO.githubUsername}'s GitHub Contributions`}
+                  className="min-w-[680px] w-full max-w-full rounded"
+                  loading="lazy"
+                />
               </div>
-
-              {/* Legend Badges */}
-              <div className="flex flex-wrap items-center gap-4 pt-1">
-                {stats.topLanguages.map((lang) => (
-                  <div key={lang.name} className="flex items-center gap-1.5 text-xs font-mono text-slate-300">
-                    <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: lang.color }} />
-                    <span className="font-semibold">{lang.name}</span>
-                    <span className="text-slate-400 text-[11px]">{lang.percentage}%</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
         )}
 
-        {/* Contribution Graph Heatmap Widget */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="glass-panel p-6 rounded-2xl border border-cyber-cyan/20 mb-12 space-y-4"
-        >
-          <div className="flex items-center justify-between">
-            <h3 className="text-sm font-bold font-mono text-cyber-cyan flex items-center gap-2">
-              <Activity className="w-4 h-4 text-cyber-cyan" />
-              CONTRIBUTION HEATMAP & ACTIVITY MATRIX
-            </h3>
-            <span className="text-[11px] font-mono text-slate-400">@mohammedmehwish</span>
-          </div>
-
-          <div className="overflow-x-auto pb-2">
-            <img
-              src={`https://ghchart.rshah.org/00f0ff/${PERSONAL_INFO.githubUsername}`}
-              alt="GitHub Contribution Heatmap"
-              className="w-full min-w-[700px] h-auto rounded-lg filter drop-shadow-[0_0_10px_rgba(0,240,255,0.2)]"
-              onError={(e) => {
-                // Fallback graphic if chart server is unreachable
-                (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop";
-              }}
-            />
-          </div>
-        </motion.div>
-
-        {/* Search, Filter & Sort Controls */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-8 bg-cyber-card/60 p-4 rounded-2xl border border-cyber-cyan/20">
-          
-          {/* Search Box */}
-          <div className="relative w-full md:w-80">
-            <Search className="w-4 h-4 text-cyber-cyan absolute left-3.5 top-1/2 -translate-y-1/2" />
+        {/* Filter and Search Bar */}
+        <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 mb-8">
+          {/* Search box */}
+          <div className="relative flex-1 max-w-md">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
             <input
               type="text"
               placeholder="Search repositories..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-slate-900 border border-slate-700 rounded-xl pl-10 pr-4 py-2 text-xs font-mono text-slate-200 placeholder-slate-500 focus:outline-none focus:border-cyber-cyan focus:ring-1 focus:ring-cyber-cyan"
+              className="w-full bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-lg pl-9 pr-4 py-2.5 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
             />
           </div>
 
-          {/* Language Filter Dropdown */}
-          <div className="flex flex-wrap items-center gap-3 w-full md:w-auto">
-            <div className="flex items-center gap-1.5 text-xs font-mono text-slate-300">
-              <Filter className="w-3.5 h-3.5 text-cyber-cyan" />
-              <span>Language:</span>
-              <select
-                value={selectedLanguage}
-                onChange={(e) => setSelectedLanguage(e.target.value)}
-                className="bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs font-mono text-cyber-cyan focus:outline-none focus:border-cyber-cyan"
-              >
-                <option value="all">All Languages</option>
-                {languagesList.map(lang => (
-                  <option key={lang} value={lang}>{lang}</option>
-                ))}
-              </select>
-            </div>
+          {/* Filter Dropdowns */}
+          <div className="flex items-center gap-3">
+            <select
+              value={selectedLanguage}
+              onChange={(e) => setSelectedLanguage(e.target.value)}
+              className="bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-lg px-3 py-2.5 text-sm text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            >
+              <option value="all">All Languages</option>
+              {languages.map((lang) => (
+                <option key={lang} value={lang}>
+                  {lang}
+                </option>
+              ))}
+            </select>
 
-            {/* Sort Dropdown */}
-            <div className="flex items-center gap-1.5 text-xs font-mono text-slate-300">
-              <span>Sort by:</span>
-              <select
-                value={sortBy}
-                onChange={(e) => setSortBy(e.target.value as any)}
-                className="bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs font-mono text-cyber-cyan focus:outline-none focus:border-cyber-cyan"
-              >
-                <option value="stars">Most Stars</option>
-                <option value="updated">Recently Updated</option>
-                <option value="name">Name (A-Z)</option>
-              </select>
-            </div>
+            <select
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value as 'stars' | 'updated' | 'name')}
+              className="bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-lg px-3 py-2.5 text-sm text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            >
+              <option value="stars">Most Stars</option>
+              <option value="updated">Recently Updated</option>
+              <option value="name">Repository Name</option>
+            </select>
           </div>
-
         </div>
 
-        {/* Repositories Card Grid */}
+        {/* Repos Grid */}
         {loading ? (
-          <div className="text-center py-12 font-mono text-cyber-cyan flex items-center justify-center gap-2">
-            <RefreshCw className="w-5 h-5 animate-spin" />
-            <span>FETCHING LIVE GITHUB REPOSITORIES...</span>
+          <div className="py-20 flex flex-col items-center justify-center gap-3">
+            <Loader2 className="w-8 h-8 text-blue-600 dark:text-blue-400 animate-spin" />
+            <p className="text-sm text-slate-500 dark:text-slate-400">Loading GitHub repositories...</p>
+          </div>
+        ) : filteredRepos.length === 0 ? (
+          <div className="pro-card p-12 text-center max-w-md mx-auto">
+            <BookOpen className="w-10 h-10 text-slate-400 mx-auto mb-3" />
+            <h4 className="text-base font-semibold text-slate-900 dark:text-white">
+              No repositories found
+            </h4>
+            <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
+              Try adjusting your search query or language filter.
+            </p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredRepos.map((repo) => (
+            {filteredRepos.map((repo, idx) => (
               <motion.div
                 key={repo.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4 }}
-                className="glass-panel p-6 rounded-2xl border border-cyber-cyan/20 hover:border-cyber-cyan/60 hover:shadow-glow-cyan transition-all flex flex-col justify-between group"
+                transition={{ duration: 0.4, delay: idx * 0.05 }}
+                className="pro-card p-6 flex flex-col justify-between"
               >
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between">
-                    <h3 className="text-base font-bold font-mono text-white group-hover:text-cyber-cyan transition-colors truncate max-w-[200px]">
-                      {repo.name}
-                    </h3>
-                    <span className="px-2.5 py-1 rounded bg-cyber-cyan/15 border border-cyber-cyan/30 text-[10px] font-mono font-semibold text-cyber-cyan">
-                      {repo.language || 'Embedded'}
-                    </span>
+                <div>
+                  <div className="flex items-start justify-between gap-2 mb-2">
+                    <h4 className="font-semibold text-slate-900 dark:text-white text-base hover:text-blue-600 dark:hover:text-blue-400 transition-colors line-clamp-1">
+                      <a href={repo.html_url} target="_blank" rel="noopener noreferrer">
+                        {repo.name}
+                      </a>
+                    </h4>
+                    {repo.language && (
+                      <span className="badge text-xs px-2.5 py-0.5 shrink-0">
+                        {repo.language}
+                      </span>
+                    )}
                   </div>
 
-                  <p className="text-xs font-sans text-slate-300 line-clamp-3 leading-relaxed">
-                    {repo.description || 'Engineering & Mechatronics codebase repository.'}
+                  <p className="text-sm text-slate-600 dark:text-slate-300 line-clamp-2 my-2 leading-relaxed">
+                    {repo.description || 'No description provided.'}
                   </p>
                 </div>
 
-                <div className="space-y-4 pt-4 border-t border-slate-800/80 mt-4">
-                  {/* Repo Metrics: Stars, Forks, Date */}
-                  <div className="flex items-center justify-between text-xs font-mono text-slate-400">
-                    <div className="flex items-center gap-3">
-                      <span className="flex items-center gap-1 text-amber-400 font-semibold">
-                        <Star className="w-3.5 h-3.5 fill-amber-400" />
-                        {repo.stargazers_count}
+                <div className="pt-4 mt-3 border-t border-slate-100 dark:border-slate-700/60 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
+                  <div className="flex items-center gap-3">
+                    <span className="flex items-center gap-1" title="Stars">
+                      <Star className="w-3.5 h-3.5 text-amber-500" />
+                      <span>{repo.stargazers_count}</span>
+                    </span>
+                    <span className="flex items-center gap-1" title="Forks">
+                      <GitFork className="w-3.5 h-3.5 text-slate-400" />
+                      <span>{repo.forks_count}</span>
+                    </span>
+                    <span className="flex items-center gap-1" title="Updated date">
+                      <Calendar className="w-3.5 h-3.5 text-slate-400" />
+                      <span>
+                        {new Date(repo.updated_at).toLocaleDateString(undefined, {
+                          month: 'short',
+                          year: 'numeric',
+                        })}
                       </span>
-                      <span className="flex items-center gap-1 text-cyber-sky">
-                        <GitFork className="w-3.5 h-3.5" />
-                        {repo.forks_count}
-                      </span>
-                    </div>
-
-                    <span className="flex items-center gap-1 text-[11px] text-slate-400">
-                      <Calendar className="w-3 h-3" />
-                      {new Date(repo.updated_at).toLocaleDateString(undefined, { month: 'short', year: 'numeric' })}
                     </span>
                   </div>
 
-                  {/* View on GitHub CTA */}
                   <a
                     href={repo.html_url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-slate-200 hover:text-slate-950 hover:bg-cyber-cyan hover:border-cyber-cyan text-xs font-mono font-bold flex items-center justify-center gap-2 transition-all shadow-sm"
+                    className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium inline-flex items-center gap-1 transition-colors"
                   >
-                    <Github className="w-4 h-4" />
-                    <span>VIEW ON GITHUB</span>
+                    <span>View</span>
+                    <ExternalLink className="w-3 h-3" />
                   </a>
                 </div>
               </motion.div>
             ))}
           </div>
         )}
-
       </div>
     </section>
   );

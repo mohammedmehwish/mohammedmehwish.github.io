@@ -1,8 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { FileText, Download, Eye, CheckCircle2, ShieldCheck } from 'lucide-react';
-import { PERSONAL_INFO, EXPERIENCE_DATA, EDUCATION_DATA, SKILL_CATEGORIES } from '../../data/portfolioData';
-import { Modal } from '../common/Modal';
+import {
+  FileText,
+  Download,
+  Eye,
+  GraduationCap,
+  Briefcase,
+  Cpu,
+} from 'lucide-react';
+import {
+  PERSONAL_INFO,
+  EXPERIENCE_DATA,
+  EDUCATION_DATA,
+  SKILL_CATEGORIES,
+} from '../../data/portfolioData';
 
 interface ResumeSectionProps {
   onOpenModal: () => void;
@@ -10,128 +21,187 @@ interface ResumeSectionProps {
 
 export const ResumeSection: React.FC<ResumeSectionProps> = ({ onOpenModal }) => {
   const handleDownloadResume = () => {
-    // Generate a formatted print / PDF payload or download link
-    const element = document.createElement("a");
-    const file = new Blob([
-      `MOHAMMED MEHWISH V M
+    const resumeText = `MOHAMMED MEHWISH V M
 Robotics Engineer | Mechatronics Engineer | Embedded Systems Engineer
 Location: ${PERSONAL_INFO.location}
 Email: ${PERSONAL_INFO.email}
 LinkedIn: ${PERSONAL_INFO.linkedin}
 GitHub: ${PERSONAL_INFO.github}
 
-SUMMARY:
+==================================================
+PROFESSIONAL SUMMARY
+==================================================
 ${PERSONAL_INFO.aboutSummary}
 
-EDUCATION:
-- ${EDUCATION_DATA.degree} in ${EDUCATION_DATA.major} (${EDUCATION_DATA.period})
-  ${EDUCATION_DATA.institution}, ${EDUCATION_DATA.location}
+==================================================
+EDUCATION
+==================================================
+${EDUCATION_DATA.degree} in ${EDUCATION_DATA.major} (${EDUCATION_DATA.period})
+${EDUCATION_DATA.institution}, ${EDUCATION_DATA.location}
+Highlights:
+${EDUCATION_DATA.highlights.map((h) => `• ${h}`).join('\n')}
 
-EXPERIENCE:
-- ${EXPERIENCE_DATA[0].role} at ${EXPERIENCE_DATA[0].company} (${EXPERIENCE_DATA[0].period})
-  Achievements:
-  * ${EXPERIENCE_DATA[0].achievements.join('\n  * ')}
+==================================================
+EXPERIENCE
+==================================================
+${EXPERIENCE_DATA.map(
+  (exp) => `${exp.role} — ${exp.company}
+Period: ${exp.period} | Location: ${exp.location}
+Description: ${exp.description}
+Key Achievements:
+${exp.achievements.map((a) => `• ${a}`).join('\n')}
+Skills: ${exp.skills.join(', ')}`
+).join('\n\n')}
 
-SKILLS:
-- Embedded Systems: Arduino, ESP32, Microcontrollers, Sensors, Electronics
-- Robotics & Vision: OpenCV, YOLO, Deep Learning, Robot Control
-- Automation: PLC, SCADA, HMI, VFD
-- CAD & Tools: SolidWorks, Fusion 360, C, Python, Embedded C, Git, Linux
-`
-    ], { type: 'text/plain;charset=utf-8' });
+==================================================
+TECHNICAL SKILLS
+==================================================
+${SKILL_CATEGORIES.map(
+  (cat) => `• ${cat.title}: ${cat.skills.map((s) => s.name).join(', ')}`
+).join('\n')}
+`;
+
+    const element = document.createElement('a');
+    const file = new Blob([resumeText], { type: 'text/plain;charset=utf-8' });
     element.href = URL.createObjectURL(file);
-    element.download = "Mohammed_Mehwish_Resume.txt";
+    element.download = 'Mohammed_Mehwish_Resume.txt';
     document.body.appendChild(element);
     element.click();
     document.body.removeChild(element);
+    URL.revokeObjectURL(element.href);
   };
 
   return (
-    <section id="resume" className="relative py-24 bg-slate-950/40">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Section Title */}
+    <section id="resume" className="section-padding bg-white dark:bg-slate-800">
+      <div className="section-container">
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <p className="section-label">Curriculum Vitae</p>
+          <h2 className="section-title">Resume</h2>
+          <p className="section-subtitle">
+            A comprehensive overview of academic qualifications, engineering experience, and technical capabilities.
+          </p>
+        </div>
+
+        {/* Centered Main Resume Card */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-16 space-y-3"
+          transition={{ duration: 0.5 }}
+          className="max-w-4xl mx-auto pro-card p-8 md:p-10"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyber-cyan/10 border border-cyber-cyan/30 text-cyber-cyan font-mono text-xs uppercase tracking-widest">
-            <span className="w-1.5 h-1.5 rounded-full bg-cyber-cyan" />
-            CURRICULUM VITAE
-          </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-            Engineering <span className="cyber-gradient-text">Resume</span>
-          </h2>
-          <p className="text-slate-400 font-mono text-sm">
-            Detailed breakdown of qualifications, academic background, and technical expertise.
-          </p>
-        </motion.div>
-
-        {/* Resume Preview Window */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="max-w-4xl mx-auto glass-panel p-8 sm:p-12 rounded-3xl border border-cyber-cyan/30 shadow-glow-cyan space-y-8"
-        >
-          {/* Top Bar Actions */}
-          <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-800 pb-6">
-            <div className="flex items-center gap-3">
-              <div className="p-3 rounded-xl bg-cyber-card border border-cyber-cyan/40 text-cyber-cyan">
-                <FileText className="w-6 h-6" />
+          {/* Header */}
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pb-8 border-b border-slate-200 dark:border-slate-700">
+            <div className="flex items-center gap-4">
+              <div className="w-14 h-14 rounded-full bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 shrink-0">
+                <FileText className="w-7 h-7" />
               </div>
               <div>
-                <h3 className="text-xl font-bold font-mono text-white">{PERSONAL_INFO.name}</h3>
-                <p className="text-xs font-mono text-cyber-cyan">{PERSONAL_INFO.title}</p>
+                <h3 className="text-2xl font-bold text-slate-900 dark:text-white">
+                  {PERSONAL_INFO.name}
+                </h3>
+                <p className="text-sm text-slate-600 dark:text-slate-400 mt-0.5">
+                  {PERSONAL_INFO.title}
+                </p>
               </div>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex flex-wrap items-center gap-3 w-full sm:w-auto">
               <button
                 onClick={onOpenModal}
-                className="px-4 py-2.5 rounded-xl bg-cyber-card border border-cyber-cyan/40 text-cyber-cyan hover:bg-cyber-cyan/10 font-mono font-semibold text-xs flex items-center gap-2 transition-all cursor-pointer"
+                className="btn-secondary flex-1 sm:flex-initial text-sm py-2.5 px-4"
               >
                 <Eye className="w-4 h-4" />
-                <span>INTERACTIVE PREVIEW</span>
+                <span>Preview Resume</span>
               </button>
-
               <button
                 onClick={handleDownloadResume}
-                className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyber-cyan to-cyber-blue text-slate-950 font-mono font-bold text-xs flex items-center gap-2 shadow-glow-cyan hover:scale-[1.02] transition-all cursor-pointer"
+                className="btn-primary flex-1 sm:flex-initial text-sm py-2.5 px-4"
               >
                 <Download className="w-4 h-4" />
-                <span>DOWNLOAD RESUME</span>
+                <span>Download Resume</span>
               </button>
             </div>
           </div>
 
-          {/* Document Summary Section */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
-            <div className="p-4 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-2">
-              <div className="text-xs font-mono text-cyber-sky uppercase">DEGREE</div>
-              <div className="text-sm font-bold text-white">B.E. Mechatronics Engineering</div>
-              <div className="text-[11px] font-mono text-slate-400">Hindusthan College of Engg</div>
+          {/* Summary Cards Row (3 Cards) */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-8">
+            {/* Degree Card */}
+            <div className="p-5 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700 flex flex-col justify-between">
+              <div>
+                <div className="w-10 h-10 rounded-lg bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-3">
+                  <GraduationCap className="w-5 h-5" />
+                </div>
+                <p className="text-xs font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wider">
+                  Degree
+                </p>
+                <h4 className="font-bold text-slate-900 dark:text-white text-base mt-1">
+                  {EDUCATION_DATA.degree}
+                </h4>
+                <p className="text-xs text-slate-600 dark:text-slate-300 mt-1 font-medium">
+                  {EDUCATION_DATA.major}
+                </p>
+              </div>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-3 pt-3 border-t border-slate-200 dark:border-slate-700/60">
+                {EDUCATION_DATA.institution} ({EDUCATION_DATA.period})
+              </p>
             </div>
 
-            <div className="p-4 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-2">
-              <div className="text-xs font-mono text-cyber-sky uppercase">INTERNSHIP</div>
-              <div className="text-sm font-bold text-white">Embedded Systems Intern</div>
-              <div className="text-[11px] font-mono text-slate-400">CSEED (July - Aug 2024)</div>
+            {/* Internship Card */}
+            <div className="p-5 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700 flex flex-col justify-between">
+              <div>
+                <div className="w-10 h-10 rounded-lg bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-3">
+                  <Briefcase className="w-5 h-5" />
+                </div>
+                <p className="text-xs font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wider">
+                  Experience
+                </p>
+                <h4 className="font-bold text-slate-900 dark:text-white text-base mt-1">
+                  {EXPERIENCE_DATA[0]?.role || 'Engineering Intern'}
+                </h4>
+                <p className="text-xs text-slate-600 dark:text-slate-300 mt-1 font-medium">
+                  {EXPERIENCE_DATA[0]?.company}
+                </p>
+              </div>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-3 pt-3 border-t border-slate-200 dark:border-slate-700/60">
+                {EXPERIENCE_DATA[0]?.location} ({EXPERIENCE_DATA[0]?.period})
+              </p>
             </div>
 
-            <div className="p-4 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-2">
-              <div className="text-xs font-mono text-cyber-sky uppercase">KEY DOMAINS</div>
-              <div className="text-sm font-bold text-white">Robotics, Vision, Automation</div>
-              <div className="text-[11px] font-mono text-slate-400">C, Python, Embedded C, PLC</div>
+            {/* Key Domains Card */}
+            <div className="p-5 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700 flex flex-col justify-between">
+              <div>
+                <div className="w-10 h-10 rounded-lg bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-3">
+                  <Cpu className="w-5 h-5" />
+                </div>
+                <p className="text-xs font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wider">
+                  Key Domains
+                </p>
+                <div className="flex flex-wrap gap-1.5 mt-2">
+                  <span className="badge text-xs px-2 py-0.5">Embedded C</span>
+                  <span className="badge text-xs px-2 py-0.5">ESP32 / Arduino</span>
+                  <span className="badge text-xs px-2 py-0.5">Computer Vision</span>
+                  <span className="badge text-xs px-2 py-0.5">PLC & SCADA</span>
+                  <span className="badge text-xs px-2 py-0.5">SolidWorks</span>
+                </div>
+              </div>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-3 pt-3 border-t border-slate-200 dark:border-slate-700/60">
+                Full-stack hardware & software integration
+              </p>
             </div>
           </div>
 
+          {/* Footer details */}
+          <div className="mt-8 pt-6 border-t border-slate-200 dark:border-slate-700 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-400">
+            <p>
+              Click <span className="font-semibold text-slate-700 dark:text-slate-300">Preview Resume</span> to inspect the complete interactive profile or <span className="font-semibold text-slate-700 dark:text-slate-300">Download</span> for an offline copy.
+            </p>
+            <span className="badge text-xs shrink-0">
+              Open to Opportunities
+            </span>
+          </div>
         </motion.div>
-
       </div>
     </section>
   );

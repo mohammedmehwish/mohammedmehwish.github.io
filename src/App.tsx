@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
-import { LoadingScreen } from './components/common/LoadingScreen';
-import { ParticleBackground } from './components/common/ParticleBackground';
-import { CustomCursor } from './components/common/CustomCursor';
-import { ScrollToTop } from './components/common/ScrollToTop';
 import { Navbar } from './components/common/Navbar';
 import { Footer } from './components/common/Footer';
+import { ScrollToTop } from './components/common/ScrollToTop';
 import { Modal } from './components/common/Modal';
 
 import { HeroSection } from './components/sections/HeroSection';
@@ -22,7 +19,6 @@ import { PERSONAL_INFO, EXPERIENCE_DATA, EDUCATION_DATA, SKILL_CATEGORIES } from
 import { FileText, Download, CheckCircle2 } from 'lucide-react';
 
 export function App() {
-  const [isLoading, setIsLoading] = useState(true);
   const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
 
   const handleDownloadResumeFile = () => {
@@ -62,21 +58,12 @@ SKILLS:
   };
 
   return (
-    <div className="relative min-h-screen bg-cyber-bg text-slate-100 selection:bg-cyber-cyan selection:text-cyber-bg overflow-x-hidden">
-      {/* Boot sequence loader */}
-      <LoadingScreen onComplete={() => setIsLoading(false)} />
-
-      {/* Interactive Circuit Particle Canvas Background */}
-      <ParticleBackground />
-
-      {/* Targeting Reticle Custom Cursor (desktop viewports) */}
-      <CustomCursor />
-
-      {/* Glassmorphic Navbar */}
+    <div className="relative min-h-screen bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-300">
+      {/* Navigation */}
       <Navbar />
 
-      {/* Main Section Content */}
-      <main className="relative z-10">
+      {/* Main Content */}
+      <main>
         <HeroSection onOpenResumeModal={() => setIsResumeModalOpen(true)} />
         <AboutSection />
         <SkillsSection />
@@ -92,47 +79,47 @@ SKILLS:
       {/* Footer */}
       <Footer />
 
-      {/* Floating Scroll back to top */}
+      {/* Scroll to Top */}
       <ScrollToTop />
 
-      {/* Interactive Resume Preview Modal */}
+      {/* Resume Preview Modal */}
       <Modal
         isOpen={isResumeModalOpen}
         onClose={() => setIsResumeModalOpen(false)}
-        title="CURRICULUM VITAE PREVIEW"
+        title="Resume Preview"
       >
-        <div className="space-y-6 text-slate-200 font-sans">
-          <div className="p-6 rounded-2xl bg-slate-900 border border-cyber-cyan/30 space-y-4">
+        <div className="space-y-6">
+          <div className="p-6 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 space-y-4">
             <div className="flex flex-wrap items-center justify-between gap-4">
               <div>
-                <h3 className="text-2xl font-bold font-mono text-white">{PERSONAL_INFO.name}</h3>
-                <p className="text-sm font-mono text-cyber-cyan">{PERSONAL_INFO.title}</p>
-                <p className="text-xs font-mono text-slate-400 mt-1">{PERSONAL_INFO.location} | {PERSONAL_INFO.email}</p>
+                <h3 className="text-2xl font-bold text-slate-900 dark:text-white">{PERSONAL_INFO.name}</h3>
+                <p className="text-sm text-blue-600 dark:text-blue-400">{PERSONAL_INFO.title}</p>
+                <p className="text-xs text-slate-500 mt-1">{PERSONAL_INFO.location} · {PERSONAL_INFO.email}</p>
               </div>
               <button
                 onClick={handleDownloadResumeFile}
-                className="px-4 py-2.5 rounded-xl bg-cyber-cyan text-slate-950 font-mono font-bold text-xs flex items-center gap-2 shadow-glow-cyan"
+                className="btn-primary text-sm"
               >
                 <Download className="w-4 h-4" />
-                <span>DOWNLOAD FILE</span>
+                <span>Download</span>
               </button>
             </div>
 
-            <div className="pt-4 border-t border-slate-800 space-y-4">
+            <div className="pt-4 border-t border-slate-200 dark:border-slate-700 space-y-5">
               <div>
-                <h4 className="text-xs font-mono text-cyber-sky font-bold uppercase tracking-wider mb-1">PROFESSIONAL SUMMARY</h4>
-                <p className="text-xs leading-relaxed text-slate-300">{PERSONAL_INFO.aboutSummary}</p>
+                <h4 className="text-xs font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wider mb-1">Professional Summary</h4>
+                <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-300">{PERSONAL_INFO.aboutSummary}</p>
               </div>
 
               <div>
-                <h4 className="text-xs font-mono text-cyber-sky font-bold uppercase tracking-wider mb-2">EXPERIENCE</h4>
+                <h4 className="text-xs font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wider mb-2">Experience</h4>
                 <div className="space-y-2">
-                  <div className="text-xs font-bold text-white">{EXPERIENCE_DATA[0].role} — {EXPERIENCE_DATA[0].company}</div>
-                  <div className="text-[11px] font-mono text-slate-400">{EXPERIENCE_DATA[0].period} | {EXPERIENCE_DATA[0].location}</div>
-                  <ul className="space-y-1 text-xs text-slate-300">
+                  <div className="text-sm font-semibold text-slate-900 dark:text-white">{EXPERIENCE_DATA[0].role} — {EXPERIENCE_DATA[0].company}</div>
+                  <div className="text-xs text-slate-500">{EXPERIENCE_DATA[0].period} · {EXPERIENCE_DATA[0].location}</div>
+                  <ul className="space-y-1 text-sm text-slate-600 dark:text-slate-300">
                     {EXPERIENCE_DATA[0].achievements.map((ach, i) => (
-                      <li key={i} className="flex items-start gap-1.5">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-cyber-cyan shrink-0 mt-0.5" />
+                      <li key={i} className="flex items-start gap-2">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
                         <span>{ach}</span>
                       </li>
                     ))}
@@ -141,16 +128,16 @@ SKILLS:
               </div>
 
               <div>
-                <h4 className="text-xs font-mono text-cyber-sky font-bold uppercase tracking-wider mb-2">EDUCATION</h4>
-                <div className="text-xs font-bold text-white">{EDUCATION_DATA.degree} in {EDUCATION_DATA.major}</div>
-                <div className="text-[11px] font-mono text-slate-400">{EDUCATION_DATA.institution} ({EDUCATION_DATA.period})</div>
+                <h4 className="text-xs font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wider mb-2">Education</h4>
+                <div className="text-sm font-semibold text-slate-900 dark:text-white">{EDUCATION_DATA.degree} in {EDUCATION_DATA.major}</div>
+                <div className="text-xs text-slate-500">{EDUCATION_DATA.institution} ({EDUCATION_DATA.period})</div>
               </div>
 
               <div>
-                <h4 className="text-xs font-mono text-cyber-sky font-bold uppercase tracking-wider mb-2">TECHNICAL SKILLS</h4>
+                <h4 className="text-xs font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wider mb-2">Technical Skills</h4>
                 <div className="flex flex-wrap gap-1.5">
                   {SKILL_CATEGORIES.flatMap(c => c.skills).map(s => (
-                    <span key={s.name} className="px-2 py-0.5 rounded bg-slate-950 border border-slate-800 text-[10px] font-mono text-cyber-cyan">
+                    <span key={s.name} className="badge text-xs">
                       {s.name}
                     </span>
                   ))}

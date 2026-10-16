@@ -12,12 +12,16 @@ interface ModalProps {
 export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
+      if (e.key === 'Escape') {
+        onClose();
+      }
     };
+
     if (isOpen) {
       document.body.style.overflow = 'hidden';
       window.addEventListener('keydown', handleKeyDown);
     }
+
     return () => {
       document.body.style.overflow = 'unset';
       window.removeEventListener('keydown', handleKeyDown);
@@ -27,32 +31,41 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6 overflow-y-auto">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
           {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
             onClick={onClose}
-            className="fixed inset-0 bg-slate-950/80 backdrop-blur-md"
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm"
+            aria-hidden="true"
           />
 
-          {/* Modal Content Window */}
+          {/* Modal Dialog */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            initial={{ opacity: 0, scale: 0.95, y: 16 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="relative w-full max-w-4xl bg-cyber-card/95 border border-cyber-cyan/30 rounded-2xl shadow-2xl overflow-hidden z-10 my-8 text-slate-100"
+            exit={{ opacity: 0, scale: 0.95, y: 16 }}
+            transition={{ duration: 0.2, ease: 'easeOut' }}
+            className="relative w-full max-w-3xl bg-white dark:bg-slate-800 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 overflow-hidden z-10 my-8"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-title"
           >
             {/* Modal Header */}
-            <div className="flex items-center justify-between p-5 border-b border-cyber-cyan/20 bg-slate-900/60">
-              <h3 className="text-xl font-bold font-mono text-cyber-cyan flex items-center gap-2">
-                <span className="inline-block w-2 h-2 rounded-full bg-cyber-cyan animate-pulse" />
+            <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200 dark:border-slate-700">
+              <h3
+                id="modal-title"
+                className="text-xl font-bold text-slate-900 dark:text-white"
+              >
                 {title}
               </h3>
               <button
+                type="button"
                 onClick={onClose}
-                className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+                className="p-1.5 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500/20"
                 aria-label="Close modal"
               >
                 <X className="w-5 h-5" />
@@ -60,7 +73,7 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }
             </div>
 
             {/* Modal Body */}
-            <div className="p-6 max-h-[75vh] overflow-y-auto">
+            <div className="p-6 max-h-[75vh] overflow-y-auto text-slate-600 dark:text-slate-300">
               {children}
             </div>
           </motion.div>

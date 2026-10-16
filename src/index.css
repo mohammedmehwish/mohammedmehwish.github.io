@@ -9,80 +9,129 @@
   }
 
   body {
-    @apply bg-cyber-bg text-slate-100 antialiased overflow-x-hidden;
-    background-image: 
-      radial-gradient(circle at 15% 15%, rgba(0, 240, 255, 0.05) 0%, transparent 40%),
-      radial-gradient(circle at 85% 75%, rgba(0, 112, 243, 0.05) 0%, transparent 40%);
-    background-attachment: fixed;
+    @apply bg-white text-slate-800 antialiased overflow-x-hidden;
   }
 
-  /* Custom Cyber Scrollbar */
+  /* Clean Professional Scrollbar */
   ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
   }
 
   ::-webkit-scrollbar-track {
-    background: #070b19;
+    background: #f1f5f9;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: rgba(0, 240, 255, 0.25);
-    border-radius: 4px;
-    border: 1px solid rgba(0, 240, 255, 0.1);
+    background: #cbd5e1;
+    border-radius: 3px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(0, 240, 255, 0.6);
-    box-shadow: 0 0 10px rgba(0, 240, 255, 0.8);
+    background: #94a3b8;
+  }
+
+  /* Dark mode scrollbar */
+  .dark ::-webkit-scrollbar-track {
+    background: #1e293b;
+  }
+
+  .dark ::-webkit-scrollbar-thumb {
+    background: #475569;
+  }
+
+  .dark ::-webkit-scrollbar-thumb:hover {
+    background: #64748b;
+  }
+
+  .dark body {
+    @apply bg-slate-900 text-slate-200;
   }
 }
 
 @layer components {
-  /* Glassmorphism Panel */
-  .glass-panel {
-    background: rgba(15, 23, 42, 0.65);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(56, 189, 248, 0.15);
+  /* Section wrapper */
+  .section-container {
+    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
   }
 
-  .glass-panel-light {
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(0, 112, 243, 0.15);
+  .section-padding {
+    @apply py-20 md:py-28;
   }
 
-  /* Cyber Glow Borders */
-  .cyber-border {
-    position: relative;
-    border: 1px solid rgba(0, 240, 255, 0.2);
-    transition: all 0.3s ease;
+  /* Professional card */
+  .pro-card {
+    @apply bg-white rounded-xl border border-slate-200 shadow-card transition-all duration-300;
   }
 
-  .cyber-border:hover {
-    border-color: rgba(0, 240, 255, 0.6);
-    box-shadow: 0 0 20px rgba(0, 240, 255, 0.25);
+  .pro-card:hover {
+    @apply shadow-card-hover border-slate-300;
   }
 
-  .glow-text-cyan {
-    text-shadow: 0 0 12px rgba(0, 240, 255, 0.5);
+  .dark .pro-card {
+    @apply bg-slate-800 border-slate-700;
   }
 
-  .glow-text-blue {
-    text-shadow: 0 0 15px rgba(0, 112, 243, 0.6);
+  .dark .pro-card:hover {
+    @apply bg-slate-800 border-slate-600;
   }
 
-  /* Tech Grid Background Lines */
-  .tech-grid {
-    background-size: 40px 40px;
-    background-image: 
-      linear-gradient(to right, rgba(56, 189, 248, 0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(56, 189, 248, 0.05) 1px, transparent 1px);
+  /* Section title styling */
+  .section-label {
+    @apply text-sm font-semibold text-blue-600 uppercase tracking-wider mb-2;
   }
 
-  .cyber-gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-cyber-cyan via-cyber-sky to-cyber-blue;
+  .dark .section-label {
+    @apply text-blue-400;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold text-slate-900;
+  }
+
+  .dark .section-title {
+    @apply text-white;
+  }
+
+  .section-subtitle {
+    @apply mt-4 text-lg text-slate-600 max-w-2xl mx-auto;
+  }
+
+  .dark .section-subtitle {
+    @apply text-slate-400;
+  }
+
+  /* Button styles */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg font-medium transition-all duration-200;
+  }
+
+  .btn-primary:hover {
+    @apply bg-blue-700 shadow-md;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 border border-slate-300 text-slate-700 px-6 py-3 rounded-lg font-medium transition-all duration-200;
+  }
+
+  .btn-secondary:hover {
+    @apply bg-slate-50 border-slate-400;
+  }
+
+  .dark .btn-secondary {
+    @apply border-slate-600 text-slate-300;
+  }
+
+  .dark .btn-secondary:hover {
+    @apply bg-slate-800 border-slate-500;
+  }
+
+  /* Tag / Badge */
+  .badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-50 text-blue-700;
+  }
+
+  .dark .badge {
+    @apply bg-blue-900/30 text-blue-300;
   }
 }
