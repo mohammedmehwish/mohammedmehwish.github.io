@@ -23,35 +23,8 @@ export function App() {
 
   const handleDownloadResumeFile = () => {
     const element = document.createElement("a");
-    const file = new Blob([
-      `MOHAMMED MEHWISH V M
-Robotics Engineer | Mechatronics Engineer | Embedded Systems Engineer
-Location: ${PERSONAL_INFO.location}
-Email: ${PERSONAL_INFO.email}
-LinkedIn: ${PERSONAL_INFO.linkedin}
-GitHub: ${PERSONAL_INFO.github}
-
-SUMMARY:
-${PERSONAL_INFO.aboutSummary}
-
-EDUCATION:
-- ${EDUCATION_DATA.degree} in ${EDUCATION_DATA.major} (${EDUCATION_DATA.period})
-  ${EDUCATION_DATA.institution}, ${EDUCATION_DATA.location}
-
-EXPERIENCE:
-- ${EXPERIENCE_DATA[0].role} at ${EXPERIENCE_DATA[0].company} (${EXPERIENCE_DATA[0].period})
-  Achievements:
-  * ${EXPERIENCE_DATA[0].achievements.join('\n  * ')}
-
-SKILLS:
-- Embedded Systems: Arduino, ESP32, Microcontrollers, Sensors, Electronics
-- Robotics & Vision: OpenCV, YOLO, Deep Learning, Robot Control
-- Automation: PLC, SCADA, HMI, VFD
-- CAD & Tools: SolidWorks, Fusion 360, C, Python, Embedded C, Git, Linux
-`
-    ], { type: 'text/plain;charset=utf-8' });
-    element.href = URL.createObjectURL(file);
-    element.download = "Mohammed_Mehwish_Resume.txt";
+    element.href = "./assets/resume/Mehwish-CV.pdf";
+    element.download = "Mohammed_Mehwish_CV.pdf";
     document.body.appendChild(element);
     element.click();
     document.body.removeChild(element);

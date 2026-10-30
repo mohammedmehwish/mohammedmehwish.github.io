@@ -21,54 +21,12 @@ interface ResumeSectionProps {
 
 export const ResumeSection: React.FC<ResumeSectionProps> = ({ onOpenModal }) => {
   const handleDownloadResume = () => {
-    const resumeText = `MOHAMMED MEHWISH V M
-Robotics Engineer | Mechatronics Engineer | Embedded Systems Engineer
-Location: ${PERSONAL_INFO.location}
-Email: ${PERSONAL_INFO.email}
-LinkedIn: ${PERSONAL_INFO.linkedin}
-GitHub: ${PERSONAL_INFO.github}
-
-==================================================
-PROFESSIONAL SUMMARY
-==================================================
-${PERSONAL_INFO.aboutSummary}
-
-==================================================
-EDUCATION
-==================================================
-${EDUCATION_DATA.degree} in ${EDUCATION_DATA.major} (${EDUCATION_DATA.period})
-${EDUCATION_DATA.institution}, ${EDUCATION_DATA.location}
-Highlights:
-${EDUCATION_DATA.highlights.map((h) => `• ${h}`).join('\n')}
-
-==================================================
-EXPERIENCE
-==================================================
-${EXPERIENCE_DATA.map(
-  (exp) => `${exp.role} — ${exp.company}
-Period: ${exp.period} | Location: ${exp.location}
-Description: ${exp.description}
-Key Achievements:
-${exp.achievements.map((a) => `• ${a}`).join('\n')}
-Skills: ${exp.skills.join(', ')}`
-).join('\n\n')}
-
-==================================================
-TECHNICAL SKILLS
-==================================================
-${SKILL_CATEGORIES.map(
-  (cat) => `• ${cat.title}: ${cat.skills.map((s) => s.name).join(', ')}`
-).join('\n')}
-`;
-
     const element = document.createElement('a');
-    const file = new Blob([resumeText], { type: 'text/plain;charset=utf-8' });
-    element.href = URL.createObjectURL(file);
-    element.download = 'Mohammed_Mehwish_Resume.txt';
+    element.href = './assets/resume/Mehwish-CV.pdf';
+    element.download = 'Mohammed_Mehwish_CV.pdf';
     document.body.appendChild(element);
     element.click();
     document.body.removeChild(element);
-    URL.revokeObjectURL(element.href);
   };
 
   return (
