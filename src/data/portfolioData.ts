@@ -100,7 +100,7 @@ export const FEATURED_PROJECTS: Project[] = [
     liveDemoUrl: "https://github.com/mohammedmehwish/turtlebot3-nav2-navigation#readme",
     category: "robotics",
     featured: true,
-    image: "./assets/projects/turtlebot3-ros2.jpg",
+    image: "/assets/projects/turtlebot3-ros2.jpg",
     highlights: [
       "Generated 2D occupancy grid map using SLAM Toolbox in Gazebo simulation",
       "Configured AMCL localization and Nav2 stack for autonomous goal navigation",
@@ -117,7 +117,7 @@ export const FEATURED_PROJECTS: Project[] = [
     liveDemoUrl: "https://github.com/mohammedmehwish/vision-guard-helmet-detection#readme",
     category: "vision",
     featured: true,
-    image: "./assets/projects/helmet-detection.jpg",
+    image: "/assets/projects/helmet-detection.jpg",
     highlights: [
       "Trained YOLO model for real-time helmet and no-helmet classification",
       "Implemented OpenCV-based video processing pipeline for live detection",
@@ -134,7 +134,7 @@ export const FEATURED_PROJECTS: Project[] = [
     liveDemoUrl: "https://github.com/mohammedmehwish/fire-rescue-drone#readme",
     category: "robotics",
     featured: true,
-    image: "./assets/projects/fire-rescue-drone.jpg",
+    image: "/assets/projects/fire-rescue-drone.jpg",
     highlights: [
       "Assembled and configured multirotor drone with flight controller and ESCs",
       "Integrated onboard sensors for environmental monitoring during operations",
