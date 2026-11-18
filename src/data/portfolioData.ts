@@ -2,19 +2,19 @@ import { Project, SkillCategory, ExperienceItem, Certificate, Education } from '
 
 export const PERSONAL_INFO = {
   name: "Mohammed Mehwish V M",
-  title: "Robotics Engineer",
-  shortTitle: "Robotics Engineer",
+  title: "Robotics Engineer | Mechatronics Engineer",
+  shortTitle: "Robotics & Mechatronics Engineer",
   location: "Kerala, India",
-  email: "michumehwish2004@gmail.com",
+  email: "mohammedmehwish3@gmail.com",
   linkedin: "https://linkedin.com/in/mohammed-mehwish-202677307",
   github: "https://github.com/mohammedmehwish",
   githubUsername: "mohammedmehwish",
-  aboutSummary: "Mechatronics Engineering graduate specializing in robotics, embedded systems, and computer vision. Experienced with ROS 2, ESP32, Arduino, Raspberry Pi, and deep learning frameworks. Currently training in advanced robotics at Evolve Robotics, Kochi, with hands-on work in robot kinematics, SLAM, Nav2, sensor integration, and motor control. Passionate about building intelligent robotic systems that solve real-world engineering challenges.",
+  aboutSummary: "Mechatronics Engineering graduate specializing in Robotics, Design Engineering, and Automation Engineering. Experienced with ROS 2, ESP32, Arduino, Raspberry Pi, and deep learning frameworks. Currently training in advanced robotics at Evolve Robotics, Kochi, with hands-on work in robot kinematics, SLAM, Nav2, sensor integration, and motor control.",
   taglines: [
     "Robotics Engineer",
-    "Embedded Systems Engineer",
-    "Computer Vision Enthusiast",
-    "ROS 2 Developer"
+    "Design Engineer",
+    "Automation Engineer",
+    "Embedded Systems Engineer"
   ],
   stats: [
     { label: "Projects Completed", value: "10+" },

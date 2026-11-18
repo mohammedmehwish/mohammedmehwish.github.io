@@ -23,7 +23,7 @@ export function App() {
 
   const handleDownloadResumeFile = () => {
     const element = document.createElement("a");
-    element.href = "./assets/resume/Mehwish-CV.pdf";
+    element.href = "./assets/resume/Mohammed_Mehwish_CV.pdf";
     element.download = "Mohammed_Mehwish_CV.pdf";
     document.body.appendChild(element);
     element.click();
