@@ -9,6 +9,7 @@ export const PERSONAL_INFO = {
   linkedin: "https://linkedin.com/in/mohammed-mehwish-202677307",
   github: "https://github.com/mohammedmehwish",
   githubUsername: "mohammedmehwish",
+  website: "https://mohammedmehwish.github.io",
   aboutSummary: "Mechatronics Engineering graduate specializing in Robotics, Design Engineering, and Automation Engineering. Experienced with ROS 2, ESP32, Arduino, Raspberry Pi, and deep learning frameworks. Currently training in advanced robotics at Evolve Robotics, Kochi, with hands-on work in robot kinematics, SLAM, Nav2, sensor integration, and motor control.",
   taglines: [
     "Robotics Engineer",

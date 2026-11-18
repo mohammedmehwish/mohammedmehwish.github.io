@@ -14,6 +14,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResumeModal }) =
   const [displayText, setDisplayText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
 
+  const handleDownloadCV = () => {
+    const element = document.createElement('a');
+    element.href = import.meta.env.BASE_URL + 'assets/resume/Mohammed_Mehwish_CV.pdf';
+    element.download = 'Mohammed_Mehwish_CV.pdf';
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+  };
+
   useEffect(() => {
     const currentTagline = PERSONAL_INFO.taglines[taglineIndex];
     const typingSpeed = isDeleting ? 40 : 80;
@@ -78,7 +87,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResumeModal }) =
             <div className="flex flex-wrap gap-4 pt-2 items-center">
               <button
                 type="button"
-                onClick={onOpenResumeModal}
+                onClick={handleDownloadCV}
                 className="btn-primary cursor-pointer"
               >
                 <Download className="w-4 h-4" />
@@ -115,7 +124,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResumeModal }) =
               <div className="absolute -inset-4 rounded-full bg-gradient-to-br from-blue-500/20 via-blue-400/10 to-transparent blur-2xl pointer-events-none" />
               <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden shadow-2xl ring-4 ring-blue-600/25 dark:ring-blue-400/30 bg-slate-100 dark:bg-slate-800">
                 <img
-                  src="./assets/profile-photo.jpg"
+                  src={import.meta.env.BASE_URL + "assets/profile-photo.jpg"}
                   alt="Mohammed Mehwish V M — Robotics & Mechatronics Engineer"
                   className="w-full h-full object-cover object-top"
                   loading="eager"

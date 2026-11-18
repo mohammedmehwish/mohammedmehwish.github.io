@@ -1,5 +1,5 @@
 import React from 'react';
-import { Github, Linkedin, Mail, ArrowUp } from 'lucide-react';
+import { Github, Linkedin, Mail, Globe, ArrowUp } from 'lucide-react';
 import { PERSONAL_INFO } from '../../data/portfolioData';
 
 export const Footer: React.FC = () => {
@@ -99,6 +99,17 @@ export const Footer: React.FC = () => {
                 >
                   <Mail className="w-4 h-4 text-slate-400 group-hover:text-white transition-colors" />
                   <span className="truncate max-w-[200px]">{PERSONAL_INFO.email}</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href={PERSONAL_INFO.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 hover:text-white transition-colors group"
+                >
+                  <Globe className="w-4 h-4 text-slate-400 group-hover:text-white transition-colors" />
+                  <span>mohammedmehwish.github.io</span>
                 </a>
               </li>
             </ul>

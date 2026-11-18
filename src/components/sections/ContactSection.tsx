@@ -9,6 +9,7 @@ import {
   CheckCircle2,
   Copy,
   ExternalLink,
+  Globe,
 } from 'lucide-react';
 import { PERSONAL_INFO } from '../../data/portfolioData';
 
@@ -154,6 +155,29 @@ export const ContactSection: React.FC = () => {
                 </p>
               </div>
             </div>
+
+            {/* 5. Portfolio Website Card */}
+            <a
+              href={PERSONAL_INFO.website}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pro-card p-5 flex items-center justify-between group block"
+            >
+              <div className="flex items-center gap-4">
+                <div className="w-10 h-10 rounded-full bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 shrink-0 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                  <Globe className="w-5 h-5" />
+                </div>
+                <div>
+                  <p className="text-xs font-medium text-slate-500 uppercase tracking-wider">
+                    Portfolio
+                  </p>
+                  <p className="text-sm font-semibold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                    mohammedmehwish.github.io
+                  </p>
+                </div>
+              </div>
+              <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors shrink-0" />
+            </a>
           </motion.div>
 
           {/* Right Column (7 cols): Contact Form */}
